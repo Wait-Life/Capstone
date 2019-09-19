@@ -31,4 +31,4 @@ build/
 .vscode/
 
 ### Application Resources Folder ###
-/src/main/resources/application.properties
+#/src/main/resources/application.properties
