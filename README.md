@@ -1,2 +1,2 @@
 # Capstone
-Wait Life Capstone Project
+DrinkHustle Capstone Project
