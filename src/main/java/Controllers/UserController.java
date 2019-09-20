@@ -1,6 +1,5 @@
 package Controllers;
 
-import Repos.EventRepository;
 import Repos.UserRepository;
 import models.User;
 import org.springframework.stereotype.Controller;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     private UserRepository users;
-    private EventRepository eventDao;
-
     public UserController(UserRepository users, EventRepository eventDao){
         this.users = users;
         this.eventDao = eventDao;
