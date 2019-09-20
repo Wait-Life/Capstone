@@ -17,6 +17,10 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private boolean isClient;
+    private boolean isBartender;
+
     @Column
     private String company;
 
@@ -67,6 +71,22 @@ public class User {
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
+
+    public boolean isClient(){
+        return isClient;
+    }
+
+    public void setClient(boolean client) {
+        isClient = client;
+    }
+
+    public boolean isBartender(){
+        return isBartender;
+    }
+
+    public void setBartender(boolean bartender){
+        isBartender = bartender;
+    }
 
     public String getCompany() { return company; }
 
