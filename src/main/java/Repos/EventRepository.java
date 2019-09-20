@@ -1,4 +1,4 @@
-package daos;
+package Repos;
 
 import models.Event;
 import org.springframework.data.repository.CrudRepository;
