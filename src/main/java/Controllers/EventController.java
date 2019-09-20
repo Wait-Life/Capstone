@@ -22,8 +22,8 @@ public class EventController {
         this.eventDao = eventRepository;
     }
 
-    @Autowired
-    private EmailService emailService;
+//    @Autowired
+//    private EmailService emailService;
 
     @GetMapping("/events")
     public String index(Model vModel) {

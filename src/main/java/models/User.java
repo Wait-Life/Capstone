@@ -18,6 +18,9 @@ public class User {
     private String name;
 
     @Column(nullable = false)
+    private boolean isClient;
+
+    @Column
     private String company;
 
     @Column(nullable = false, unique = true)
@@ -68,6 +71,14 @@ public class User {
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
+
+    public boolean isClient(){
+        return isClient;
+    }
+
+    public void setClient(boolean client) {
+        isClient = client;
+    }
 
     public String getCompany() { return company; }
 
