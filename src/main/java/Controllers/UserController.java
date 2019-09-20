@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
     private UserRepository users;
-
     public UserController(UserRepository users, EventRepository eventDao){
         this.users = users;
         this.eventDao = eventDao;
