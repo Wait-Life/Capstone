@@ -1,4 +1,4 @@
-package daos;
+package Repos;
 
 import models.User;
 import org.springframework.data.repository.CrudRepository;
