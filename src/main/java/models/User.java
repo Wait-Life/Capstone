@@ -20,9 +20,6 @@ public class User {
     @Column(nullable = false)
     private boolean isClient;
 
-    @Column(nullable = false)
-    private boolean isBartender;
-
     @Column
     private String company;
 
@@ -37,6 +34,7 @@ public class User {
 
     @Column(unique = true)
     private String food_cert;
+
 
 
 //    CONSTRUCTOR
@@ -80,14 +78,6 @@ public class User {
 
     public void setClient(boolean client) {
         isClient = client;
-    }
-
-    public boolean isBartender(){
-        return isBartender;
-    }
-
-    public void setBartender(boolean bartender){
-        isBartender = bartender;
     }
 
     public String getCompany() { return company; }
