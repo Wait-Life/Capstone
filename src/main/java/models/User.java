@@ -17,7 +17,7 @@ public class User {
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String company;
 
     @Column(nullable = false, unique = true)
@@ -31,6 +31,7 @@ public class User {
 
     @Column(unique = true)
     private String food_cert;
+
 
 
 //    CONSTRUCTOR
