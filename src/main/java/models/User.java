@@ -57,6 +57,9 @@ public class User {
 
 
 //    GETTERS AND SETTERS
+
+    public User(){}
+
     public long getId() { return id; }
 
     public void setId(long id) { this.id = id; }
@@ -86,4 +89,8 @@ public class User {
     public void setFood_cert(String food_cert) {
         this.food_cert = food_cert;
     }
+
+    public List<Event> getEvents() { return events; }
+
+    public void setEvents(List<Event> events) { this.events = events; }
 }
