@@ -1,5 +1,6 @@
 package Controllers;
 
+import Repos.EventRepository;
 import Repos.UserRepository;
 import models.User;
 import org.springframework.stereotype.Controller;

@@ -40,6 +40,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+=======
+
+>>>>>>> 50f77306abfd10415ee83b032bd98781aebb145d
+=======
+>>>>>>> 697a6ddb21c2d78a41ad41a51b659fe06a610b84
     </dependencies>
 
     <build>
