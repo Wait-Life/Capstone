@@ -19,6 +19,8 @@ public class User {
 
     @Column(nullable = false)
     private boolean isClient;
+
+    @Column(nullable = false)
     private boolean isBartender;
 
     @Column
