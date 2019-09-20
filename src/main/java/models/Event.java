@@ -1,5 +1,7 @@
 package models;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -30,16 +32,21 @@ public class Event {
     private String address;
 
     @Column(nullable = false)
+    private long bartendersNeeded;
+
+    @Column(nullable = false)
     private String description;
 
 
-    public Event(long id, long owner_id, String title, String start_time, String end_time, String address, String description) {
+
+    public Event(long id, long owner_id, String title, String start_time, String end_time, String address, long bartendersNeeded, String description) {
         this.id = id;
         this.owner_id = owner_id;
         this.title = title;
         this.start_time = start_time;
         this.end_time = end_time;
         this.address = address;
+        this.bartendersNeeded = bartendersNeeded;
         this.description = description;
     }
 
@@ -69,7 +76,15 @@ public class Event {
 
     public void setAddress(String address) { this.address = address; }
 
+    public long getBartendersNeeded() { return bartendersNeeded; }
+
+    public void setBartendersNeeded(long bartendersNeeded) { this.bartendersNeeded = bartendersNeeded; }
+
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
+
+    public List<User> getUsers() { return users; }
+
+    public void setUsers(List<User> users) { this.users = users; }
 }
