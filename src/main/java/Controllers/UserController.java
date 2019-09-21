@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     private final EventRepository eventDao;
     private UserRepository users;
+
     public UserController(UserRepository users, EventRepository eventDao){
         this.users = users;
         this.eventDao = eventDao;
@@ -29,4 +30,5 @@ public class UserController {
         users.save(user);
         return "redirect:/login";
     }
+
 }

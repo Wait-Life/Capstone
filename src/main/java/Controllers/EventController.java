@@ -4,11 +4,11 @@ import Repos.EventRepository;
 import Repos.UserRepository;
 import models.Event;
 import models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -56,8 +56,8 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "start_time") String start_time,
-                         @RequestParam(name = "end_time") String end_time,
+                         @RequestParam(name = "start_time") Date start_time,
+                         @RequestParam(name = "end_time") Date end_time,
                          @RequestParam(name = "description") String description,
                          Model viewModel) {
         Event eventToBeUpdated = eventDao.findOne(id);
@@ -89,10 +89,10 @@ public class EventController {
         eventPassedIn.setUser(userDB);
 
         Event savedEvent = eventDao.save(eventPassedIn);
-        emailService.prepareAndSend(
-                savedEvent,
-                "Event created",
-                String.format("Event with the id %d has been created", savedEvent.getId()));
+//        emailService.prepareAndSend(
+//                savedEvent,
+//                "Event created",
+//                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
 

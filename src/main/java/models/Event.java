@@ -3,6 +3,7 @@ package models;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,11 +23,13 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
-    private String start_time;
+    @Column(nullable = false, columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date start_time;
 
-    @Column(nullable = false)
-    private String end_time;
+    @Column(nullable = false, columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date end_time;
 
     @Column(nullable = false)
     private String address;
@@ -39,7 +42,7 @@ public class Event {
 
 
 
-    public Event(long id, long owner_id, String title, String start_time, String end_time, String address, long bartendersNeeded, String description) {
+    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description) {
         this.id = id;
         this.owner_id = owner_id;
         this.title = title;
@@ -64,13 +67,13 @@ public class Event {
 
     public void setTitle(String title) { this.title = title; }
 
-    public String getStart_time() { return start_time; }
+    public Date getStart_time() { return start_time; }
 
-    public void setStart_time(String start_time) { this.start_time = start_time; }
+    public void setStart_time(Date start_time) { this.start_time = start_time; }
 
-    public String getEnd_time() { return end_time; }
+    public Date getEnd_time() { return end_time; }
 
-    public void setEnd_time(String end_time) { this.end_time = end_time; }
+    public void setEnd_time(Date end_time) { this.end_time = end_time; }
 
     public String getAddress() { return address; }
 
