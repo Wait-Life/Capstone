@@ -36,6 +36,7 @@ public class User {
     private String food_cert;
 
 
+
 //    CONSTRUCTOR
     public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert) {
         this.id = id;
