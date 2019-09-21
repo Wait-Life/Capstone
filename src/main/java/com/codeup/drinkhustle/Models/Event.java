@@ -1,6 +1,4 @@
-package models;
-
-import org.springframework.beans.factory.annotation.Value;
+package com.codeup.drinkhustle.Models;
 
 import javax.persistence.*;
 import java.util.Date;
