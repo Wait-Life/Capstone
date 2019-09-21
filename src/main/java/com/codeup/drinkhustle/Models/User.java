@@ -1,4 +1,4 @@
-package models;
+package com.codeup.drinkhustle.Models;
 
 import javax.persistence.*;
 import java.util.List;

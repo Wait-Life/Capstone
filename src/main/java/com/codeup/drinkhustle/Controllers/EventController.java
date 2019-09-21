@@ -1,9 +1,8 @@
-package Controllers;
+package com.codeup.drinkhustle.Controllers;
 
-import Repos.EventRepository;
-import Repos.UserRepository;
-import models.Event;
-import models.User;
+import com.codeup.drinkhustle.Repos.UserRepository;
+import com.codeup.drinkhustle.Models.Event;
+import com.codeup.drinkhustle.Models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package Repos;
+package com.codeup.drinkhustle.Repos;
 
-import models.Event;
+import com.codeup.drinkhustle.Models.Event;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
