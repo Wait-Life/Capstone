@@ -1,15 +1,13 @@
 package com.codeup.drinkhustle.Models;
 
 import javax.persistence.*;
+import org.springframework.beans.factory.annotation.Value;
 import java.util.List;
 
 
 @Entity
 @Table(name = "Users")
 public class User {
-
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Event> events;
 
     @Id @GeneratedValue
     private long id;
@@ -35,6 +33,8 @@ public class User {
     @Column(unique = true)
     private String food_cert;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<Event> events;
 
 
 //    CONSTRUCTOR

@@ -9,8 +9,6 @@ import java.util.List;
 @Table(name = "Events")
 public class Event {
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "event")
-    private List<User> users;
 
     @Id @GeneratedValue
     private long id;
@@ -38,9 +36,14 @@ public class Event {
     @Column(nullable = false)
     private String description;
 
+    @OneToOne
+    private User clients;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "event")
+    private List<User> bartenders;
 
 
-    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description) {
+    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, List<User> bartenders) {
         this.id = id;
         this.owner_id = owner_id;
         this.title = title;
@@ -49,7 +52,10 @@ public class Event {
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
+        this.clients = clients;
+        this.bartenders = bartenders;
     }
+
 
     public Event() {}
 
@@ -85,10 +91,17 @@ public class Event {
 
     public void setDescription(String description) { this.description = description; }
 
-    public List<User> getUsers() { return users; }
+    public List<User> getBartenders() { return bartenders; }
 
-    public void setUsers(List<User> users) { this.users = users; }
+    public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
 
-    public void setUser(User userDB) {
+    public void setUser(User userDB) { }
+
+    public User getClients() {
+        return clients;
+    }
+
+    public void setClients(User clients) {
+        this.clients = clients;
     }
 }
