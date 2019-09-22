@@ -16,13 +16,12 @@ public class UserDetailsLoader implements UserDetailsService{
         this.users = users;
     }
 
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = users.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("No user found for " + username);
+        @Override
+        public UserDetails loadUserByUsername (String email) throws UsernameNotFoundException {
+            User user = users.findByEmail(email);
+            if (user == null) {
+                throw new UsernameNotFoundException("No user found for " + email);
+            }
+            return new UserWithRoles(user);
         }
-        return new UserWithRoles(user);
     }
-}

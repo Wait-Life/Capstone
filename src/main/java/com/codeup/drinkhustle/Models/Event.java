@@ -56,18 +56,6 @@ public class Event {
         this.bartenders = bartenders;
     }
 
-    public Event (Event copy) {
-        id = copy.id;
-        owner_id = copy.owner_id;
-        title = copy.title;
-        start_time = copy.start_time;
-        end_time = copy.end_time;
-        address = copy.address;
-        bartendersNeeded = copy.bartendersNeeded;
-        description = copy.description;
-        clients = copy.clients;
-        bartenders = copy.bartenders;
-    }
 
     public Event() {}
 

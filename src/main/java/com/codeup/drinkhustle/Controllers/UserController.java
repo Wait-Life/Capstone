@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@Valid User registerUser, Errors validation, Model model) {
-        if (users.findEmail(registerUser.getEmail())) {
+        if (users.countAllEmails(registerUser.getEmail()) > 0) {
             validation.rejectValue(
                     "user.email",
                     "Invalid email."
