@@ -1,5 +1,6 @@
 package com.codeup.drinkhustle.Controllers;
 
+import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
