@@ -1,30 +1,24 @@
 package com.codeup.drinkhustle.Controllers;
 
-import com.codeup.drinkhustle.Models.Event;
+import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
-import com.codeup.drinkhustle.Models.User;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
-
 @Controller
 public class UserController {
-    private final EventRepository eventDao;
+    private EventRepository eventDao;
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository users, EventRepository eventDao) {
+    public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
         this.users = users;
-        this.eventDao = eventDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -35,17 +29,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid User user, Errors validation, Model model) {
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("user", user);
-            return "users/register";
-        } else {
+    public String registerUser(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
             users.save(user);
-            return "redirect:/login";
-        }
+            return "redirect:/eventRegistration";
     }
 
     @PostMapping("/posts/{id}/delete")
