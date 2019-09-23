@@ -10,7 +10,8 @@ import java.util.List;
 public class Event {
 
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
 
     @Column
@@ -36,14 +37,11 @@ public class Event {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne
-    private User clients;
-
-    @ManyToOne
-    private User users;
+    @ManyToMany(mappedBy = "events")
+    private List<User> users;
 
 
-    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, User bartenders) {
+    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, List<User> bartenders) {
         this.id = id;
         this.owner_id = owner_id;
         this.title = title;
@@ -52,60 +50,85 @@ public class Event {
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
-        this.clients = clients;
         this.users = bartenders;
     }
 
 
-    public Event() {}
+    public Event() {
+    }
 
-    public long getId() { return id; }
+    public long getId() {
+        return id;
+    }
 
-    public void setId(long id) { this.id = id; }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public long getOwner_id() { return owner_id; }
+    public long getOwner_id() {
+        return owner_id;
+    }
 
-    public void setOwner_id(long owner_id) { this.owner_id = owner_id; }
+    public void setOwner_id(long owner_id) {
+        this.owner_id = owner_id;
+    }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title) { this.title = title; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public Date getStart_time() { return start_time; }
+    public Date getStart_time() {
+        return start_time;
+    }
 
-    public void setStart_time(Date start_time) { this.start_time = start_time; }
+    public void setStart_time(Date start_time) {
+        this.start_time = start_time;
+    }
 
-    public Date getEnd_time() { return end_time; }
+    public Date getEnd_time() {
+        return end_time;
+    }
 
-    public void setEnd_time(Date end_time) { this.end_time = end_time; }
+    public void setEnd_time(Date end_time) {
+        this.end_time = end_time;
+    }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public long getBartendersNeeded() { return bartendersNeeded; }
+    public long getBartendersNeeded() {
+        return bartendersNeeded;
+    }
 
-    public void setBartendersNeeded(long bartendersNeeded) { this.bartendersNeeded = bartendersNeeded; }
+    public void setBartendersNeeded(long bartendersNeeded) {
+        this.bartendersNeeded = bartendersNeeded;
+    }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public User getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(User users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
-
-    public void setUser(User userDB) { }
-
-    public User getClients() {
-        return clients;
-    }
-
-    public void setClients(User clients) {
-        this.clients = clients;
-    }
 }
+
+
+

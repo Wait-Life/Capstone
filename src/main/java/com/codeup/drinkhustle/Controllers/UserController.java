@@ -65,6 +65,18 @@ public class UserController {
         return "users/account";
     }
 
+
+
+//    SHOW CLIENT PROFILE
+    @GetMapping("client/profile")
+    public String showClientProfile(Model vModel){
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vModel.addAttribute("user", userSession);
+        return "users/clientProfile";
+    }
+
+
+
 //    @GetMapping("users/viewAll")
 //    public String viewAllProfiles(Model viewModel){
 //
