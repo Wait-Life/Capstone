@@ -59,10 +59,15 @@ public class UserController {
     @GetMapping("/users/account")
     public String showProfile(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Iterable<Event> events = eventDao.findByUserId(userSession.getId());
-        viewModel.addAttribute("events", events);
+//        Iterable<Event> events = eventDao.findByUserId(userSession.getId());
+//        viewModel.addAttribute("events", events);
         viewModel.addAttribute("user", userSession);
         return "users/account";
     }
+
+//    @GetMapping("users/viewAll")
+//    public String viewAllProfiles(Model viewModel){
+//
+//    }
 
 }
