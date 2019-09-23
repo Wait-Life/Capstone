@@ -17,4 +17,6 @@ public interface EventRepository extends CrudRepository <Event, Long> {
     Event findOne(long id);
 
     void delete(long id);
+
+    Iterable<Event> findByUserId(long user_id);
 }

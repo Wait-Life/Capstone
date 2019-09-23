@@ -5,6 +5,7 @@ import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -97,5 +98,14 @@ public class EventController {
         return "redirect:/events/" + savedEvent.getId();
     }
 
+//    @GetMapping("/profile/{id}")
+//    public String getUserProfile(@PathVariable long id, Model model) {
+//        Iterable<Event> events = eventDao.findAll();
+//        User user = users.findById(id);
+//
+//        try {
+//            User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        }
+//    }
 
 }
