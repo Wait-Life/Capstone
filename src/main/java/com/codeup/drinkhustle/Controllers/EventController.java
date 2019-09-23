@@ -56,14 +56,14 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "start_time") Date start_time,
-                         @RequestParam(name = "end_time") Date end_time,
+                         @RequestParam(name = "startTime") String startTime,
+                         @RequestParam(name = "endTime") String endTime,
                          @RequestParam(name = "description") String description,
                          Model viewModel) {
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-        eventToBeUpdated.setStart_time(start_time);
-        eventToBeUpdated.setEnd_time(end_time);
+        eventToBeUpdated.setStartTime(startTime);
+        eventToBeUpdated.setEndTime(endTime);
         eventToBeUpdated.setDescription(description);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
@@ -87,15 +87,11 @@ public class EventController {
     ) {
         User userDB = userDao.findOne(1L);
         eventPassedIn.setUser(userDB);
-
         Event savedEvent = eventDao.save(eventPassedIn);
-        emailService.prepareAndSend(
-                savedEvent,
-                "Event created",
-                String.format("Event with the id %d has been created", savedEvent.getId()));
+//        emailService.prepareAndSend(
+////                savedEvent,
+////                "Event created",
+////                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
-
-
-
 }
