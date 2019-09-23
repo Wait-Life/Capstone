@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <th:block th:replace="fragments/header :: main-header('Welcome')" />
 </head>
 <body>
-Hello
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<div class="topbar">
+    <div style="height: 200px;"></div>
+    <span sec:authorize="isAuthenticated()" style="font-size: 40px; color: white;">
+    Hey <span th:text="${#authentication.principal.username}"/>! Where are we partying today?
+</span>
+    <span th:unless="${#authorization.expression('isAuthenticated()')}">
+       <span style="font-size: 40px; color: white;">
+        Drinking TIME!
+       </span>
+    </span>
+    <br/>
+    <br/>
+    <br/>
+    <div >
+        <div>
+            <form action="/posts/search" method="get">
+                <input class="form" type="search" placeholder="Search Events..." name="term" />
+                <button class=".uk-button-primary" type="submit" name="action">Search
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<th:block th:replace="fragments/footer :: my-footer"/>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
 </body>
 </html>

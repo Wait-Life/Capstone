@@ -36,9 +36,13 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Event> events;
 
+    @Column
+    private String photoUrl;
+
 
 //    CONSTRUCTOR
-    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient) {
+
+    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient, String photoUrl) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -47,6 +51,7 @@ public class User {
         this.tabcCert = tabcCert;
         this.foodCert = foodCert;
         this.isClient = isClient;
+        this.photoUrl = photoUrl;
     }
 
 //    COPY CONSTRUCTOR

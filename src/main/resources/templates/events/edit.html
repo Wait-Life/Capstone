@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Your Event</title>
+</head>
+<body>
+
+<form action="" th:action="@{/events/{id}/edit(id=${id})}" method="post" th:object="${event}">
+    <input id="title" name="title" type="text" th:field="*{title}"/>
+    <label for="title">Title</label>
+    <input id="start_time" name="start_time" type="text" th:field="*{start_time}" />
+    <label for="start_time">Start Time</label>
+    <input id="end_time" name="end_time" type="date" th:field="*{end_time}" />
+    <label for="end_time">End Time</label>
+    <input id="address" name="address" type="date" th:field="*{address}" />
+    <label for="address">Address</label>
+    <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}" />
+    <label for="bartendersNeeded">Number of Bartenders Needed</label>
+    <input type="text" id="description" th:field="*{description}" />
+    <label for="description">Description</label>
+    <button type="submit" value="submit">Submit</button>
+</form>
+
+</body>
+</html>

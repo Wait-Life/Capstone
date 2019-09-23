@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -97,15 +98,5 @@ public class EventController {
 //                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
-
-//    @GetMapping("/profile/{id}")
-//    public String getUserProfile(@PathVariable long id, Model model) {
-//        Iterable<Event> events = eventDao.findAll();
-//        User user = users.findById(id);
-//
-//        try {
-//            User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        }
-//    }
 
 }

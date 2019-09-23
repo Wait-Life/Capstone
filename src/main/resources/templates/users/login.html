@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Login')" />
+</head>
+<body id="index-body">
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+<div style="height:100px;"></div>
+<div class="container" style="height: 300px; width: 450px">
+    <h1>Log In</h1>
+    <form th:action="@{/login}" method="post">
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <label for="email">Email</label>
+                <input class="uk-input" id="username" name="username" type="text" />
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <label for="password">Password</label>
+                <input class="uk-input" id="password" name="password" type="password" />
+            </div>
+        </div>
+        <button class=".uk-button-primary" type="submit" name="action">Submit
+        </button>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+</body>
+</html>

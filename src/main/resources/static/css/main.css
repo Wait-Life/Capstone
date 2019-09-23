@@ -1,0 +1,21 @@
+
+.topbar{
+    width: 1440px;
+    height: 768px;
+}
+
+.card-panel{
+    height: 350px;
+    width: 350px;
+}
+.main-nav{
+    background-color: rgba(0, 0, 0, .2) !important;
+}
+.main-nav2{
+
+}
+
+
+h5{
+    color: #f25f5c;
+}

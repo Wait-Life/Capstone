@@ -3,13 +3,16 @@ package com.codeup.drinkhustle.Controllers;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -51,10 +54,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    @PostMapping("/posts/{id}/delete")
-    public String deletePost(@PathVariable long id) {
-        eventDao.delete(id);
-        return "redirect:/events";
+    @GetMapping("/account")
+    public String show(Model viewModel) {
+        return "users/account";
     }
 
 }
