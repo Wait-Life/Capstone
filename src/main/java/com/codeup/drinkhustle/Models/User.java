@@ -33,7 +33,7 @@ public class User {
     @Column(unique = true)
     private String food_cert;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Event> events;
 
     @Column
