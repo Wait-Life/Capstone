@@ -39,14 +39,6 @@ public class UserController {
             return "redirect:/eventRegistration";
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/";
-    }
     @GetMapping("/account")
     public String show(Model viewModel) {
         return "users/account";
