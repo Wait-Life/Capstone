@@ -1,14 +1,17 @@
 package com.codeup.drinkhustle.Controllers;
 
+import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -31,23 +34,24 @@ public class UserController {
         return "users/register";
     }
 
-//    @PostMapping("/register")
-//    public String registerUser(@Valid User registerUser, Errors validation, Model model) {
-//        if (users.countAllEmails(registerUser.getEmail()) > 0) {
-//            validation.rejectValue(
-//                    "user.email",
-//                    "Invalid email."
-//            );
-//        }
-//        if (validation.hasErrors()) {
-//            model.addAttribute("errors", validation);
-//            model.addAttribute("user", registerUser);
-//            return "users/register";
-//        } else {
-//            String hash = passwordEncoder.encode(registerUser.getPassword());
-//            users.save(registerUser);
-//            return "redirect:/login";
-//        }
-//    }
+    @PostMapping("/register")
+    public String registerUser(@Valid User user, Errors validation, Model model) {
+        if (validation.hasErrors()) {
+            model.addAttribute("errors", validation);
+            model.addAttribute("user", user);
+            return "users/register";
+        } else {
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            users.save(user);
+            return "redirect:/login";
+        }
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id) {
+        eventDao.delete(id);
+        return "redirect:/events";
+    }
 
 }
