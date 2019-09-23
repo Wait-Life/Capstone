@@ -25,18 +25,33 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/register")
-    public String viewUserRegister(Model model) {
+    @GetMapping("client/register")
+    public String viewClientRegister(Model model) {
         model.addAttribute("user", new User());
         return "users/clientRegistration";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    @PostMapping("client/register")
+    public String registerClient(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
             users.save(user);
-            return "redirect:/eventRegistration";
+            return "redirect:/";
+    }
+
+    @GetMapping("user/register")
+    public String viewUserRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/bartenderRegistration";
+    }
+
+    @PostMapping("user/register")
+    public String registerUser(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setIsClient(1);
+        users.save(user);
+        return "redirect:/";
     }
 
     @GetMapping("/account")
