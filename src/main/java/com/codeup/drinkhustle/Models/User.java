@@ -33,12 +33,15 @@ public class User {
     @Column(unique = true)
     private String food_cert;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Event> events;
+
+    @Column
+    private String photoUrl;
 
 
 //    CONSTRUCTOR
-    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient) {
+    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient, String photoUrl) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -47,6 +50,7 @@ public class User {
         this.tabc_cert = tabc_cert;
         this.food_cert = food_cert;
         this.isClient = isClient;
+        this.photoUrl = photoUrl;
     }
 
 //    COPY CONSTRUCTOR
