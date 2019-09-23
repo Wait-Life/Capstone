@@ -65,9 +65,11 @@ public class UserController {
         return "users/account";
     }
 
-//    @GetMapping("users/viewAll")
-//    public String viewAllProfiles(Model viewModel){
-//
-//    }
+
+    @GetMapping("/register")
+    public String viewRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
+    }
 
 }
