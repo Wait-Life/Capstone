@@ -65,8 +65,6 @@ public class UserController {
         return "users/account";
     }
 
-
-
 //    SHOW CLIENT PROFILE
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
@@ -75,11 +73,14 @@ public class UserController {
         return "users/clientProfile";
     }
 
-
-
 //    @GetMapping("users/viewAll")
 //    public String viewAllProfiles(Model viewModel){
 //
 //    }
 
+    @GetMapping("/register")
+    public String viewRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
+    }
 }

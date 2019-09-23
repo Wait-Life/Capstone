@@ -14,19 +14,19 @@ public class Event {
     @GeneratedValue
     private long id;
 
-    @Column
-    private long owner_id;
+    @Column(name = "owner_id")
+    private long ownerId;
 
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date start_time;
+    @Column(nullable = false, columnDefinition = "DATETIME", name = "start_time")
+//    @Temporal(TemporalType.TIMESTAMP)
+    private String startTime;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date end_time;
+    @Column(nullable = false, columnDefinition = "DATETIME", name = "end_time")
+//    @Temporal(TemporalType.TIMESTAMP)
+    private String endTime;
 
     @Column(nullable = false)
     private String address;
@@ -41,12 +41,13 @@ public class Event {
     private List<User> users;
 
 
+
     public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, List<User> bartenders) {
         this.id = id;
-        this.owner_id = owner_id;
+        this.ownerId = ownerId;
         this.title = title;
-        this.start_time = start_time;
-        this.end_time = end_time;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
@@ -57,77 +58,41 @@ public class Event {
     public Event() {
     }
 
-    public long getId() {
-        return id;
-    }
+    public long getId() {return id;}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) {this.id = id;}
 
-    public long getOwner_id() {
-        return owner_id;
-    }
+    public long getOwner_id() { return owner_id;}
 
-    public void setOwner_id(long owner_id) {
-        this.owner_id = owner_id;
-    }
+    public void setOwner_id(long owner_id) { this.owner_id = owner_id;}
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() {return title;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) {this.title = title;}
+  
+    public String getStartTime() { return startTime; }
 
-    public Date getStart_time() {
-        return start_time;
-    }
+    public void setStartTime(String startTime) { this.startTime = startTime; }
 
-    public void setStart_time(Date start_time) {
-        this.start_time = start_time;
-    }
+    public String getEndTime() { return endTime; }
 
-    public Date getEnd_time() {
-        return end_time;
-    }
+    public void setEndTime(String endTime) { this.endTime = endTime; }
 
-    public void setEnd_time(Date end_time) {
-        this.end_time = end_time;
-    }
+    public String getAddress() {return address;}
 
-    public String getAddress() {
-        return address;
-    }
+    public void setAddress(String address) {this.address = address;}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public long getBartendersNeeded() {return bartendersNeeded;}
 
-    public long getBartendersNeeded() {
-        return bartendersNeeded;
-    }
+    public void setBartendersNeeded(long bartendersNeeded) {this.bartendersNeeded = bartendersNeeded;}
 
-    public void setBartendersNeeded(long bartendersNeeded) {
-        this.bartendersNeeded = bartendersNeeded;
-    }
+    public String getDescription() {return description;}
 
-    public String getDescription() {
-        return description;
-    }
+    public void setDescription(String description) {this.description = description;}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public List<User> getUsers() {return users;}
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+    public void setUsers(List<User> users) {this.users = users;}
 }
 
 

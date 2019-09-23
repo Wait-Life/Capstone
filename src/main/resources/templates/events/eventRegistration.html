@@ -11,13 +11,13 @@
         <input type="text" id="title" th:field="*{title}" />
         <br/>
         <label for="start-time">Start Time</label>
-        <input type="date" id="start-time" th:field="*{start_time}" />
+        <input type="datetime-local" id="start-time" th:field="*{startTime}" />
         <br/>
         <label for="endTime">End Time</label>
-        <input type="date" id="endTime" th:field="*{end_time}" />
+        <input type="datetime-local" id="endTime" th:field="*{endTime}" />
         <br/>
         <label for="address">Address</label>
-        <input type="date" id="address" th:field="*{address}" />
+        <input type="text" id="address" th:field="*{address}" />
         <br/>
         <label for="bartendersNeeded">Number of Bartenders Needed</label>
         <input type="number" min="1" max="10" id="bartendersNeeded" th:field="*{bartendersNeeded}" />
