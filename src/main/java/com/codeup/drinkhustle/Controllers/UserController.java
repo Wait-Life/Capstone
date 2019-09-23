@@ -47,5 +47,9 @@ public class UserController {
         }
         return "redirect:/";
     }
+    @GetMapping("/account")
+    public String show(Model viewModel) {
+        return "users/account";
+    }
 
 }
