@@ -4,13 +4,11 @@ import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.codeup.drinkhustle.Services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,14 +17,13 @@ public class EventController {
 
     private final EventRepository eventDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public EventController(EventRepository eventRepository, UserRepository userRepo){
+    public EventController(EventRepository eventRepository, UserRepository userRepo, EmailService emailService){
         this.userDao = userRepo;
         this.eventDao = eventRepository;
+        this.emailService = emailService;
     }
-
-//    @Autowired
-//    private EmailService emailService;
 
     @GetMapping("/events")
     public String index(Model vModel) {
@@ -92,10 +89,10 @@ public class EventController {
         eventPassedIn.setUser(userDB);
 
         Event savedEvent = eventDao.save(eventPassedIn);
-//        emailService.prepareAndSend(
-//                savedEvent,
-//                "Event created",
-//                String.format("Event with the id %d has been created", savedEvent.getId()));
+        emailService.prepareAndSend(
+                savedEvent,
+                "Event created",
+                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
 
