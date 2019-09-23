@@ -61,6 +61,14 @@ public class User {
         isClient = copy.isClient;
     }
 
+    public User(long id, String name, String company, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.email = email;
+        this.password = password;
+    }
+
 
 //    GETTERS AND SETTERS
 
