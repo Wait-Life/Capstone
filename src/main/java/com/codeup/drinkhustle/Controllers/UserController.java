@@ -59,4 +59,9 @@ public class UserController {
         return "users/account";
     }
 
+    @GetMapping("/register")
+    public String viewRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
+    }
 }
