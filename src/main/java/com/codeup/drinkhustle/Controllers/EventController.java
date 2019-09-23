@@ -99,15 +99,4 @@ public class EventController {
         return "redirect:/events/" + savedEvent.getId();
     }
 
-//    @GetMapping("/profile/{id}")
-//    public String getUserProfile(@PathVariable long id, Model model) {
-//        Iterable<Event> events = eventDao.findAll();
-//        User user = userDao.findById(id);
-//
-//        try {
-//            User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        } catch (Exception e){
-//            return ("Error.");
-//        }
-//    }
 }
