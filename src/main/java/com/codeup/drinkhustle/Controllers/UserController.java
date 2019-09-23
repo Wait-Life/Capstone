@@ -39,11 +39,6 @@ public class UserController {
             return "redirect:/eventRegistration";
     }
 
-    @PostMapping("/posts/{id}/delete")
-    public String deletePost(@PathVariable long id) {
-        eventDao.delete(id);
-        return "redirect:/events";
-    }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
