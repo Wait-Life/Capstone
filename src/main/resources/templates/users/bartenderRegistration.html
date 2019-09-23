@@ -8,7 +8,7 @@
 
 <h1>Register an account to start slingin' drinks!</h1>
 
-<form th:action="@{/bartenderRegistration}" th:method="POST" th:object="${user}">
+<form th:action="@{/user/register}" th:method="post" th:object="${user}">
     <label for="username">Name</label>
     <input id="username" th:field="*{name}"/>
     <br/>
@@ -16,17 +16,18 @@
     <input id="email" th:field="*{email}"/>
     <br/>
     <label for="tabc">TABC Certification Number</label>
-    <input id="tabc" th:field="*{tabc_cert}">
+    <input id="tabc" th:field="*{tabcCert}" />
     <br/>
     <label for="foodhandler">Food Handlers Certification Number</label>
-    <input id="foodhandler" th:field="*{food_cert}">
+    <input id="foodhandler" th:field="*{foodCert}" />
     <br/>
     <label for="password">Password</label>
     <input id="password" type="password" th:field="*{password}"/>
     <br/>
-    <label for="password">Re-enter Password</label>
-    <input id="verifyPassword" type="password" th:field="*{password}"/>
-    <br/>
+<!--    <label for="password">Re-enter Password</label>-->
+<!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
+<!--    <br/>-->
+
     <input type="submit" value="Sign me up!"/>
 </form>
 

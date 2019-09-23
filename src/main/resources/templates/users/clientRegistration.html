@@ -8,7 +8,7 @@
 
 <h1>Register an account</h1>
 
-<form th:action="@{/register}" th:method="post" th:object="${user}">
+<form th:action="@{/client/register}" th:method="post" th:object="${user}">
     <label for="company">Company Name</label>
     <input id="company" th:field="*{company}"/>
     <br/>

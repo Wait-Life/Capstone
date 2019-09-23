@@ -24,28 +24,28 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
-    @Column(unique = true)
-    private String tabc_cert;
+    @Column(unique = true, name = "tabc_cert")
+    private String tabcCert;
 
-    @Column(unique = true)
-    private String food_cert;
+    @Column(unique = true, name = "food_cert")
+    private String foodCert;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
     private List<Event> events;
 
 
 //    CONSTRUCTOR
-    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient) {
+    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient) {
         this.id = id;
         this.name = name;
         this.company = company;
         this.email = email;
         this.password = password;
-        this.tabc_cert = tabc_cert;
-        this.food_cert = food_cert;
+        this.tabcCert = tabcCert;
+        this.foodCert = foodCert;
         this.isClient = isClient;
     }
 
@@ -56,8 +56,8 @@ public class User {
         company = copy.company;
         email = copy.email;
         password = copy.password;
-        tabc_cert = copy.tabc_cert;
-        food_cert = copy.food_cert;
+        tabcCert = copy.tabcCert;
+        foodCert = copy.foodCert;
         isClient = copy.isClient;
     }
 
@@ -102,14 +102,14 @@ public class User {
 
     public void setPassword(String password) { this.password = password; }
 
-    public String getTabc_cert() { return tabc_cert; }
+    public String getTabcCert() { return tabcCert; }
 
-    public void setTabc_cert(String tabc_cert) { this.tabc_cert = tabc_cert; }
+    public void setTabcCert(String tabc_cert) { this.tabcCert = tabc_cert; }
 
-    public String getFood_cert() { return food_cert; }
+    public String getFoodCert() { return foodCert; }
 
-    public void setFood_cert(String food_cert) {
-        this.food_cert = food_cert;
+    public void setFoodCert(String food_cert) {
+        this.foodCert = food_cert;
     }
 
     public List<Event> getEvents() { return events; }
