@@ -39,11 +39,11 @@ public class Event {
     @OneToOne
     private User clients;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "event")
-    private List<User> bartenders;
+    @ManyToOne
+    private User users;
 
 
-    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, List<User> bartenders) {
+    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, User bartenders) {
         this.id = id;
         this.owner_id = owner_id;
         this.title = title;
@@ -53,7 +53,7 @@ public class Event {
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
         this.clients = clients;
-        this.bartenders = bartenders;
+        this.users = bartenders;
     }
 
 
@@ -91,9 +91,13 @@ public class Event {
 
     public void setDescription(String description) { this.description = description; }
 
-    public List<User> getBartenders() { return bartenders; }
+    public User getUsers() {
+        return users;
+    }
 
-    public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
+    public void setUsers(User users) {
+        this.users = users;
+    }
 
     public void setUser(User userDB) { }
 

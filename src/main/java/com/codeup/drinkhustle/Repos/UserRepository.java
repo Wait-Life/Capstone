@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository <User, Long> {
     User findByEmail(String email);
-    int countAllEmails(String email);
+//    int countAllEmails(int email);
 }

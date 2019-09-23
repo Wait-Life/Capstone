@@ -31,23 +31,23 @@ public class UserController {
         return "users/register";
     }
 
-    @PostMapping("/register")
-    public String registerUser(@Valid User registerUser, Errors validation, Model model) {
-        if (users.countAllEmails(registerUser.getEmail()) > 0) {
-            validation.rejectValue(
-                    "user.email",
-                    "Invalid email."
-            );
-        }
-        if (validation.hasErrors()) {
-            model.addAttribute("errors", validation);
-            model.addAttribute("user", registerUser);
-            return "users/register";
-        } else {
-            String hash = passwordEncoder.encode(registerUser.getPassword());
-            users.save(registerUser);
-            return "redirect:/login";
-        }
-    }
+//    @PostMapping("/register")
+//    public String registerUser(@Valid User registerUser, Errors validation, Model model) {
+//        if (users.countAllEmails(registerUser.getEmail()) > 0) {
+//            validation.rejectValue(
+//                    "user.email",
+//                    "Invalid email."
+//            );
+//        }
+//        if (validation.hasErrors()) {
+//            model.addAttribute("errors", validation);
+//            model.addAttribute("user", registerUser);
+//            return "users/register";
+//        } else {
+//            String hash = passwordEncoder.encode(registerUser.getPassword());
+//            users.save(registerUser);
+//            return "redirect:/login";
+//        }
+//    }
 
 }

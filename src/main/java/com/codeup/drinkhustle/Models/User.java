@@ -16,7 +16,7 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    private boolean isClient;
+    private int isClient;
 
     @Column
     private String company;
@@ -38,7 +38,7 @@ public class User {
 
 
 //    CONSTRUCTOR
-    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert) {
+    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -46,6 +46,7 @@ public class User {
         this.password = password;
         this.tabc_cert = tabc_cert;
         this.food_cert = food_cert;
+        this.isClient = isClient;
     }
 
 //    COPY CONSTRUCTOR
@@ -57,6 +58,7 @@ public class User {
         password = copy.password;
         tabc_cert = copy.tabc_cert;
         food_cert = copy.food_cert;
+        isClient = copy.isClient;
     }
 
 
@@ -72,12 +74,12 @@ public class User {
 
     public void setName(String name) { this.name = name; }
 
-    public boolean isClient(){
+    public int getIsClient() {
         return isClient;
     }
 
-    public void setClient(boolean client) {
-        isClient = client;
+    public void setIsClient(int isClient) {
+        this.isClient = isClient;
     }
 
     public String getCompany() { return company; }
