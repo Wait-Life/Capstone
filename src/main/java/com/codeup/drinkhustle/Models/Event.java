@@ -1,5 +1,7 @@
 package com.codeup.drinkhustle.Models;
 
+import com.codeup.drinkhustle.Services.DateTimeFormatter;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -9,23 +11,22 @@ import java.util.List;
 @Table(name = "Events")
 public class Event {
 
-
     @Id @GeneratedValue
     private long id;
 
-    @Column
-    private long owner_id;
+    @Column(name = "owner_id")
+    private long ownerId;
 
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
+    @Column(nullable = false, columnDefinition = "DATETIME", name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date start_time;
+    private Date startTime;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
+    @Column(nullable = false, columnDefinition = "DATETIME", name = "end_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date end_time;
+    private Date endTime;
 
     @Column(nullable = false)
     private String address;
@@ -43,12 +44,12 @@ public class Event {
     private User users;
 
 
-    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, User bartenders) {
+    public Event(long id, long ownerId, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User clients, User bartenders) {
         this.id = id;
-        this.owner_id = owner_id;
+        this.ownerId = ownerId;
         this.title = title;
-        this.start_time = start_time;
-        this.end_time = end_time;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
@@ -63,21 +64,21 @@ public class Event {
 
     public void setId(long id) { this.id = id; }
 
-    public long getOwner_id() { return owner_id; }
+    public long getOwnerId() { return ownerId; }
 
-    public void setOwner_id(long owner_id) { this.owner_id = owner_id; }
+    public void setOwnerId(long ownerId) { this.ownerId = ownerId; }
 
     public String getTitle() { return title; }
 
     public void setTitle(String title) { this.title = title; }
 
-    public Date getStart_time() { return start_time; }
+    public Date getStartTime() { return startTime; }
 
-    public void setStart_time(Date start_time) { this.start_time = start_time; }
+    public void setStartTime(Date startTime) { this.startTime = startTime; }
 
-    public Date getEnd_time() { return end_time; }
+    public Date getEndTime() { return endTime; }
 
-    public void setEnd_time(Date end_time) { this.end_time = end_time; }
+    public void setEndTime(Date endTime) { this.endTime = endTime; }
 
     public String getAddress() { return address; }
 

@@ -1,5 +1,6 @@
 package com.codeup.drinkhustle.Controllers;
 
+import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
@@ -20,7 +21,8 @@ public class UserController {
     private UserRepository users;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository users, PasswordEncoder passwordEncoder) {
+    public UserController(EventRepository eventDao, UserRepository users, PasswordEncoder passwordEncoder) {
+        this.eventDao = eventDao;
         this.users = users;
         this.passwordEncoder = passwordEncoder;
     }
@@ -54,10 +56,27 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/account")
-    public String show(Model viewModel) {
+    @GetMapping("/users/account")
+    public String showProfile(Model viewModel){
+        User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Iterable<Event> events = eventDao.findByUserId(userSession.getId());
+//        viewModel.addAttribute("events", events);
+        viewModel.addAttribute("user", userSession);
         return "users/account";
     }
+
+//    SHOW CLIENT PROFILE
+    @GetMapping("client/profile")
+    public String showClientProfile(Model vModel){
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vModel.addAttribute("user", userSession);
+        return "users/clientProfile";
+    }
+
+//    @GetMapping("users/viewAll")
+//    public String viewAllProfiles(Model viewModel){
+//
+//    }
 
     @GetMapping("/register")
     public String viewRegister(Model model) {

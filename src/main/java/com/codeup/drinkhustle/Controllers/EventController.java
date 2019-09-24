@@ -4,13 +4,11 @@ import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
+import com.codeup.drinkhustle.Services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,14 +17,13 @@ public class EventController {
 
     private final EventRepository eventDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public EventController(EventRepository eventRepository, UserRepository userRepo){
+    public EventController(EventRepository eventRepository, UserRepository userRepo, EmailService emailService){
         this.userDao = userRepo;
         this.eventDao = eventRepository;
+        this.emailService = emailService;
     }
-
-//    @Autowired
-//    private EmailService emailService;
 
     @GetMapping("/events")
     public String index(Model vModel) {
@@ -59,14 +56,14 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "start_time") Date start_time,
-                         @RequestParam(name = "end_time") Date end_time,
+                         @RequestParam(name = "startTime") Date startTime,
+                         @RequestParam(name = "endTime") Date endTime,
                          @RequestParam(name = "description") String description,
                          Model viewModel) {
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-        eventToBeUpdated.setStart_time(start_time);
-        eventToBeUpdated.setEnd_time(end_time);
+        eventToBeUpdated.setStartTime(startTime);
+        eventToBeUpdated.setEndTime(endTime);
         eventToBeUpdated.setDescription(description);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
@@ -90,13 +87,11 @@ public class EventController {
     ) {
         User userDB = userDao.findOne(1L);
         eventPassedIn.setUser(userDB);
-
         Event savedEvent = eventDao.save(eventPassedIn);
 //        emailService.prepareAndSend(
-//                savedEvent,
-//                "Event created",
-//                String.format("Event with the id %d has been created", savedEvent.getId()));
+////                savedEvent,
+////                "Event created",
+////                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
-
 }
