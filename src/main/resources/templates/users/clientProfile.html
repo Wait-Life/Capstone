@@ -14,11 +14,10 @@
 </th:block>
 <th:block th:each="event : ${events}">
     <h1 th:text:="${event.title}">Title</h1>
-    <p th:text="${event.date}">Date of event</p>
-    <p th:text="${event.start_time}">Start time</p>
-    <p th:text="${event.end_time}">End time</p>
+    <p th:text="${event.startTime}">Start time</p>
+    <p th:text="${event.endTime}">End time</p>
     <p th:text="${event.address}">Event location</p>
-    <p th:text="${event.bartendersNeeded}">Bartenders needed</p>
+    <p th:text="${event.bartendersNeeded}">Bartenders Needed</p>
     <p th:text="${event.description}">Description</p>
 </th:block>
 
