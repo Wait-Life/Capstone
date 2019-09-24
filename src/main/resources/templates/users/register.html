@@ -20,12 +20,10 @@
         <button class="uk-modal-close-default" type="button" uk-close=""></button>
 
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Headline</h2>
+            <h2 class="uk-modal-title">Register an account to start slingin' drinks!</h2>
         </div>
 
         <div class="uk-modal-body" uk-overflow-auto="">
-
-            <h1>Register an account to start slingin' drinks!</h1>
 
             <form th:action="@{/user/register}" th:method="post" th:object="${user}">
                 <label for="username">Name</label>
@@ -64,12 +62,10 @@
         <button class="uk-modal-close-default" type="button" uk-close=""></button>
 
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Headline</h2>
+            <h2 class="uk-modal-title">Register an account</h2>
         </div>
 
         <div class="uk-modal-body" uk-overflow-auto="">
-
-            <h1>Register an account</h1>
 
             <form th:action="@{/client/register}" th:method="post" th:object="${user}">
                 <label for="company">Company Name</label>

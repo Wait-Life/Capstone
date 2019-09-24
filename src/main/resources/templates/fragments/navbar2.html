@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <nav class="uk-navbar-container uk-margin main-nav" th:fragment="top-nav2">
     <div class="uk-navbar-left">
@@ -7,8 +8,8 @@
         <a style="color: white;" class="uk-navbar-item uk-logo" href="/">Drink Hustle</a>
 
         <ul class="uk-navbar-nav navlink">
-            <li><a href="/events">Create Events</a></li>
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/events/create">Create Events</a></li>
+            <li><a sec:authorize="isAuthenticated()"><form th:action="@{/logout}" th:method="post">Logout</form></a></li>
         </ul>
         <div class="uk-navbar-item">
         </div>
