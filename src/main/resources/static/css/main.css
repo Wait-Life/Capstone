@@ -11,8 +11,12 @@
 .main-nav{
     background-color: rgba(0, 0, 0, .2) !important;
 }
-.main-nav2{
+.navbutton{
+    margin-top: 27px;
+}
 
+.uk-button-default{
+    border: 0 !important;
 }
 
 
