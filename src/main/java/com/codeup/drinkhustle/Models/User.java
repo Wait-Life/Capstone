@@ -35,7 +35,7 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "event_user",
+            name = "events_users",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "event_id")}
             )
@@ -47,7 +47,7 @@ public class User {
 
 //    CONSTRUCTOR
 
-    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl) {
+    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl, List <Event> events) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -57,6 +57,7 @@ public class User {
         this.foodCert = foodCert;
         this.isClient = isClient;
         this.photoUrl = photoUrl;
+        this.events = events;
     }
 
 //    COPY CONSTRUCTOR
@@ -69,6 +70,8 @@ public class User {
         tabcCert = copy.tabcCert;
         foodCert = copy.foodCert;
         isClient = copy.isClient;
+        photoUrl = copy.photoUrl;
+        events = copy.events;
     }
 
     public User(long id, String name, String company, String email, String password) {
@@ -122,6 +125,9 @@ public class User {
         this.foodCert = foodCert;
     }
 
+    public String getPhotoUrl() { return photoUrl; }
+
+    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
     public List<Event> getEvents() { return events; }
 
     public void setEvents(List<Event> events) { this.events = events; }

@@ -1,6 +1,7 @@
 package com.codeup.drinkhustle.Repos;
 
 import com.codeup.drinkhustle.Models.Event;
+import com.codeup.drinkhustle.Models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -17,6 +18,8 @@ public interface EventRepository extends CrudRepository <Event, Long> {
     Event findOne(long id);
 
     void delete(long id);
+
+//    Iterable<Event> findByName(User user);
 
 //    Iterable<Event> findByUserId(long id);
 }
