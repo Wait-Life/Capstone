@@ -99,5 +99,4 @@ public class Event {
     public List<User> getBartenders() { return bartenders; }
 
     public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
-
 }
