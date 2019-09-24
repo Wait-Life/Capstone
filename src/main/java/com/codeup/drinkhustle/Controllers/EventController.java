@@ -96,7 +96,7 @@ public class EventController {
             @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
             @RequestParam(name = "description") String description,
             Model viewModel) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'h:mm");
         Date startDate = dateFormat.parse(startTime);
         Date endDate = dateFormat.parse(endTime);
         Event eventToBeCreated = new Event();
