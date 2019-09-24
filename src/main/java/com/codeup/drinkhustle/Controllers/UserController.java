@@ -56,11 +56,10 @@ public class UserController {
         return "redirect:/";
     }
 
+    //SHOW BARTENDER PAGE
     @GetMapping("/users/account")
-    public String showProfile(Model viewModel){
+    public String showBartenderProfile(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Iterable<Event> events = eventDao.findByUserId(userSession.getId());
-//        viewModel.addAttribute("events", events);
         viewModel.addAttribute("user", userSession);
         return "users/account";
     }
@@ -69,6 +68,8 @@ public class UserController {
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        Iterable<Event> userEvents = eventDao.findByName(userSession);
+//        vModel.addAttribute("events", userEvents);
         vModel.addAttribute("user", userSession);
         return "users/clientProfile";
     }
