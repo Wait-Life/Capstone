@@ -82,9 +82,7 @@ public class EventController {
     }
 
     @PostMapping("/events/create")
-    public String createEvent(
-            @ModelAttribute Event eventPassedIn
-    ) {
+    public String createEvent(@ModelAttribute Event eventPassedIn) {
         User userDB = userDao.findOne(1L);
         eventPassedIn.setOwner(userDB);
         Event savedEvent = eventDao.save(eventPassedIn);
