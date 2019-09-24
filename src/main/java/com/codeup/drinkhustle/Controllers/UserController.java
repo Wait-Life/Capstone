@@ -4,16 +4,11 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -56,28 +51,32 @@ public class UserController {
         return "redirect:/";
     }
 
-    //SHOW BARTENDER PAGE
-    @GetMapping("/users/account")
+    //SHOW BARTENDER PROFILE
+    @GetMapping("users/profile")
     public String showBartenderProfile(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         viewModel.addAttribute("user", userSession);
-        return "users/account";
+        return "users/bartenderProfile";
     }
 
 //    SHOW CLIENT PROFILE
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Iterable<Event> userEvents = eventDao.findByName(userSession);
-//        vModel.addAttribute("events", userEvents);
+        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
+        vModel.addAttribute("events", userEvents);
         vModel.addAttribute("user", userSession);
         return "users/clientProfile";
     }
 
-//    @GetMapping("users/viewAll")
-//    public String viewAllProfiles(Model viewModel){
-//
-//    }
+//    VIEW ALL BARTENDERS
+
+    @GetMapping("users/viewAll")
+    public String viewAllProfiles(Model viewModel){
+        Iterable<User> bartenders = users.findAll();
+        viewModel.addAttribute("user", bartenders);
+        return "users/viewBartenders";
+    }
 
     @GetMapping("/register")
     public String viewRegister(Model model) {

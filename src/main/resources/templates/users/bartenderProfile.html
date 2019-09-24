@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Account</title>
+</head>
+<body>
+
+<h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
+<th:block>
+    <h3 th:text="${user.name}">Contact Name:</h3>
+    <h3 th:text="${user.email}">Contact Email:</h3>
+    <h4 th:text="${user.tabcCert}">TABC Certification:</h4>
+    <h4 th:text="${user.foodCert}">Food Certification:</h4>
+</th:block>
+<form th:action="@{'/users/' + ${#authentication.principal.id} + '/edit'}" th:method="post">
+    Username:<input type="text" name="username" th:value="${#authentication.principal.username}"/><br/>
+    Email:<input type="text" name="email" th:value="${#authentication.principal.email}"/><br/>
+    <button class=".uk-button-primary">Edit</button>
+</form>
+</body>
+</html>
