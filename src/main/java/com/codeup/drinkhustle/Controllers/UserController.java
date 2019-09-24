@@ -68,8 +68,8 @@ public class UserController {
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Iterable<Event> userEvents = eventDao.findByName(userSession);
-//        vModel.addAttribute("events", userEvents);
+        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
+        vModel.addAttribute("events", userEvents);
         vModel.addAttribute("user", userSession);
         return "users/clientProfile";
     }
