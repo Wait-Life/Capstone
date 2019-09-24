@@ -56,8 +56,8 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "startTime") String startTime,
-                         @RequestParam(name = "endTime") String endTime,
+                         @RequestParam(name = "startTime") Date startTime,
+                         @RequestParam(name = "endTime") Date endTime,
                          @RequestParam(name = "description") String description,
                          Model viewModel) {
         Event eventToBeUpdated = eventDao.findOne(id);

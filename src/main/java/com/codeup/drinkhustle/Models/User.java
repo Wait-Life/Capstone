@@ -33,7 +33,7 @@ public class User {
     @Column(unique = true, name = "food_cert")
     private String foodCert;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "event_user",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -41,13 +41,13 @@ public class User {
             )
     private List<Event> events;
 
-    @Column
+    @Column(name = "photo_url")
     private String photoUrl;
 
 
 //    CONSTRUCTOR
 
-    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient, String photoUrl) {
+    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -114,12 +114,12 @@ public class User {
 
     public String getTabcCert() { return tabcCert; }
 
-    public void setTabcCert(String tabc_cert) { this.tabcCert = tabc_cert; }
+    public void setTabcCert(String tabcCert) { this.tabcCert = tabcCert; }
 
     public String getFoodCert() { return foodCert; }
 
-    public void setFoodCert(String food_cert) {
-        this.foodCert = food_cert;
+    public void setFoodCert(String foodCert) {
+        this.foodCert = foodCert;
     }
 
     public List<Event> getEvents() { return events; }
