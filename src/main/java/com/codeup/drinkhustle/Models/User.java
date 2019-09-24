@@ -33,7 +33,7 @@ public class User {
     @Column(unique = true, name = "food_cert")
     private String foodCert;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "event_user",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -41,7 +41,7 @@ public class User {
             )
     private List<Event> events;
 
-    @Column
+    @Column(name = "photo_url")
     private String photoUrl;
 
 
