@@ -1,5 +1,6 @@
 package com.codeup.drinkhustle.Models;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +18,12 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "start_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "end_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
     @Column(nullable = false)
