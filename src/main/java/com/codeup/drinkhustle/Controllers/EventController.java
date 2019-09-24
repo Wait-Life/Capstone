@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -59,7 +61,7 @@ public class EventController {
                          @RequestParam(name = "startTime") Date startTime,
                          @RequestParam(name = "endTime") Date endTime,
                          @RequestParam(name = "description") String description,
-                         Model viewModel) {
+                         Model viewModel) throws ParseException {
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
         eventToBeUpdated.setStartTime(startTime);

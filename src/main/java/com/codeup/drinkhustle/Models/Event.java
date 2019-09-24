@@ -1,10 +1,6 @@
 package com.codeup.drinkhustle.Models;
-
-import com.codeup.drinkhustle.Services.DateTimeFormatter;
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 @Entity
@@ -36,15 +32,15 @@ public class Event {
 
     @Column(nullable = false)
     private String description;
-
-    @OneToOne
-    private User clients;
-
+//
+//    @OneToOne
+//    private User clients;
+//
     @ManyToOne
     private User users;
 
 
-    public Event(long id, long ownerId, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User clients, User bartenders) {
+    public Event(long id, long ownerId, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User users) {
         this.id = id;
         this.ownerId = ownerId;
         this.title = title;
@@ -53,8 +49,8 @@ public class Event {
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
-        this.clients = clients;
-        this.users = bartenders;
+//        this.clients = clients;
+        this.users = users;
     }
 
 
@@ -97,8 +93,8 @@ public class Event {
     public void setUsers(User users) { this.users = users; }
 
     public void setUser(User userDB) { }
-
-    public User getClients() { return clients; }
-
-    public void setClients(User clients) { this.clients = clients; }
+//
+//    public User getClients() { return clients; }
+//
+//    public void setClients(User clients) { this.clients = clients; }
 }
