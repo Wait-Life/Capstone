@@ -86,7 +86,7 @@ public class EventController {
             @ModelAttribute Event eventPassedIn
     ) {
         User userDB = userDao.findOne(1L);
-        eventPassedIn.setUser(userDB);
+        eventPassedIn.setOwner(userDB);
         Event savedEvent = eventDao.save(eventPassedIn);
 //        emailService.prepareAndSend(
 ////                savedEvent,
