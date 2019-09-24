@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--   Header fragment-->
+</head>
+<body>
+<!--Navbar fragment-->
+
+
+<th:block>
+    <h3 th:text="${company}">Company:</h3>
+    <h3 th:text="${name}">Contact Name:</h3>
+    <h3 th:text="${email}">Contact Email:</h3>
+</th:block>
+<th:block th:each="event : ${events}">
+    <h1 th:text:="${event.title}">Title</h1>
+    <p th:text="${event.date}">Date of event</p>
+    <p th:text="${event.start_time}">Start time</p>
+    <p th:text="${event.end_time}">End time</p>
+    <p th:text="${event.address}">Event location</p>
+    <p th:text="${event.bartendersNeeded}">Bartenders needed</p>
+    <p th:text="${event.description}">Description</p>
+</th:block>
+
+
+<!--Footer fragment-->
+</body>
+</html>

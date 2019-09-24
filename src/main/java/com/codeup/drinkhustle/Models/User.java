@@ -33,7 +33,12 @@ public class User {
     @Column(unique = true, name = "food_cert")
     private String foodCert;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @JoinTable(
+            name = "event_user",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "event_id")}
+            )
     private List<Event> events;
 
     @Column
