@@ -51,9 +51,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    //SHOW BARTENDER PAGE
+    //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
-    public String showAccount(Model viewModel){
+    public String showBartenderProfile(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         viewModel.addAttribute("user", userSession);
         return "users/bartenderProfile";
