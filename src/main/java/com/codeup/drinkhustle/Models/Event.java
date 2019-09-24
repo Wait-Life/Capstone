@@ -1,8 +1,6 @@
 package com.codeup.drinkhustle.Models;
-
-import com.codeup.drinkhustle.Services.DateTimeFormatter;
-
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -20,12 +18,12 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "start_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, name = "start_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
-    @Column(nullable = false, columnDefinition = "DATETIME", name = "end_time")
-//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, name = "end_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
     @Column(nullable = false)
@@ -43,8 +41,7 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> bartenders;
 
-
-    public Event(long id, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List <User> bartenders) {
+    public Event(long id, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
         this.id = id;
 //        this.ownerId = ownerId;
         this.title = title;
@@ -99,4 +96,5 @@ public class Event {
     public List<User> getBartenders() { return bartenders; }
 
     public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
+
 }
