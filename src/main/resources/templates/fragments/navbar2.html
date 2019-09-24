@@ -9,7 +9,7 @@
 
         <ul class="uk-navbar-nav navlink">
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
-            <li><a href="/users/account">Account</a></li>
+            <li><a href="/users/profile">Account</a></li>
             <li>
                 <form th:action="@{/logout}" th:method="post">
                     <button>Logout</button>

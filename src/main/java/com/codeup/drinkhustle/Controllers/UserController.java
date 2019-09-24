@@ -4,16 +4,11 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
@@ -57,11 +52,11 @@ public class UserController {
     }
 
     //SHOW BARTENDER PAGE
-    @GetMapping("/users/account")
-    public String showBartenderProfile(Model viewModel){
+    @GetMapping("users/profile")
+    public String showAccount(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         viewModel.addAttribute("user", userSession);
-        return "users/account";
+        return "users/bartenderProfile";
     }
 
 //    SHOW CLIENT PROFILE
@@ -74,10 +69,14 @@ public class UserController {
         return "users/clientProfile";
     }
 
-//    @GetMapping("users/viewAll")
-//    public String viewAllProfiles(Model viewModel){
-//
-//    }
+//    VIEW ALL BARTENDERS
+
+    @GetMapping("users/viewAll")
+    public String viewAllProfiles(Model viewModel){
+        Iterable<User> bartenders = users.findAll();
+        viewModel.addAttribute("user", bartenders);
+        return "users/viewBartenders";
+    }
 
     @GetMapping("/register")
     public String viewRegister(Model model) {
