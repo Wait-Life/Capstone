@@ -5,14 +5,13 @@ import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 
@@ -107,7 +106,7 @@ public class EventController {
         eventToBeCreated.setAddress(address);
         eventToBeCreated.setBartendersNeeded(bartendersNeeded);
         eventToBeCreated.setDescription(description);
-        User userDB = userDao.findOne(1L);
+        User userDB = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         eventToBeCreated.setOwner(userDB);
         Event savedEvent = eventDao.save(eventToBeCreated);
 //        emailService.prepareAndSend(
