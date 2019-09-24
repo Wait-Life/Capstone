@@ -92,21 +92,13 @@ public class Event {
 
     public void setDescription(String description) { this.description = description; }
 
-    public User getUsers() {
-        return users;
-    }
+    public User getUsers() { return users; }
 
-    public void setUsers(User users) {
-        this.users = users;
-    }
+    public void setUsers(User users) { this.users = users; }
 
     public void setUser(User userDB) { }
 
-    public User getClients() {
-        return clients;
-    }
+    public User getClients() { return clients; }
 
-    public void setClients(User clients) {
-        this.clients = clients;
-    }
+    public void setClients(User clients) { this.clients = clients; }
 }
