@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
     private EventRepository eventDao;
-    private UserRepository users;
+    private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(EventRepository eventDao, UserRepository users, PasswordEncoder passwordEncoder) {
+    public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.eventDao = eventDao;
-        this.users = users;
+        this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -32,7 +32,7 @@ public class UserController {
     public String registerClient(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
-            users.save(user);
+            userDao.save(user);
             return "redirect:/";
     }
 
@@ -47,7 +47,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setIsClient(1);
-        users.save(user);
+        userDao.save(user);
         return "redirect:/";
     }
 
@@ -73,9 +73,17 @@ public class UserController {
 
     @GetMapping("users/viewAll")
     public String viewAllProfiles(Model viewModel){
-        Iterable<User> bartenders = users.findAll();
-        viewModel.addAttribute("user", bartenders);
+        Iterable<User> users = userDao.findAll();
+        viewModel.addAttribute("user", users);
         return "users/viewBartenders";
+    }
+
+    //    VIEW INDIVIDUAL USER PROFILE
+    @GetMapping("users/{id}/profile")
+    public String show(@PathVariable long id, Model viewModel) {
+        User user = userDao.findOne(id);
+        viewModel.addAttribute("user", user);
+        return "users/view";
     }
 
     @GetMapping("/register")
