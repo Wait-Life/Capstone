@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <!--   Header fragment-->
 </head>
@@ -20,7 +20,7 @@
     <p th:text="${event.bartendersNeeded}">Bartenders Needed</p>
     <p th:text="${event.description}">Description</p>
 </th:block>
-
+<a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
 
 <!--Footer fragment-->
 </body>

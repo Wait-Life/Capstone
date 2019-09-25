@@ -13,10 +13,8 @@
     <h4 th:text="${user.tabcCert}">TABC Certification:</h4>
     <h4 th:text="${user.foodCert}">Food Certification:</h4>
 </th:block>
-<form th:action="@{'/users/' + ${#authentication.principal.id} + '/edit'}" th:method="post">
-    Username:<input type="text" name="username" th:value="${#authentication.principal.username}"/><br/>
-    Email:<input type="text" name="email" th:value="${#authentication.principal.email}"/><br/>
-    <button class=".uk-button-primary">Edit</button>
-</form>
+
+<a th:href="@{'/users/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+
 </body>
 </html>
