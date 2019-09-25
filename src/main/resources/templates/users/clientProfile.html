@@ -13,17 +13,17 @@
 
 
 <th:block>
-    <h3 th:text="${user.company}">Company:</h3>
-    <h3 th:text="${user.name}">Contact Name:</h3>
-    <h3 th:text="${user.email}">Contact Email:</h3>
+    <h3>Company: <span th:text="${user.company}"></span></h3>
+    <h3>Contact Name: <span th:text="${user.name}"></span></h3>
+    <h3>Contact Email: <span th:text="${user.email}"></span></h3>
 </th:block>
 <th:block th:each="event : ${events}">
     <h1 th:text:="${event.title}">Title</h1>
-    <p th:text="${event.startTime}">Start time</p>
-    <p th:text="${event.endTime}">End time</p>
-    <p th:text="${event.address}">Event location</p>
-    <p th:text="${event.bartendersNeeded}">Bartenders Needed</p>
-    <p th:text="${event.description}">Description</p>
+    <p>Start time: <span th:text="${event.startTime}"></span></p>
+    <p>End time: <span th:text="${event.endTime}"></span></p>
+    <p>Event location: <span th:text="${event.address}"></span></p>
+    <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
+    <p>Description: <span th:text="${event.description}"></span></p>
 </th:block>
 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
 

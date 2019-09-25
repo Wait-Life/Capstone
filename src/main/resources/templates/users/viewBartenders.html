@@ -13,8 +13,8 @@
 <h1>View All Bartenders!</h1>
 
 <div th:each="user : ${user}" th:if="${user.isClient} == ${'1'}">
-    <p th:text="${user.name}"></p>
-    <p th:text="${user.email}"></p>
+    <p>Name: <span th:text="${user.name}"></span></p>
+    <p>Email: <span th:text="${user.email}"></span></p>
 
 </div>
 
