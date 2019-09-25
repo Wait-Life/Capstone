@@ -8,7 +8,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
@@ -22,34 +24,42 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("client/register")
+    @GetMapping("/register")
     public String viewClientRegister(Model model) {
         model.addAttribute("user", new User());
-        return "users/clientRegistration";
+        return "users/register";
     }
 
-    @PostMapping("client/register")
+    @PostMapping("/register")
     public String registerClient(@ModelAttribute User user) {
+        try {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
             users.save(user);
             return "redirect:/";
+        } catch (InternalError ex) {
+            return null;
+        }
     }
-
-    @GetMapping("user/register")
-    public String viewUserRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/bartenderRegistration";
-    }
-
-    @PostMapping("user/register")
-    public String registerUser(@ModelAttribute User user) {
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        user.setIsClient(1);
-        users.save(user);
-        return "redirect:/";
-    }
+//
+//    @GetMapping("/register")
+//    public String viewUserRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/register";
+//    }
+//
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute User user) {
+//        try {
+//            String hash = passwordEncoder.encode(user.getPassword());
+//            user.setPassword(hash);
+//            user.setIsClient(1);
+//            users.save(user);
+//            return "redirect:/";
+//        } catch (InternalError ex) {
+//            return null;
+//        }
+//    }
 
     //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
@@ -77,10 +87,10 @@ public class UserController {
         viewModel.addAttribute("user", bartenders);
         return "users/viewBartenders";
     }
-
-    @GetMapping("/register")
-    public String viewRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
-    }
+//
+//    @GetMapping("/register")
+//    public String viewRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/register";
+//    }
 }

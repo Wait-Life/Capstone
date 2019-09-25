@@ -25,7 +25,8 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/user/register}" th:method="post" th:object="${user}">
+            <form th:action="@{/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
+                <input type="hidden" th:if="">
                 <label for="username">Name</label>
                 <input id="username" th:field="*{name}"/>
                 <br/>
@@ -41,11 +42,11 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}"/>
                 <br/>
-                <!--    <label for="password">Re-enter Password</label>-->
-                <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
-                <!--    <br/>-->
+                <label for="verifyPassword">Re-enter Password</label>
+                <input id="verifyPassword" type="password" name="verifyPassword"/>
+                <br/>
 
-                <input type="submit" value="Sign me up!"/>
+                <input type="submit" id="submit" value="Sign me up!"/>
             </form>
 
         </div>
@@ -67,7 +68,7 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/client/register}" th:method="post" th:object="${user}">
+            <form th:action="@{/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
                 <label for="company">Company Name</label>
                 <input id="company" th:field="*{company}"/>
                 <br/>
@@ -80,10 +81,10 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}"/>
                 <br/>
-                <!--    <label for="password">Re-enter Password</label>-->
-                <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
+                <label for="verifyPassword">Re-enter Password</label>
+                <input id="verifyPassword" type="password" name="verifyPassword"/>
                 <br/>
-                <input type="submit" value="Sign me up!"/>
+                <input type="submit" value="Sign me up!" id="submit"/>
             </form>
 
         </div>
@@ -95,5 +96,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+<script th:src="@{/js/passwordVerification.js}"></script>
 </body>
 </html>
