@@ -9,6 +9,8 @@
         <a style="color: white;" class="uk-navbar-item uk-logo" href="/">Drink Hustle</a>
 
         <ul class="uk-navbar-nav navlink">
+            <li><a href="/events">Events</a></li>
+            <li><a href="/about">About</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="users/profile">Account</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
