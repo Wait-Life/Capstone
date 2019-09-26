@@ -49,25 +49,6 @@ public class UserController {
 
         return "redirect:/";
     }
-//
-//    @GetMapping("/register")
-//    public String viewUserRegister(Model model) {
-//        model.addAttribute("user", new User());
-//        return "userDao/register";
-//    }
-//
-//    @PostMapping("/register")
-//    public String registerUser(@ModelAttribute User user) {
-//        try {
-//            String hash = passwordEncoder.encode(user.getPassword());
-//            user.setPassword(hash);
-//            user.setIsClient(1);
-//            userDao.save(user);
-//            return "redirect:/";
-//        } catch (InternalError ex) {
-//            return null;
-//        }
-//    }
 
     //    EDIT CLIENTS
     @GetMapping("client/profile/{id}/edit")

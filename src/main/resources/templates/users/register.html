@@ -39,24 +39,17 @@
                 <label for="foodhandler">Food Handlers Certification Number</label>
                 <input id="foodhandler" th:field="*{foodCert}" />
                 <br/>
-                <label for="password">Password</label>
-                <input id="password" type="password" th:field="*{password}"/>
-                <br/>
-
-                <!--    <label for="password">Re-enter Password</label>-->
-                <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
-                <!--    <br/>-->
                 <div>
                     <button type="button" id="picker">Upload Profile Photo</button>
                     <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
                 </div>
-                <div id="nameBox"></div>
-                <input type="submit" value="Sign me up!"/>
-
+                <br/>
+                <label for="password">Password</label>
+                <input id="password" type="password" th:field="*{password}"/>
+                <br/>
                 <label for="verifyPassword">Re-enter Password</label>
                 <input id="verifyPassword" type="password" name="verifyPassword"/>
                 <br/>
-
                 <input type="submit" id="submit" value="Sign me up!"/>
 
             </form>
@@ -87,6 +80,11 @@
                 <br/>
                 <label for="email">Contact Email</label>
                 <input id="clientEmail" th:field="*{email}"/>
+                <br/>
+                <div>
+                    <button type="button" id="picker">Upload Profile Photo</button>
+                    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+                </div>
                 <br/>
                 <label for="password">Password</label>
                 <input id="clientPassword" type="password" th:field="*{password}"/>
