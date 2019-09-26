@@ -33,3 +33,5 @@ build/
 ### Application Resources Folder ###
 
 /src/main/resources/application.properties
+
+js/keys.js
