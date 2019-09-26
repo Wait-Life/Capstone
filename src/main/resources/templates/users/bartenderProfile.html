@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8"/>
-    <title>My Account</title>
+    <th:block th:replace="fragments/header :: main-header('My Profile')" />
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
 
 <h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
 <th:block>
-    <h3 th:text="${user.name}">Contact Name:</h3>
-    <h3 th:text="${user.email}">Contact Email:</h3>
-    <h4 th:text="${user.tabcCert}">TABC Certification:</h4>
-    <h4 th:text="${user.foodCert}">Food Certification:</h4>
+    <h3>Contact Name: <span th:text="${user.name}"></span></h3>
+    <h3>Contact Email: <span th:text="${user.email}"></span></h3>
+    <h4>TABC Certification: <spant th:text="${user.tabcCert}"></spant></h4>
+    <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
-<form th:action="@{'/users/' + ${#authentication.principal.id} + '/edit'}" th:method="post">
-    Username:<input type="text" name="username" th:value="${#authentication.principal.username}"/><br/>
-    Email:<input type="text" name="email" th:value="${#authentication.principal.email}"/><br/>
-    <button class=".uk-button-primary">Edit</button>
-</form>
+
+<a th:href="@{'/users/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+
 </body>
 </html>

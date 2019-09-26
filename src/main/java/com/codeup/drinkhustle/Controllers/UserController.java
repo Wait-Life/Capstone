@@ -36,13 +36,13 @@ public class UserController {
             return "redirect:/";
     }
 
-    @GetMapping("user/register")
+    @GetMapping("users/register")
     public String viewUserRegister(Model model) {
         model.addAttribute("user", new User());
         return "users/bartenderRegistration";
     }
 
-    @PostMapping("user/register")
+    @PostMapping("users/register")
     public String registerUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
@@ -67,6 +67,58 @@ public class UserController {
         vModel.addAttribute("events", userEvents);
         vModel.addAttribute("user", userSession);
         return "users/clientProfile";
+    }
+
+
+//    EDIT CLIENTS
+    @GetMapping("client/profile/{id}/edit")
+    public String editClientProfile(@PathVariable long id, Model viewModel) {
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        viewModel.addAttribute("user", userSession);
+        return ("users/editClientProfile");
+    }
+
+    @PostMapping("/client/profile/{id}/edit")
+    public String editClientProfile(@PathVariable long id,
+                                    @ModelAttribute User user,
+                                    @RequestParam(name="email") String email,
+                                    @RequestParam(name="name") String name,
+                                    @RequestParam(name="company") String company){
+        User updateUser = userDao.findOne(id);
+        String hash = passwordEncoder.encode(user.getPassword());
+        updateUser.setPassword(hash);
+        updateUser.setEmail(email);
+        updateUser.setName(name);
+        updateUser.setCompany(company);
+        userDao.save(updateUser);
+        return ("redirect:/login?/logout");
+    }
+
+    //    EDIT BARTENDERS
+    @GetMapping("users/profile/{id}/edit")
+    public String editBartenderForm(@PathVariable long id, Model viewModel) {
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        viewModel.addAttribute("user", userSession);
+        return ("users/editBartenderProfile");
+    }
+
+    @PostMapping("/users/profile/{id}/edit")
+    public String editBartenderProfile(@PathVariable long id,
+                                       @ModelAttribute User user,
+                                       @RequestParam(name = "email") String email,
+                                       @RequestParam(name = "name") String name,
+                                       @RequestParam(name = "tabcCert") String tabcCert,
+                                       @RequestParam(name = "foodCert") String foodCert,
+                                       Model viewModel) {
+        User updateUser = userDao.findOne(id);
+        String hash = passwordEncoder.encode(user.getPassword());
+        updateUser.setPassword(hash);
+        updateUser.setEmail(email);
+        updateUser.setName(name);
+        updateUser.setTabcCert(tabcCert);
+        updateUser.setFoodCert(foodCert);
+        userDao.save(updateUser);
+        return "redirect:/login?/logout";
     }
 
 //    VIEW ALL BARTENDERS

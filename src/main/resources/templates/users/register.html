@@ -25,7 +25,7 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/user/register}" th:method="post" th:object="${user}">
+            <form th:action="@{/users/register}" th:method="post" th:object="${user}">
                 <label for="username">Name</label>
                 <input id="username" th:field="*{name}"/>
                 <br/>
