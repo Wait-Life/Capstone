@@ -60,17 +60,17 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "startTime") String startTime,
-                         @RequestParam(name = "endTime") String endTime,
+//                         @RequestParam(name = "startTime") String startTime,
+//                         @RequestParam(name = "endTime") String endTime,
                          @RequestParam(name = "description") String description,
                          Model viewModel) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
-        Date startDate = dateFormat.parse(startTime);
-        Date endDate = dateFormat.parse(endTime);
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
+//        Date startDate = dateFormat.parse(startTime);
+//        Date endDate = dateFormat.parse(endTime);
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-        eventToBeUpdated.setStartTime(startDate);
-        eventToBeUpdated.setEndTime(endDate);
+//        eventToBeUpdated.setStartTime(startDate);
+//        eventToBeUpdated.setEndTime(endDate);
         eventToBeUpdated.setDescription(description);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
