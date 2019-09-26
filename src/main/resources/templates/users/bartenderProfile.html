@@ -13,6 +13,7 @@
 
 <h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
 <th:block>
+    <img th:src="${user.photoUrl}"/>
     <h3>Contact Name: <span th:text="${user.name}"></span></h3>
     <h3>Contact Email: <span th:text="${user.email}"></span></h3>
     <h4>TABC Certification: <spant th:text="${user.tabcCert}"></spant></h4>

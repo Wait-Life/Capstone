@@ -44,17 +44,19 @@
                 <!--    <label for="password">Re-enter Password</label>-->
                 <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
                 <!--    <br/>-->
-
+                <div>
+                    <button type="button" id="picker">Upload Profile Photo</button>
+                    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+                </div>
+                <div id="nameBox"></div>
                 <input type="submit" value="Sign me up!"/>
             </form>
-
         </div>
-
     </div>
 </div>
 
 
-<a class="uk-button uk-button-default" href="#modal-overflow2" uk-toggle="">Client</a>
+<a class="uk-button uk-button-default" href="#modal-overflow2" uk-toggle="">Organizer</a>
 
 <div id="modal-overflow2" uk-modal="">
     <div class="uk-modal-dialog">
@@ -72,13 +74,13 @@
                 <input id="company" th:field="*{company}"/>
                 <br/>
                 <label for="username">Name</label>
-                <input id="username" th:field="*{name}"/>
+                <input id="clientUsername" th:field="*{name}"/>
                 <br/>
                 <label for="email">Contact Email</label>
-                <input id="email" th:field="*{email}"/>
+                <input id="clientEmail" th:field="*{email}"/>
                 <br/>
                 <label for="password">Password</label>
-                <input id="password" type="password" th:field="*{password}"/>
+                <input id="clientPassword" type="password" th:field="*{password}"/>
                 <br/>
                 <!--    <label for="password">Re-enter Password</label>-->
                 <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
@@ -95,5 +97,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/filestack.js"></script>
 </body>
 </html>
