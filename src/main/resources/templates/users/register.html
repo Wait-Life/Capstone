@@ -25,7 +25,7 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/users/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
+            <form th:action="@{/userDao/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
 
                 <label for="username">Name</label>
                 <input id="username" th:field="*{name}"/>
@@ -68,7 +68,7 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/users/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
+            <form th:action="@{/userDao/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
                 <label for="company">Company Name</label>
                 <input id="company" th:field="*{company}"/>
                 <br/>

@@ -11,7 +11,7 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
-<form action="" th:action="@{'/users/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
+<form action="" th:action="@{'/userDao/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
     <label for="username">Name</label>
     <input id="username" name="username" type="text" th:field="*{name}"/>
     <label for="email">Email</label>

@@ -10,10 +10,10 @@
 <form th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="post" th:object="${event}">
     <label for="title">Title</label>
     <input id="title" name="title" type="text" th:field="*{title}"/>
-    <label for="startTime">Start Time</label>
-    <input id="startTime" name="startTime" type="datetime-local" th:field="*{startTime}" />
-    <label for="endTime">End Time</label>
-    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />
+<!--    <label for="startTime">Start Time</label>-->
+<!--    <input id="startTime" name="startTime" type="datetime-local" th:field="*{startTime}" />-->
+<!--    <label for="endTime">End Time</label>-->
+<!--    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />-->
     <label for="address">Address</label>
     <input id="address" name="address" type="text" th:field="*{address}" />
     <label for="bartendersNeeded">Number of Bartenders Needed</label>
