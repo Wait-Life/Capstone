@@ -6,14 +6,13 @@ function checkPassword(form) {
 
 	if (passwordOne == "") {
 		alert("Please enter a password");
+		event.preventDefault()
 	} else if (passwordTwo == "") {
 		alert("Please confirm password");
+		event.preventDefault();
 	} else if (passwordOne != passwordTwo) {
 		alert("Passwords do not match");
-		return false;
-	} else {
-		alert("passwords match!")
-		return true;
+		event.preventDefault();
 	}
 }
 

@@ -30,16 +30,12 @@ public class UserController {
         return "users/register";
     }
 
-    @PostMapping("/register")
+    @PostMapping("users/register")
     public String registerClient(@ModelAttribute User user) {
-        try {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
             users.save(user);
             return "redirect:/";
-        } catch (InternalError ex) {
-            return null;
-        }
     }
 //
 //    @GetMapping("/register")
