@@ -25,7 +25,8 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/users/register}" th:method="post" th:object="${user}">
+            <form th:action="@{/users/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
+
                 <label for="username">Name</label>
                 <input id="username" th:field="*{name}"/>
                 <br/>
@@ -41,6 +42,7 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" th:field="*{password}"/>
                 <br/>
+
                 <!--    <label for="password">Re-enter Password</label>-->
                 <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
                 <!--    <br/>-->
@@ -50,6 +52,13 @@
                 </div>
                 <div id="nameBox"></div>
                 <input type="submit" value="Sign me up!"/>
+
+                <label for="verifyPassword">Re-enter Password</label>
+                <input id="verifyPassword" type="password" name="verifyPassword"/>
+                <br/>
+
+                <input type="submit" id="submit" value="Sign me up!"/>
+
             </form>
         </div>
     </div>
@@ -69,7 +78,7 @@
 
         <div class="uk-modal-body" uk-overflow-auto="">
 
-            <form th:action="@{/client/register}" th:method="post" th:object="${user}">
+            <form th:action="@{/clients/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">
                 <label for="company">Company Name</label>
                 <input id="company" th:field="*{company}"/>
                 <br/>
@@ -82,10 +91,10 @@
                 <label for="password">Password</label>
                 <input id="clientPassword" type="password" th:field="*{password}"/>
                 <br/>
-                <!--    <label for="password">Re-enter Password</label>-->
-                <!--    <input id="verifyPassword" type="password" th:field="*{password}"/>-->
+                <label for="verifyPassword">Re-enter Password</label>
+                <input id="verifyPassword" type="password" name="verifyPassword"/>
                 <br/>
-                <input type="submit" value="Sign me up!"/>
+                <input type="submit" value="Sign me up!" id="submit"/>
             </form>
 
         </div>
@@ -100,5 +109,6 @@
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script src="js/keys.js"></script>
 <script src="js/filestack.js"></script>
+<script th:src="@{/js/passwordVerification.js}"></script>
 </body>
 </html>

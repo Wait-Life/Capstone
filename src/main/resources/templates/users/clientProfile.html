@@ -17,16 +17,15 @@
     <h3>Contact Name: <span th:text="${user.name}"></span></h3>
     <h3>Contact Email: <span th:text="${user.email}"></span></h3>
 </th:block>
+<a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
 <th:block th:each="event : ${events}">
-    <h1 th:text:="${event.title}">Title</h1>
+    <p><span th:text="${event.title}"></span></p>
     <p>Start time: <span th:text="${event.startTime}"></span></p>
     <p>End time: <span th:text="${event.endTime}"></span></p>
     <p>Event location: <span th:text="${event.address}"></span></p>
     <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
     <p>Description: <span th:text="${event.description}"></span></p>
+    <a th:href="@{/events/{id}/edit(id=${event.id})}" class=".uk-button-primary">Edit</a>
 </th:block>
-<a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
-
-<!--Footer fragment-->
 </body>
 </html>

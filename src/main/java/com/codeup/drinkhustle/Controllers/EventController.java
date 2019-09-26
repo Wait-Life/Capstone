@@ -44,7 +44,11 @@ public class EventController {
 
     @GetMapping("/events/search")
     public String show(@RequestParam(name = "term") String term, Model viewModel) {
-        List<Event> events = eventDao.searchByTitleLike(term);
+        List <Event> events = eventDao.searchByTitleLike(term);
+        List<Event> eventsD = eventDao.searchByDescriptionLike(term);
+//        List<Event> eventsA = eventDao.searchByAddressLike(term);
+        viewModel.addAttribute("events", eventsD);
+//        viewModel.addAttribute("events", eventsA);
         viewModel.addAttribute("events", events);
         return "events/index";
     }
@@ -60,18 +64,22 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "startTime") String startTime,
-                         @RequestParam(name = "endTime") String endTime,
+//                         @RequestParam(name = "startTime") String startTime,
+//                         @RequestParam(name = "endTime") String endTime,
+                         @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
                          @RequestParam(name = "description") String description,
+                         @RequestParam(name = "address") String address,
                          Model viewModel) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
-        Date startDate = dateFormat.parse(startTime);
-        Date endDate = dateFormat.parse(endTime);
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
+//        Date startDate = dateFormat.parse(startTime);
+//        Date endDate = dateFormat.parse(endTime);
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-        eventToBeUpdated.setStartTime(startDate);
-        eventToBeUpdated.setEndTime(endDate);
+//        eventToBeUpdated.setStartTime(startDate);
+//        eventToBeUpdated.setEndTime(endDate);
         eventToBeUpdated.setDescription(description);
+        eventToBeUpdated.setAddress(address);
+        eventToBeUpdated.setBartendersNeeded(bartendersNeeded);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
     }
@@ -97,7 +105,7 @@ public class EventController {
             @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
             @RequestParam(name = "description") String description,
             Model viewModel) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'h:mm");
         Date startDate = dateFormat.parse(startTime);
         Date endDate = dateFormat.parse(endTime);
         Event eventToBeCreated = new Event();

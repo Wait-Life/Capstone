@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="UTF-8" />
-    <title>Edit Profile</title>
+    <th:block th:replace="fragments/header :: main-header('Edit My Profile')"/>
 </head>
 <body>
 <div sec:authorize="isAuthenticated()">

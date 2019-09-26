@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
     private EventRepository eventDao;
@@ -22,55 +24,52 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("client/register")
+    @GetMapping("/register")
     public String viewClientRegister(Model model) {
         model.addAttribute("user", new User());
-        return "users/clientRegistration";
-    }
-
-    @PostMapping("client/register")
-    public String registerClient(@ModelAttribute User user) {
-            String hash = passwordEncoder.encode(user.getPassword());
-            user.setPassword(hash);
-            userDao.save(user);
-            return "redirect:/";
-    }
-
-    @GetMapping("users/register")
-    public String viewUserRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/bartenderRegistration";
+        return "users/register";
     }
 
     @PostMapping("users/register")
     public String registerUser(@ModelAttribute User user) {
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            user.setIsClient(1);
+            userDao.save(user);
+
+            return "redirect:/";
+    }
+
+    @PostMapping("clients/register")
+    public String registerClient(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
-        user.setIsClient(1);
+        user.setIsClient(0);
         userDao.save(user);
+
         return "redirect:/";
     }
+//
+//    @GetMapping("/register")
+//    public String viewUserRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "userDao/register";
+//    }
+//
+//    @PostMapping("/register")
+//    public String registerUser(@ModelAttribute User user) {
+//        try {
+//            String hash = passwordEncoder.encode(user.getPassword());
+//            user.setPassword(hash);
+//            user.setIsClient(1);
+//            userDao.save(user);
+//            return "redirect:/";
+//        } catch (InternalError ex) {
+//            return null;
+//        }
+//    }
 
-    //SHOW BARTENDER PROFILE
-    @GetMapping("users/profile")
-    public String showBartenderProfile(Model viewModel){
-        User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        viewModel.addAttribute("user", userSession);
-        return "users/bartenderProfile";
-    }
-
-//    SHOW CLIENT PROFILE
-    @GetMapping("client/profile")
-    public String showClientProfile(Model vModel){
-        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
-        vModel.addAttribute("events", userEvents);
-        vModel.addAttribute("user", userSession);
-        return "users/clientProfile";
-    }
-
-
-//    EDIT CLIENTS
+    //    EDIT CLIENTS
     @GetMapping("client/profile/{id}/edit")
     public String editClientProfile(@PathVariable long id, Model viewModel) {
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -121,12 +120,30 @@ public class UserController {
         return "redirect:/login?/logout";
     }
 
+    //SHOW BARTENDER PROFILE
+    @GetMapping("users/profile")
+    public String showBartenderProfile(Model viewModel){
+        User userSession= userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        viewModel.addAttribute("user", userSession);
+        return "users/bartenderProfile";
+    }
+
+//    SHOW CLIENT PROFILE
+    @GetMapping("client/profile")
+    public String showClientProfile(Model vModel){
+        User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
+        vModel.addAttribute("events", userEvents);
+        vModel.addAttribute("user", userSession);
+        return "users/clientProfile";
+    }
+
 //    VIEW ALL BARTENDERS
 
-    @GetMapping("users/viewAll")
+    @GetMapping("users/bartenders")
     public String viewAllProfiles(Model viewModel){
-        Iterable<User> users = userDao.findAll();
-        viewModel.addAttribute("user", users);
+        Iterable<User> bartenders = userDao.findAll();
+        viewModel.addAttribute("user", bartenders);
         return "users/viewBartenders";
     }
 
@@ -138,9 +155,11 @@ public class UserController {
         return "users/view";
     }
 
-    @GetMapping("/register")
-    public String viewRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
+    @GetMapping("/users/search")
+    public String show(@RequestParam(name = "userterm") String userterm, Model viewModel) {
+        List<User> users = userDao.searchByNameLike(userterm);
+        viewModel.addAttribute("users", users);
+        return "users/index";
     }
+
 }
