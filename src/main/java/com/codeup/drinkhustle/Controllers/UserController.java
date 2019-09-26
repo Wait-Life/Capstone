@@ -78,7 +78,7 @@ public class UserController {
         updateUser.setName(name);
         updateUser.setCompany(company);
         userDao.save(updateUser);
-        return ("redirect:/login?/logout");
+        return ("users/clientProfile");
     }
 
     //    EDIT BARTENDERS
@@ -105,14 +105,15 @@ public class UserController {
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         userDao.save(updateUser);
-        return "redirect:/login?/logout";
+        return "users/bartenderProfile";
     }
 
     //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
     public String showBartenderProfile(Model viewModel){
         User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        viewModel.addAttribute("user", userSession);
+        User currentUser = userDao.findOne(userSession.getId());
+        viewModel.addAttribute("user", currentUser);
         return "users/bartenderProfile";
     }
 
@@ -120,9 +121,10 @@ public class UserController {
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userDao.findOne(userSession.getId());
         Iterable<Event> userEvents = eventDao.findByOwner(userSession);
         vModel.addAttribute("events", userEvents);
-        vModel.addAttribute("user", userSession);
+        vModel.addAttribute("user", currentUser);
         return "users/clientProfile";
     }
 
@@ -145,11 +147,6 @@ public class UserController {
         return "users/view";
     }
 
-    @GetMapping("/register")
-    public String viewRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
-    }
     @GetMapping("/users/search")
     public String show(@RequestParam(name = "userterm") String userterm, Model viewModel) {
         List<User> users = userDao.searchByNameLike(userterm);
