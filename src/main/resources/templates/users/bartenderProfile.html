@@ -19,7 +19,7 @@
     <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
 
-<a th:href="@{'/userDao/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+<a th:href="@{'/users/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
 
 </body>
 </html>

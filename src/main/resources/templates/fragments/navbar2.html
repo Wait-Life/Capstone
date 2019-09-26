@@ -12,7 +12,7 @@
             <li><a href="/events">Events</a></li>
             <li><a href="/about">About</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
-            <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="userDao/profile">Account</a></li>
+            <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/users/profile">Account</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
             <li class="navbutton">
 
