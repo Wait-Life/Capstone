@@ -44,7 +44,11 @@ public class EventController {
 
     @GetMapping("/events/search")
     public String show(@RequestParam(name = "term") String term, Model viewModel) {
-        List<Event> events = eventDao.searchByTitleLike(term);
+        List <Event> events = eventDao.searchByTitleLike(term);
+        List<Event> eventsD = eventDao.searchByDescriptionLike(term);
+//        List<Event> eventsA = eventDao.searchByAddressLike(term);
+        viewModel.addAttribute("events", eventsD);
+//        viewModel.addAttribute("events", eventsA);
         viewModel.addAttribute("events", events);
         return "events/index";
     }
