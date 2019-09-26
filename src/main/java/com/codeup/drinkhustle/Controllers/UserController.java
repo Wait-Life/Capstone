@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
     private EventRepository eventDao;
@@ -126,16 +128,33 @@ public class UserController {
 
 //    VIEW ALL BARTENDERS
 
-    @GetMapping("users/viewAll")
+    @GetMapping("users/bartenders")
     public String viewAllProfiles(Model viewModel){
         Iterable<User> bartenders = userDao.findAll();
         viewModel.addAttribute("user", bartenders);
         return "users/viewBartenders";
     }
-//
-//    @GetMapping("/register")
-//    public String viewRegister(Model model) {
-//        model.addAttribute("user", new User());
-//        return "userDao/register";
-//    }
+
+
+
+    //    VIEW INDIVIDUAL USER PROFILE
+    @GetMapping("users/{id}/profile")
+    public String show(@PathVariable long id, Model viewModel) {
+        User user = userDao.findOne(id);
+        viewModel.addAttribute("user", user);
+        return "users/view";
+    }
+
+    @GetMapping("/register")
+    public String viewRegister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/register";
+    }
+    @GetMapping("/users/search")
+    public String show(@RequestParam(name = "userterm") String userterm, Model viewModel) {
+        List<User> users = userDao.searchByNameLike(userterm);
+        viewModel.addAttribute("users", users);
+        return "users/index";
+    }
+
 }
