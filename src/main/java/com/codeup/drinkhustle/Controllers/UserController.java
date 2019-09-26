@@ -111,7 +111,7 @@ public class UserController {
     //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
     public String showBartenderProfile(Model viewModel){
-        User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userSession= userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         viewModel.addAttribute("user", userSession);
         return "users/bartenderProfile";
     }
@@ -119,7 +119,7 @@ public class UserController {
 //    SHOW CLIENT PROFILE
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
-        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Iterable<Event> userEvents = eventDao.findByOwner(userSession);
         vModel.addAttribute("events", userEvents);
         vModel.addAttribute("user", userSession);
@@ -135,8 +135,6 @@ public class UserController {
         return "users/viewBartenders";
     }
 
-
-
     //    VIEW INDIVIDUAL USER PROFILE
     @GetMapping("users/{id}/profile")
     public String show(@PathVariable long id, Model viewModel) {
@@ -145,11 +143,6 @@ public class UserController {
         return "users/view";
     }
 
-    @GetMapping("/register")
-    public String viewRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
-    }
     @GetMapping("/users/search")
     public String show(@RequestParam(name = "userterm") String userterm, Model viewModel) {
         List<User> users = userDao.searchByNameLike(userterm);
