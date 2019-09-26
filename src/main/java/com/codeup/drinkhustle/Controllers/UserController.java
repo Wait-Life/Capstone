@@ -31,11 +31,23 @@ public class UserController {
     }
 
     @PostMapping("users/register")
-    public String registerClient(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
+            user.setIsClient(1);
             userDao.save(user);
+
             return "redirect:/";
+    }
+
+    @PostMapping("clients/register")
+    public String registerClient(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setIsClient(0);
+        userDao.save(user);
+
+        return "redirect:/";
     }
 //
 //    @GetMapping("/register")
