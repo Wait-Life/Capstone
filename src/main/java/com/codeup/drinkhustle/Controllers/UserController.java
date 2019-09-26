@@ -41,7 +41,7 @@ public class UserController {
 //    @GetMapping("/register")
 //    public String viewUserRegister(Model model) {
 //        model.addAttribute("user", new User());
-//        return "userDao/register";
+//        return "users/register";
 //    }
 //
 //    @PostMapping("/register")
