@@ -43,12 +43,10 @@ public class UserController {
     }
 
     @PostMapping("users/register")
-//    public String registerUser(@RequestParam(name = "file") String fileUR, @ModelAttribute User user) {
     public String registerUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setIsClient(1);
-//        user.setPhotoUrl(fileUR);
         userDao.save(user);
         return "redirect:/";
     }
