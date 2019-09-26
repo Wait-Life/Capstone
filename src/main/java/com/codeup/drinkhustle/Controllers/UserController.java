@@ -31,17 +31,29 @@ public class UserController {
     }
 
     @PostMapping("users/register")
-    public String registerClient(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
+            user.setIsClient(1);
             userDao.save(user);
+
             return "redirect:/";
+    }
+
+    @PostMapping("clients/register")
+    public String registerClient(@ModelAttribute User user) {
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setIsClient(0);
+        userDao.save(user);
+
+        return "redirect:/";
     }
 //
 //    @GetMapping("/register")
 //    public String viewUserRegister(Model model) {
 //        model.addAttribute("user", new User());
-//        return "users/register";
+//        return "userDao/register";
 //    }
 //
 //    @PostMapping("/register")
@@ -78,7 +90,7 @@ public class UserController {
         updateUser.setName(name);
         updateUser.setCompany(company);
         userDao.save(updateUser);
-        return ("users/clientProfile");
+        return ("redirect:/login?/logout");
     }
 
     //    EDIT BARTENDERS
@@ -105,26 +117,24 @@ public class UserController {
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         userDao.save(updateUser);
-        return "users/bartenderProfile";
+        return "redirect:/login?/logout";
     }
 
     //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
     public String showBartenderProfile(Model viewModel){
-        User userSession= (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userDao.findOne(userSession.getId());
-        viewModel.addAttribute("user", currentUser);
+        User userSession= userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        viewModel.addAttribute("user", userSession);
         return "users/bartenderProfile";
     }
 
 //    SHOW CLIENT PROFILE
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
-        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User currentUser = userDao.findOne(userSession.getId());
+        User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Iterable<Event> userEvents = eventDao.findByOwner(userSession);
         vModel.addAttribute("events", userEvents);
-        vModel.addAttribute("user", currentUser);
+        vModel.addAttribute("user", userSession);
         return "users/clientProfile";
     }
 
@@ -136,8 +146,6 @@ public class UserController {
         viewModel.addAttribute("user", bartenders);
         return "users/viewBartenders";
     }
-
-
 
     //    VIEW INDIVIDUAL USER PROFILE
     @GetMapping("users/{id}/profile")
