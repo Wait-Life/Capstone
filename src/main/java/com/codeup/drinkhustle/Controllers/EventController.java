@@ -52,6 +52,7 @@ public class EventController {
     @GetMapping("/events/{id}/edit")
     public String edit(@PathVariable long id, Model viewModel) {
         Event event = eventDao.findOne(id);
+        System.out.println(event);
         viewModel.addAttribute("event", event);
         return "events/edit";
     }

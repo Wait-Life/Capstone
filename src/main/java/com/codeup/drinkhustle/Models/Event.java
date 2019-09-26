@@ -97,4 +97,18 @@ public class Event {
 
     public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
 
+//    @Override
+//    public String toString() {
+//        return "Event{" +
+//                "id=" + id +
+//                ", title='" + title + '\'' +
+//                ", startTime=" + startTime +
+//                ", endTime=" + endTime +
+//                ", address='" + address + '\'' +
+//                ", bartendersNeeded=" + bartendersNeeded +
+//                ", description='" + description + '\'' +
+//                ", owner=" + owner +
+//                ", bartenders=" + bartenders +
+//                '}';
+//    }
 }
