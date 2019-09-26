@@ -8,21 +8,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 public class UserController {
     private EventRepository eventDao;
-    private UserRepository users;
+    private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
 
-    public UserController(EventRepository eventDao, UserRepository users, PasswordEncoder passwordEncoder) {
+    public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.eventDao = eventDao;
-        this.users = users;
+        this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -36,14 +34,14 @@ public class UserController {
     public String registerClient(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
-            users.save(user);
+            userDao.save(user);
             return "redirect:/";
     }
 //
 //    @GetMapping("/register")
 //    public String viewUserRegister(Model model) {
 //        model.addAttribute("user", new User());
-//        return "users/register";
+//        return "userDao/register";
 //    }
 //
 //    @PostMapping("/register")
@@ -52,12 +50,63 @@ public class UserController {
 //            String hash = passwordEncoder.encode(user.getPassword());
 //            user.setPassword(hash);
 //            user.setIsClient(1);
-//            users.save(user);
+//            userDao.save(user);
 //            return "redirect:/";
 //        } catch (InternalError ex) {
 //            return null;
 //        }
 //    }
+
+    //    EDIT CLIENTS
+    @GetMapping("client/profile/{id}/edit")
+    public String editClientProfile(@PathVariable long id, Model viewModel) {
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        viewModel.addAttribute("user", userSession);
+        return ("users/editClientProfile");
+    }
+
+    @PostMapping("/client/profile/{id}/edit")
+    public String editClientProfile(@PathVariable long id,
+                                    @ModelAttribute User user,
+                                    @RequestParam(name="email") String email,
+                                    @RequestParam(name="name") String name,
+                                    @RequestParam(name="company") String company){
+        User updateUser = userDao.findOne(id);
+        String hash = passwordEncoder.encode(user.getPassword());
+        updateUser.setPassword(hash);
+        updateUser.setEmail(email);
+        updateUser.setName(name);
+        updateUser.setCompany(company);
+        userDao.save(updateUser);
+        return ("redirect:/login?/logout");
+    }
+
+    //    EDIT BARTENDERS
+    @GetMapping("users/profile/{id}/edit")
+    public String editBartenderForm(@PathVariable long id, Model viewModel) {
+        User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        viewModel.addAttribute("user", userSession);
+        return ("users/editBartenderProfile");
+    }
+
+    @PostMapping("/users/profile/{id}/edit")
+    public String editBartenderProfile(@PathVariable long id,
+                                       @ModelAttribute User user,
+                                       @RequestParam(name = "email") String email,
+                                       @RequestParam(name = "name") String name,
+                                       @RequestParam(name = "tabcCert") String tabcCert,
+                                       @RequestParam(name = "foodCert") String foodCert,
+                                       Model viewModel) {
+        User updateUser = userDao.findOne(id);
+        String hash = passwordEncoder.encode(user.getPassword());
+        updateUser.setPassword(hash);
+        updateUser.setEmail(email);
+        updateUser.setName(name);
+        updateUser.setTabcCert(tabcCert);
+        updateUser.setFoodCert(foodCert);
+        userDao.save(updateUser);
+        return "redirect:/login?/logout";
+    }
 
     //SHOW BARTENDER PROFILE
     @GetMapping("users/profile")
@@ -81,10 +130,11 @@ public class UserController {
 
     @GetMapping("users/bartenders")
     public String viewAllProfiles(Model viewModel){
-        Iterable<User> bartenders = users.findAll();
+        Iterable<User> bartenders = userDao.findAll();
         viewModel.addAttribute("user", bartenders);
         return "users/viewBartenders";
     }
+
 
 
     //    VIEW INDIVIDUAL USER PROFILE
