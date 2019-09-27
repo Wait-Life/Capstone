@@ -1,3 +1,5 @@
 var fsKey = 'AiliJZQ5oTTaLvOkVthAgz';
 var fBKey = '413668279352778';
-var twilioAccountSid =  "IS9c584cb9b18c4a6fb2674d6b1bb89088";
+
+SID//API:  SK93270ed8dfcc39fb0b0546a3b6469be1;
+SECRET: Ccby76RTXUrpDO0eKTHJuXYwmjtt1yYN;
