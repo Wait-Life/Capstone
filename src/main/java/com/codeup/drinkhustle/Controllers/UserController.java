@@ -71,7 +71,7 @@ public class UserController {
         updateUser.setName(name);
         updateUser.setCompany(company);
         userDao.save(updateUser);
-        return ("redirect:/login?/logout");
+        return ("users/clientProfile");
     }
 
     //    EDIT BARTENDERS
@@ -98,7 +98,7 @@ public class UserController {
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         userDao.save(updateUser);
-        return "redirect:/login?/logout";
+        return "users/bartenderProfile";
     }
 
     //SHOW BARTENDER PROFILE
