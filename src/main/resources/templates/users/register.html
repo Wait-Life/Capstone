@@ -12,9 +12,9 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
-<a class="uk-button uk-button-default" href="#modal-overflow" uk-toggle="">Bartender</a>
+<a class="uk-button uk-button-default" id="bartender-button" href="#modal-overflow" uk-toggle="">Bartender</a>
 
-<div id="modal-overflow" uk-modal="">
+<div uk-modal="" class="bartender-class">
     <div class="uk-modal-dialog">
 
         <button class="uk-modal-close-default" type="button" uk-close=""></button>
@@ -58,9 +58,9 @@
 </div>
 
 
-<a class="uk-button uk-button-default" href="#modal-overflow2" uk-toggle="">Organizer</a>
+<a class="uk-button uk-button-default" id="client-button" href="#modal-overflow2" uk-toggle="">Organizer</a>
 
-<div id="modal-overflow2" uk-modal="">
+<div uk-modal="" class="client-class">
     <div class="uk-modal-dialog">
 
         <button class="uk-modal-close-default" type="button" uk-close=""></button>

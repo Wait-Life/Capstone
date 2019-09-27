@@ -20,6 +20,7 @@
 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
 <th:block th:each="event : ${events}">
     <p><span th:text="${event.title}"></span></p>
+
     <p>Start time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
     <p>End time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
     <p>Event location: <span th:text="${event.address}"></span></p>
