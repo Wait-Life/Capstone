@@ -11,15 +11,11 @@
 </div>
 
 <h4>Title: <span th:text="${event.title}"></span></h4>
-<p>Start Time: <span th:text="${#calendars.format(event.startTime, 'dd MMMM yyyy , hh:mm')}"></span></p>
-<p>End Time: <span th:text="${#calendars.format(event.endTime, 'dd MMMM yyyy, hh:mm')}"></span></p>
+<p>Start Time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+<p>End Time: <span th:text="${#calendars.format(event.endTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
 <p>Address: <span th:text="${event.address}"></span></p>
 <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
 <p>Description: <span th:text="${event.description}"></span></p>
-<!--<div sec:authorize="isAuthenticated()" th:if="${#authentication.principal.id} == ${event.user.id}">-->
-<!--    <a th:href="@{'/events/' + ${event.id} + '/edit'}" class="uk-button uk-button-secondary">edit</a>-->
-<!--    <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST"> <button class="uk-button uk-button-danger">delete</button></form>-->
-<!--</div>-->
 
 </body>
 </html>
