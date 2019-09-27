@@ -14,8 +14,8 @@
 <h1>View All Events!</h1>
 <div th:each="event : ${events}">
     <h4>Title: <span th:text="${event.title}"></span></h4>
-    <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm')}"></span></p>
-    <p>End Time: <span th:text="${#calendars.format(event.endTime, 'MMMM dd, yyyy - hh:mm')}"></span></p>
+    <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+    <p>End Time: <span th:text="${#calendars.format(event.endTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
     <p>Address: <span th:text="${event.address}"></span></p>
     <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
     <p>Description: <span th:text="${event.description}"></span></p>
