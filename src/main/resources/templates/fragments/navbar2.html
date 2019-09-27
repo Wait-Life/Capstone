@@ -12,9 +12,9 @@
             <li><a href="/about">About</a></li>
 <!--            <li><a href="/events">Events</a></li>-->
             <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/events">Events</a></li>
-            <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/users/bartenders">View Bartenders</a></li>
+            <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/hustlers/bartenders">View Bartenders</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
-            <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/users/profile">Account</a></li>
+            <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/hustlers/profile">Account</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
             <li class="navbutton">
 
