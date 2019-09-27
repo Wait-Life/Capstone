@@ -28,7 +28,6 @@ btn.addEventListener('click', function (e) {
 // Helper to overwrite the field input value
 function updateForm (result) {
     const fileData = result.filesUploaded[0];
-    console.log(fileData);
     fileInput.value = fileData.url;
 
 
