@@ -27,10 +27,21 @@
     <input type="text" name="description" id="description" th:field="*{description}" />
     <!--    <button type="submit" value="submit">Submit</button>-->
     <!--</form>-->
+    <div>
+        <button type="button" id="picker">Update Profile Photo</button>
+        <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+    </div>
     <button class=".uk-button-primary">Edit</button>
 </form>
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
     <button class=".uk-button-danger">Delete</button>
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/filestack.js"></script>
 </body>
 </html>
