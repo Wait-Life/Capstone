@@ -42,13 +42,18 @@ public class EventController {
         return "events/show";
     }
 
+    @GetMapping("/events/location")
+    public String showloc(@RequestParam(name = "termloc") String termloc, Model viewModel) {
+        List<Event> eventsA = eventDao.searchByAddressLike(termloc);
+        viewModel.addAttribute("events", eventsA);
+        return "events/index";
+    }
+
     @GetMapping("/events/search")
     public String show(@RequestParam(name = "term") String term, Model viewModel) {
         List <Event> events = eventDao.searchByTitleLike(term);
         List<Event> eventsD = eventDao.searchByDescriptionLike(term);
-//        List<Event> eventsA = eventDao.searchByAddressLike(term);
         viewModel.addAttribute("events", eventsD);
-//        viewModel.addAttribute("events", eventsA);
         viewModel.addAttribute("events", events);
         return "events/index";
     }
