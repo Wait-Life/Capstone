@@ -30,7 +30,7 @@ public class UserController {
         return "users/register";
     }
 
-    @PostMapping("users/register")
+    @PostMapping("hustlers/register")
     public String registerUser(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());
             user.setPassword(hash);
@@ -65,24 +65,22 @@ public class UserController {
                                     @RequestParam(name="name") String name,
                                     @RequestParam(name="company") String company){
         User updateUser = userDao.findOne(id);
-        String hash = passwordEncoder.encode(user.getPassword());
-        updateUser.setPassword(hash);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setCompany(company);
         userDao.save(updateUser);
-        return ("users/clientProfile");
+        return ("redirect:/client/profile/");
     }
 
     //    EDIT BARTENDERS
-    @GetMapping("users/profile/{id}/edit")
+    @GetMapping("hustlers/profile/{id}/edit")
     public String editBartenderForm(@PathVariable long id, Model viewModel) {
         User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         viewModel.addAttribute("user", userSession);
         return ("users/editBartenderProfile");
     }
 
-    @PostMapping("/users/profile/{id}/edit")
+    @PostMapping("/hustlers/profile/{id}/edit")
     public String editBartenderProfile(@PathVariable long id,
                                        @ModelAttribute User user,
                                        @RequestParam(name = "email") String email,
@@ -91,18 +89,16 @@ public class UserController {
                                        @RequestParam(name = "foodCert") String foodCert,
                                        Model viewModel) {
         User updateUser = userDao.findOne(id);
-        String hash = passwordEncoder.encode(user.getPassword());
-        updateUser.setPassword(hash);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         userDao.save(updateUser);
-        return "users/bartenderProfile";
+        return "redirect:/hustlers/profile/";
     }
 
     //SHOW BARTENDER PROFILE
-    @GetMapping("users/profile")
+    @GetMapping("hustlers/profile")
     public String showBartenderProfile(Model viewModel){
         User userSession= userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         viewModel.addAttribute("user", userSession);
@@ -121,7 +117,7 @@ public class UserController {
 
 //    VIEW ALL BARTENDERS
 
-    @GetMapping("users/bartenders")
+    @GetMapping("hustlers/bartenders")
     public String viewAllProfiles(Model viewModel){
         Iterable<User> bartenders = userDao.findAll();
         viewModel.addAttribute("user", bartenders);
@@ -129,14 +125,14 @@ public class UserController {
     }
 
     //    VIEW INDIVIDUAL USER PROFILE
-    @GetMapping("users/{id}/profile")
+    @GetMapping("hustlers/{id}/profile")
     public String show(@PathVariable long id, Model viewModel) {
         User user = userDao.findOne(id);
         viewModel.addAttribute("user", user);
         return "users/view";
     }
 
-    @GetMapping("/users/search")
+    @GetMapping("/hustlers/search")
     public String show(@RequestParam(name = "userterm") String userterm, Model viewModel) {
         List<User> users = userDao.searchByNameLike(userterm);
         viewModel.addAttribute("users", users);
