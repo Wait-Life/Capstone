@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Mapbox Sandbox</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.css' type='text/css' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    .geocoder {
+        position:absolute;
+        z-index:1;
+        width:50%;
+        left:50%;
+        margin-left:-25%;
+        top:20px;
+    }
+    .mapboxgl-ctrl-geocoder { min-width:100%; }
+</style>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<div id='map'></div>
+<div id='geocoder' class='geocoder'></div>
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-utils.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.2/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<script>
+    mapboxgl.accessToken = '';
+    // var map = new mapboxgl.Map({
+    //     container: 'map',
+    //     style: 'mapbox://styles/mapbox/streets-v11',
+    //     center: [-79.4512, 43.6568],
+    //     zoom: 13
+    // });
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    });
+
+    document.getElementById('geocoder').appendChild(geocoder.onAdd());
+</script>
+
+</body>
+</html>
