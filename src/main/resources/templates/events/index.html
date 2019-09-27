@@ -28,6 +28,7 @@
                         <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
                         <h4>Title: <span th:text="${event.title}"></span></h4>
                         <p>Address: <span th:text="${event.address}"></span></p>
+                        <a th:href="@{/events/{id}(id=${event.id})}" class="uk-button uk-button-default">View</a>
                     </div>
                 </li>
         </th:block>
