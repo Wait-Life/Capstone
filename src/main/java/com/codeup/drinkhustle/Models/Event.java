@@ -22,11 +22,9 @@ public class Event {
     private Date date;
 
     @Column(nullable = false, name = "start_time")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
 
     @Column(nullable = false, name = "end_time")
-    @Temporal(TemporalType.TIMESTAMP)
     private Date endTime;
 
     @Column(nullable = false)

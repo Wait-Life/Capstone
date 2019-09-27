@@ -5,13 +5,17 @@ import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Services.EmailService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -99,19 +103,23 @@ public class EventController {
     @PostMapping("/events/create")
     public String createEvent(
             @RequestParam(name = "title") String title,
+            @RequestParam(name = "date") String date,
             @RequestParam(name = "startTime") String startTime,
             @RequestParam(name = "endTime") String endTime,
             @RequestParam(name = "address") String address,
             @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
             @RequestParam(name = "description") String description,
             Model viewModel) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MMM-dd'T'h:mm");
-        Date startDate = dateFormat.parse(startTime);
-        Date endDate = dateFormat.parse(endTime);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat timeFormat = new SimpleDateFormat("h:mm");
+        Date startDate = dateFormat.parse(date);
+        Date newStartTime = timeFormat.parse(startTime);
+        Date newEndTime = timeFormat.parse(endTime);
         Event eventToBeCreated = new Event();
         eventToBeCreated.setTitle(title);
-        eventToBeCreated.setStartTime(startDate);
-        eventToBeCreated.setEndTime(endDate);
+        eventToBeCreated.setDate(startDate);
+        eventToBeCreated.setStartTime(newStartTime);
+        eventToBeCreated.setEndTime(newEndTime);
         eventToBeCreated.setAddress(address);
         eventToBeCreated.setBartendersNeeded(bartendersNeeded);
         eventToBeCreated.setDescription(description);
