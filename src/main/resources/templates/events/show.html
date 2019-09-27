@@ -11,7 +11,7 @@
 </div>
 
 <h4>Title: <span th:text="${event.title}"></span></h4>
-<p>Date: <span th:text="${#calendars.format(event.date, 'MMMM dd, yyyy')}"></span></p>
+<p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>
 <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
 <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
 <p>Address: <span th:text="${event.address}"></span></p>
