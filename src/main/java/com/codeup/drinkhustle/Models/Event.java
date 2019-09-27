@@ -18,6 +18,9 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private Date date;
+
     @Column(nullable = false, name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date startTime;
@@ -41,10 +44,11 @@ public class Event {
     @ManyToMany(mappedBy = "events")
     private List<User> bartenders;
 
-    public Event(long id, String title, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
+    public Event(long id, String title, Date date, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
         this.id = id;
 //        this.ownerId = ownerId;
         this.title = title;
+        this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.address = address;
@@ -68,6 +72,10 @@ public class Event {
     public String getTitle() { return title; }
 
     public void setTitle(String title) { this.title = title; }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
 
     public Date getStartTime() { return startTime; }
 
@@ -96,6 +104,8 @@ public class Event {
     public List<User> getBartenders() { return bartenders; }
 
     public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
+
+
 
 //    @Override
 //    public String toString() {
