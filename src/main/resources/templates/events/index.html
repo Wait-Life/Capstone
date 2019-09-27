@@ -12,16 +12,16 @@
 </div>
 
 <h1>View All Events!</h1>
-<div th:each="event : ${events}">
-    <h4>Title: <span th:text="${event.title}"></span></h4>
-    <p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>
-    <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
-    <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
-    <p>Address: <span th:text="${event.address}"></span></p>
-    <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
-    <p>Description: <span th:text="${event.description}"></span></p>
-    <a th:href="@{/events/{id}(id=${event.id})}" class="uk-button uk-button-default">View</a>
-
+<!--<div th:each="event : ${events}">-->
+<!--    <h4>Title: <span th:text="${event.title}"></span></h4>-->
+<!--    <p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>-->
+<!--    <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>-->
+<!--    <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>-->
+<!--    <p>Address: <span th:text="${event.address}"></span></p>-->
+<!--    <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>-->
+<!--    <p>Description: <span th:text="${event.description}"></span></p>-->
+<!--    <a th:href="@{/events/{id}(id=${event.id})}" class="uk-button uk-button-default">View</a>-->
+<!--</div>-->
 <div uk-filter="target: .js-filter">
 
     <ul class="uk-subnav uk-subnav-pill">
