@@ -36,7 +36,6 @@ public class UserController {
             user.setPassword(hash);
             user.setIsClient(1);
             userDao.save(user);
-
             return "redirect:/";
     }
 
