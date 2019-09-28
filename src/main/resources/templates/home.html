@@ -2,58 +2,51 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/header :: main-header('Welcome')" />
+    <th:block th:replace="fragments/header :: main-header('Drink Hustle')" />
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbar2 :: top-nav2" />
-</div>
-<div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbar :: top-nav" />
+<div class="topcontainer">
+    <div class="insidetop"></div>
+    <div uk-grid="">
+    <div class="leftside uk-width-3-4">
+        <div >
+            <div>
+                <form action="/events/search" method="get" class="uk-search">
+                    <input class="form uk-search-input" type="search" placeholder="Search Events..." name="term" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="uk-width-1-4 rightside">
+    <div sec:authorize="isAuthenticated()">
+        <th:block th:replace="fragments/navbar2home :: top-nav2home" />
+    </div>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <th:block th:replace="fragments/navbarhome :: top-navhome" />
+    </div>
+    </div>
+    </div>
 </div>
 
-<div class="topbar">
-    <div style="height: 200px;"></div>
-    <span sec:authorize="isAuthenticated()" style="font-size: 40px; color: white;">
-    Hey <span th:text="${#authentication.principal.username}"/>! Where are we partying today?
-</span>
-    <span th:unless="${#authorization.expression('isAuthenticated()')}">
-       <span style="font-size: 40px; color: white;">
-        Drinking TIME!
-       </span>
-    </span>
-    <br/>
-    <br/>
-    <br/>
-    <div >
-        <div>
-            <form action="/events/search" method="get">
-                <input class="form" type="search" placeholder="Search Events..." name="term" />
-                <button class=".uk-button-primary" type="submit" name="action">Search
-                </button>
-            </form>
-        </div>
-    </div>
-    <div >
-        <div>
-            <form action="/events/location" method="get">
-                <input class="form" type="search" placeholder="Search locations..." name="termloc" />
-                <button class=".uk-button-primary" type="submit" name="action">Search
-                </button>
-            </form>
-        </div>
-    </div>
-    <div >
-        <div>
-            <form action="/hustlers/search" method="get">
-                <input class="form" type="search" placeholder="Search Users..." name="userterm" />
-                <button class=".uk-button-primary" type="submit" name="action">Search
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
-<!--<th:block th:replace="fragments/footer :: my-footer"/>-->
+<!--    <div >-->
+<!--        <div>-->
+<!--            <form action="/events/location" method="get">-->
+<!--                <input class="form" type="search" placeholder="Search locations..." name="termloc" />-->
+<!--                <button class=".uk-button-primary" type="submit" name="action">Search-->
+<!--                </button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div >-->
+<!--        <div>-->
+<!--            <form action="/hustlers/search" method="get">-->
+<!--                <input class="form" type="search" placeholder="Search Users..." name="userterm" />-->
+<!--                <button class=".uk-button-primary" type="submit" name="action">Search-->
+<!--                </button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
