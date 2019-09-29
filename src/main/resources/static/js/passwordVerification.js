@@ -33,6 +33,26 @@ CustomValidation.prototype = {
 	}
 };
 
+var nameValidityChecks = [
+	{
+		isInvalid: function (input) {
+			return input.value.length < 3;
+		},
+		invalidityMessage: 'Name needs to be at least 3 characters',
+		element: document.querySelector('label[for="username"].input-requirements li:nth-child(1)')
+	}
+];
+
+var emailValidityChecks = [
+	{
+		isInvalid: function (input) {
+			return !input.value.match(/[.\@]/g);
+		},
+		invalidityMessage: 'Email must be in email address format',
+		element: document.querySelector('label[for="email"].input-requirements li:nth-child(1)')
+	}
+];
+
 var passwordValidityChecks = [
 	{
 		isInvalid: function (input) {
@@ -64,14 +84,22 @@ function checkInput(input) {
 	}
 };
 
-var password = document.getElementById('password');
-var verifyPassword = document.getElementById('verifyPassword');
+var nameInput = document.getElementById('username');
+var emailInput = document.getElementById('email');
+var passwordInput = document.getElementById('password');
+var verifyPasswordInput = document.getElementById('verifyPassword');
+
+nameInput.CustomValidation = new CustomValidation();
+nameInput.CustomValidation.validityChecks = nameValidityChecks;
+
+emailInput.CustomValidation = new CustomValidation();
+emailInput.CustomValidation.validityChecks = emailValidityChecks;
 
 passwordInput.CustomValidation = new CustomValidation();
 passwordInput.CustomValidation.validityChecks = passwordValidityChecks;
 
 verifyPasswordInput.CustomValidation = new CustomValidation();
-verifyPasswordInput.CustomValidation.validityChecks = verifyPasswordChecks;
+verifyPasswordInput.CustomValidation.validityChecks = repeatPasswordValidityCheck;
 
 var inputs = document.querySelectorAll('input:not([type="submit"])');
 var submit = document.querySelector('input[type="submit"]');
