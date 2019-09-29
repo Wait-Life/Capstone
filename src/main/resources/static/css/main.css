@@ -28,6 +28,12 @@ h5{
     color: #f25f5c;
 }
 
+canvas, img, video {
+    max-width: 23%;
+    height: auto;
+    box-sizing: border-box;
+}
+
 .insidetop{
     height: 102px;
 }
@@ -39,8 +45,9 @@ h5{
 .rightside{
     padding-left: 120px;
 }
-.uk-navbar-left{
+.uk-navbar-left {
     background-color: rgba(0, 0, 0, .0) !important;
+}
 
 
 #photo {
