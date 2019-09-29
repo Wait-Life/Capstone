@@ -44,10 +44,13 @@ public class User {
     @Column(name = "photo_url")
     private String photoUrl;
 
+    @Column(name = "phone_num")
+    private String phoneNum;
+
 
 //    CONSTRUCTOR
 
-    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl, List <Event> events) {
+    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl, String phoneNum, List <Event> events) {
         this.id = id;
         this.name = name;
         this.company = company;
@@ -58,6 +61,7 @@ public class User {
         this.isClient = isClient;
         this.photoUrl = photoUrl;
         this.events = events;
+        this.phoneNum = phoneNum;
     }
 
 //    COPY CONSTRUCTOR
@@ -72,6 +76,7 @@ public class User {
         isClient = copy.isClient;
         photoUrl = copy.photoUrl;
         events = copy.events;
+        phoneNum = copy.phoneNum;
     }
 
     public User(long id, String name, String company, String email, String password) {
@@ -131,4 +136,8 @@ public class User {
     public List<Event> getEvents() { return events; }
 
     public void setEvents(List<Event> events) { this.events = events; }
+
+    public String getPhoneNum() { return phoneNum; }
+
+    public void setPhoneNum(String phoneNum) { this.phoneNum = phoneNum; }
 }

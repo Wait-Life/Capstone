@@ -4,11 +4,16 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
+import com.codeup.drinkhustle.Services.SmsSender;
+import com.twilio.Twilio;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import java.util.List;
 
@@ -17,6 +22,8 @@ public class UserController {
     private EventRepository eventDao;
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private TwilioTest twilioTest;
+    private PhoneNumber originPhoneNumber = new PhoneNumber("+12815576961");
 
     public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.eventDao = eventDao;
@@ -24,10 +31,19 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/register")
-    public String viewClientRegister(Model model) {
+
+
+//
+//    @GetMapping("/register")
+//    public String viewClientRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/register";
+//    }
+
+    @GetMapping("hustlers/register")
+    public String viewBartenderRegistration(Model model) {
         model.addAttribute("user", new User());
-        return "users/register";
+        return "users/bartenderRegister";
     }
 
     @PostMapping("hustlers/register")
@@ -36,7 +52,19 @@ public class UserController {
             user.setPassword(hash);
             user.setIsClient(1);
             userDao.save(user);
+            try {
+                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+                message.getSid();
+            } catch (Exception e) {
+                System.out.println("Something went wrong with Twilio texting");
+            }
             return "redirect:/";
+    }
+
+    @GetMapping("clients/register")
+    public String viewClientRegistration(Model model) {
+        model.addAttribute("user", new User());
+        return "users/clientRegister";
     }
 
     @PostMapping("clients/register")
@@ -45,7 +73,12 @@ public class UserController {
         user.setPassword(hash);
         user.setIsClient(0);
         userDao.save(user);
-
+        try {
+            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio texting");
+        }
         return "redirect:/";
     }
 
@@ -62,11 +95,13 @@ public class UserController {
                                     @ModelAttribute User user,
                                     @RequestParam(name="email") String email,
                                     @RequestParam(name="name") String name,
-                                    @RequestParam(name="company") String company){
+                                    @RequestParam(name="company") String company,
+                                    @RequestParam(name = "phoneNum") String phoneNum){
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setCompany(company);
+        updateUser.setPhoneNum(phoneNum);
         userDao.save(updateUser);
         return ("redirect:/client/profile/");
     }
@@ -86,12 +121,14 @@ public class UserController {
                                        @RequestParam(name = "name") String name,
                                        @RequestParam(name = "tabcCert") String tabcCert,
                                        @RequestParam(name = "foodCert") String foodCert,
+                                       @RequestParam(name = "phoneNum") String phoneNum,
                                        Model viewModel) {
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
+        updateUser.setPhoneNum(phoneNum);
         userDao.save(updateUser);
         return "redirect:/hustlers/profile/";
     }
