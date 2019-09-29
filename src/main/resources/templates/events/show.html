@@ -17,6 +17,6 @@
 <p>Address: <span th:text="${event.address}"></span></p>
 <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
 <p>Description: <span th:text="${event.description}"></span></p>
-
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

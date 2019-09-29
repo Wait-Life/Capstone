@@ -29,5 +29,6 @@
     <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>
     <form th:action="@{/events/{id}/delete(id=${event.id})}" th:method="POST"><button class="uk-button-danger">Delete</button></form>
 </th:block>
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
