@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("hustlers/register")
-    public String viewBartenderregister(Model model) {
+    public String viewBartenderRegistration(Model model) {
         model.addAttribute("user", new User());
         return "users/bartenderRegister";
     }
@@ -42,7 +42,13 @@ public class UserController {
             user.setPassword(hash);
             user.setIsClient(1);
             userDao.save(user);
-            return "redirect:users/bartenderProfile";
+            return "redirect:/";
+    }
+
+    @GetMapping("clients/register")
+    public String viewClientRegistration(Model model) {
+        model.addAttribute("user", new User());
+        return "users/clientRegister";
     }
 
     @PostMapping("clients/register")
@@ -51,7 +57,6 @@ public class UserController {
         user.setPassword(hash);
         user.setIsClient(0);
         userDao.save(user);
-
         return "redirect:/";
     }
 
@@ -68,11 +73,13 @@ public class UserController {
                                     @ModelAttribute User user,
                                     @RequestParam(name="email") String email,
                                     @RequestParam(name="name") String name,
-                                    @RequestParam(name="company") String company){
+                                    @RequestParam(name="company") String company,
+                                    @RequestParam(name = "phoneNum") String phoneNum){
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setCompany(company);
+        updateUser.setPhoneNum(phoneNum);
         userDao.save(updateUser);
         return ("redirect:/client/profile/");
     }
@@ -92,12 +99,14 @@ public class UserController {
                                        @RequestParam(name = "name") String name,
                                        @RequestParam(name = "tabcCert") String tabcCert,
                                        @RequestParam(name = "foodCert") String foodCert,
+                                       @RequestParam(name = "phoneNum") String phoneNum,
                                        Model viewModel) {
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
+        updateUser.setPhoneNum(phoneNum);
         userDao.save(updateUser);
         return "redirect:/hustlers/profile/";
     }

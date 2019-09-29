@@ -53,6 +53,23 @@ var emailValidityChecks = [
 	}
 ];
 
+var phoneNumValidityChecks = [
+	{
+		isInvalid: function (input) {
+			return input.value.length < 10 || input.value.length > 10;
+		},
+		invalidityMessage: 'Phone number must be exactly 10 digits long',
+		element: document.querySelector('label[for="phoneNum"].input-requirements li:nth-child(2)')
+	},
+	{
+		isInvalid: function (input) {
+			return input.value.match(/[a-z]/g);
+		},
+		invalidityMessage: 'Phone number must only contain digits.',
+		element: document.querySelector('label[for="phoneNum"].input-requirements li:nth-child(1)')
+	}
+]
+
 var passwordValidityChecks = [
 	{
 		isInvalid: function (input) {
@@ -86,6 +103,7 @@ function checkInput(input) {
 
 var nameInput = document.getElementById('username');
 var emailInput = document.getElementById('email');
+var phoneNumInput = document.getElementById('phoneNum');
 var passwordInput = document.getElementById('password');
 var verifyPasswordInput = document.getElementById('verifyPassword');
 
@@ -94,6 +112,9 @@ nameInput.CustomValidation.validityChecks = nameValidityChecks;
 
 emailInput.CustomValidation = new CustomValidation();
 emailInput.CustomValidation.validityChecks = emailValidityChecks;
+
+phoneNumInput.CustomValidation = new CustomValidation();
+phoneNumInput.CustomValidation.validityChecks = phoneNumValidityChecks;
 
 passwordInput.CustomValidation = new CustomValidation();
 passwordInput.CustomValidation.validityChecks = passwordValidityChecks;
