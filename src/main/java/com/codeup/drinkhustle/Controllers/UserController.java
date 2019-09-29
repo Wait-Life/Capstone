@@ -30,6 +30,12 @@ public class UserController {
         return "users/register";
     }
 
+    @GetMapping("hustlers/register")
+    public String viewBartenderregister(Model model) {
+        model.addAttribute("user", new User());
+        return "users/bartenderRegister";
+    }
+
     @PostMapping("hustlers/register")
     public String registerUser(@ModelAttribute User user) {
             String hash = passwordEncoder.encode(user.getPassword());

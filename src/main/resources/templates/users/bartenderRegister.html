@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Welcome')" />
+    <link rel="stylesheet" href="/css/register.css" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<div class="uk-container" uk-overflow-auto="">
+    <form th:action="@{/hustlers/register}" th:method="post" th:object="${user}">
+        <label for="username">Name</label>
+        <input id="username" th:field="*{name}" minlength="3" type="text" required="required"/>
+            <ul class="input-requirements">
+                <li>At least 3 character</li>
+            </ul>
+        <br/>
+        <label for="email">Email</label>
+        <input id="email" th:field="*{email}" required="required" type="text"/>
+            <ul class="input-requirements">
+                <li>Must be in email address format</li>
+            </ul>
+        <br/>
+        <label for="tabc">TABC Certification Number</label>
+        <input id="tabc" th:field="*{tabcCert}" type="number" required="required"/>
+            <ul class="input-requirements">
+                <li>Must be a number</li>
+            </ul>
+        <br/>
+        <label for="foodhandler">Food Handlers Certification Number</label>
+        <input id="foodhandler" th:field="*{foodCert}" type="number" required="required"/>
+            <ul class="input-requirements">
+                <li>Must be a number</li>
+            </ul>
+        <br/>
+        <label for="password">Password</label>
+        <input id="password" type="password" th:field="*{password}" required="required"/>
+            <ul class="input-requirements">
+                <li>At least 3 characters long</li>
+            </ul>
+        <br/>
+        <label for="verifyPassword">Re-enter Password</label>
+        <input id="verifyPassword" type="password" name="verifyPassword" required="required"/>
+            <ul class="input-requirements">
+                <li>Must be the same as Password</li>
+            </ul>
+        <br/>
+        <div>
+            <button type="button" id="picker">Upload Profile Photo</button>
+            <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+        </div>
+        <br/>
+        <input type="submit" id="submit" value="Sign me up!"/>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/filestack.js"></script>
+<script th:src="@{/js/passwordVerification.js}"></script>
+</body>
+</html>
