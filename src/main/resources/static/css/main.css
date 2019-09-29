@@ -45,8 +45,9 @@ canvas, img, video {
 .rightside{
     padding-left: 120px;
 }
-.uk-navbar-left{
+.uk-navbar-left {
     background-color: rgba(0, 0, 0, .0) !important;
+}
 
 
 #photo {
