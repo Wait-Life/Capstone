@@ -5,13 +5,13 @@ function checkPassword(form) {
 	var passwordTwo = form.verifyPassword.value;
 
 	if (passwordOne == "") {
-		alert("Please enter a password");
+		UIkit.modal.alert("Please enter a password");
 		event.preventDefault()
 	} else if (passwordTwo == "") {
-		alert("Please confirm password");
+		UIkit.modal.alert("Please confirm password");
 		event.preventDefault();
 	} else if (passwordOne != passwordTwo) {
-		alert("Passwords do not match");
+		UIkit.modal.alert("Passwords do not match");
 		event.preventDefault();
 	}
 }
