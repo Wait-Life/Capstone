@@ -4,11 +4,16 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
+import com.codeup.drinkhustle.Services.SmsSender;
+import com.twilio.Twilio;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import java.util.List;
 
@@ -17,12 +22,17 @@ public class UserController {
     private EventRepository eventDao;
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
+    private TwilioTest twilioTest;
+    private PhoneNumber originPhoneNumber = new PhoneNumber("+12815576961");
 
     public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.eventDao = eventDao;
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
+
+
+
 //
 //    @GetMapping("/register")
 //    public String viewClientRegister(Model model) {
@@ -42,6 +52,12 @@ public class UserController {
             user.setPassword(hash);
             user.setIsClient(1);
             userDao.save(user);
+            try {
+                Message message = Message.creator(new PhoneNumber("1+" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+                message.getSid();
+            } catch (Exception e) {
+                System.out.println("Something went wrong");
+            }
             return "redirect:/";
     }
 
@@ -57,6 +73,8 @@ public class UserController {
         user.setPassword(hash);
         user.setIsClient(0);
         userDao.save(user);
+        Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), "+12815576961", "Thank you for signing up!").create();
+        message.getSid();
         return "redirect:/";
     }
 

@@ -14,6 +14,5 @@ public class TwilioTest {
                 new PhoneNumber("15558675309"),
                 "Hello from the other side").create();
 
-        System.out.println(message.getSid());
     }
 }
