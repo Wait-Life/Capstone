@@ -53,10 +53,10 @@ public class UserController {
             user.setIsClient(1);
             userDao.save(user);
             try {
-                Message message = Message.creator(new PhoneNumber("1+" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
                 message.getSid();
             } catch (Exception e) {
-                System.out.println("Something went wrong");
+                System.out.println("Something went wrong with Twilio texting");
             }
             return "redirect:/";
     }
@@ -73,8 +73,12 @@ public class UserController {
         user.setPassword(hash);
         user.setIsClient(0);
         userDao.save(user);
-        Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), "+12815576961", "Thank you for signing up!").create();
-        message.getSid();
+        try {
+            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio texting");
+        }
         return "redirect:/";
     }
 
