@@ -10,7 +10,21 @@ public class SmsSender {
     private final UserRepository users;
     public User user;
 
-    public SmsSender() {
-
+    public SmsSender(UserDetailsLoader userDetailsLoader, UserRepository users, User user) {
+        this.userDetailsLoader = userDetailsLoader;
+        this.users = users;
+        this.user = user;
     }
+
+    public static String getAccountSid() { return ACCOUNT_SID; }
+
+    public static String getAuthToken() { return AUTH_TOKEN; }
+
+    public UserDetailsLoader getUserDetailsLoader() { return userDetailsLoader; }
+
+    public UserRepository getUsers() { return users; }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 }

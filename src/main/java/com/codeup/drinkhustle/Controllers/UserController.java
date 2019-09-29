@@ -4,6 +4,9 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
+import com.codeup.drinkhustle.Services.SmsSender;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.twiml.voice.Sms;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,8 @@ public class UserController {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
+
+    public SmsSender smsSender;
 
     @GetMapping("/register")
     public String viewClientRegister(Model model) {
@@ -45,7 +50,6 @@ public class UserController {
         user.setPassword(hash);
         user.setIsClient(0);
         userDao.save(user);
-
         return "redirect:/";
     }
 
