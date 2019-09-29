@@ -21,6 +21,6 @@
 </th:block>
 
 <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
-
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

@@ -11,6 +11,6 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

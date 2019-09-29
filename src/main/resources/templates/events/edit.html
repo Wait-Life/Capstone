@@ -32,5 +32,6 @@
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
     <button class=".uk-button-danger">Delete</button>
 </form>
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
