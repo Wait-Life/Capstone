@@ -36,12 +36,7 @@
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
     <button class=".uk-button-danger">Delete</button>
 </form>
+<th:block th:replace="fragments/footer :: myfooter"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script src="js/keys.js"></script>
-<script src="js/filestack.js"></script>
 </body>
 </html>
