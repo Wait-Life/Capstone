@@ -15,7 +15,7 @@
 
 <div class="uk-container" uk-overflow-auto="">
     <div class="uk-align-center">
-        <h1>Sign Up to Start Hustlin'</h1>
+        <h1>Sign Up to View Hustlers!</h1>
     </div>
     <form th:action="@{/clients/register}" th:method="post" th:object="${user}">
         <label for="username">Name</label>
@@ -30,16 +30,14 @@
             <li>Email must be in email address format.</li>
         </ul>
         <br/>
-        <label for="tabc">TABC Certification Number</label>
-        <input id="tabc" th:field="*{tabcCert}" type="number" required="required"/>
-        <ul class="input-requirements">
-            <li>TABC Certification must be a number</li>
-        </ul>
+        <label for="company">Company Name</label>
+        <input type="text" id="company" th:field="*{company}" />
         <br/>
-        <label for="foodhandler">Food Handlers Certification Number</label>
-        <input id="foodhandler" th:field="*{foodCert}" type="number" required="required"/>
+        <label for="phoneNum">Phone Number</label>
+        <input id="phoneNum" type="number" th:field="*{phoneNum}" required="required" minlength="10"/>
         <ul class="input-requirements">
-            <li>FoodHandlers Certification must be a number</li>
+            <li>Phone Number must not include any special characters.</li>
+            <li>Phone Number must be 10 digits long.</li>
         </ul>
         <br/>
         <label for="password">Password</label>

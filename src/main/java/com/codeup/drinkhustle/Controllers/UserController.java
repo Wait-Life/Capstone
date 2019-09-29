@@ -23,12 +23,12 @@ public class UserController {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
-
-    @GetMapping("/register")
-    public String viewClientRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
-    }
+//
+//    @GetMapping("/register")
+//    public String viewClientRegister(Model model) {
+//        model.addAttribute("user", new User());
+//        return "users/register";
+//    }
 
     @GetMapping("hustlers/register")
     public String viewBartenderRegistration(Model model) {

@@ -3,17 +3,23 @@
 <body>
 <nav class="uk-navbar-container uk-margin main-nav" th:fragment="top-nav">
     <div class="uk-navbar-left">
-
-        <a style="color: white;" class="uk-navbar-item uk-logo" href="/">Drink Hustle</a>
-
-        <ul class="uk-navbar-nav navlink">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active">
+                <a style="color: white;" class="uk-logo" href="/">Drink Hustle</a>
+            </li>
             <li><a href="/events">Events</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/register">Register</a></li>
+            <li>
+                <a href="#">Register</a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="/users/clientRegister">as Client</a></li>
+                        <li><a href="/users/bartenderRegister">as Hustler</a></li>
+                    </ul>
+                </div>
+            </li>
             <li><a href="/login">Login</a></li>
         </ul>
-        <div class="uk-navbar-item">
-        </div>
     </div>
 </nav>
 </body>
