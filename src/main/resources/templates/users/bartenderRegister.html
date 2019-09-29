@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:replace="fragments/header :: main-header('Welcome')" />
-    <link rel="stylesheet" href="/css/register.css" />
+    <link type="text/css" rel="stylesheet" href="/css/register.css" />
 </head>
 <body>
 <div sec:authorize="isAuthenticated()">
@@ -63,8 +63,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script src="js/keys.js"></script>
-<script src="js/filestack.js"></script>
+<script th:src="@{/js/keys.js}"></script>
+<script th:src="@{/js/filestack.js}"></script>
 <script th:src="@{/js/passwordVerification.js}"></script>
 </body>
 </html>
