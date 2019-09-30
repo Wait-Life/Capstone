@@ -1,29 +1,43 @@
 package com.codeup.drinkhustle.Controllers;
+
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 
+import javax.validation.Valid;
+//import com.google.api.client.util.Value;
+
+
+@Controller
 public class TwilioTest {
-    public static final String ACCOUNT_SID = "AC583d503138def878fda30f5b0d7136dc";
-    public static final String AUTH_TOKEN = "28fd720960a43b91d8f80c6c7909428d";
+
+//     Values //
+    @Value("${twilio-acct-sid}")
+    private String twilioSid;
+
+    @Value("${twilio-auth-token}")
+    private String twilioToken;
+
+    // Constructor //
+    public TwilioTest() { }
+
+    // Getters //
+    public String getTwilioSid() { return twilioSid; }
+
+    public String getTwilioToken() { return twilioToken; }
 
 
-    public TwilioTest(String ACCOUNT_SID, String AUTH_TOKEN) { }
-
-    public static String getAccountSid() {
-        return ACCOUNT_SID;
-    }
-
-    public static String getAuthToken() {
-        return AUTH_TOKEN;
-    }
-
+    // Test //
     public static void main(String[] args) {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-        Message message = Message.creator(new PhoneNumber("+12102743221"),
-                new PhoneNumber("15558675309"),
-                "Hello from the other side").create();
+        TwilioTest twilioTest = new TwilioTest();
 
+        Twilio.init(twilioTest.getTwilioSid(), twilioTest.getTwilioToken());
+        Message message = Message.creator(new PhoneNumber("+12102743221"), new PhoneNumber("+12815576961"), "Test success!").create();
+
+        System.out.println(message.getSid());
     }
 }
+
