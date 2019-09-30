@@ -4,13 +4,18 @@ import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeup.drinkhustle.Services.EmailService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -19,14 +24,13 @@ public class EventController {
 
     private final EventRepository eventDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public EventController(EventRepository eventRepository, UserRepository userRepo){
+    public EventController(EventRepository eventRepository, UserRepository userRepo, EmailService emailService){
         this.userDao = userRepo;
         this.eventDao = eventRepository;
+        this.emailService = emailService;
     }
-
-//    @Autowired
-//    private EmailService emailService;
 
     @GetMapping("/events")
     public String index(Model vModel) {
@@ -42,9 +46,18 @@ public class EventController {
         return "events/show";
     }
 
+    @GetMapping("/events/location")
+    public String showloc(@RequestParam(name = "termloc") String termloc, Model viewModel) {
+        List<Event> eventsA = eventDao.searchByAddressLike(termloc);
+        viewModel.addAttribute("events", eventsA);
+        return "events/index";
+    }
+
     @GetMapping("/events/search")
     public String show(@RequestParam(name = "term") String term, Model viewModel) {
-        List<Event> events = eventDao.searchByTitleLike(term);
+        List <Event> events = eventDao.searchByTitleLike(term);
+        List<Event> eventsD = eventDao.searchByDescriptionLike(term);
+        viewModel.addAttribute("events", eventsD);
         viewModel.addAttribute("events", events);
         return "events/index";
     }
@@ -52,6 +65,7 @@ public class EventController {
     @GetMapping("/events/{id}/edit")
     public String edit(@PathVariable long id, Model viewModel) {
         Event event = eventDao.findOne(id);
+        System.out.println(event);
         viewModel.addAttribute("event", event);
         return "events/edit";
     }
@@ -59,15 +73,22 @@ public class EventController {
     @PostMapping("/events/{id}/edit")
     public String update(@PathVariable long id,
                          @RequestParam(name = "title") String title,
-                         @RequestParam(name = "start_time") Date start_time,
-                         @RequestParam(name = "end_time") Date end_time,
+//                         @RequestParam(name = "startTime") String startTime,
+//                         @RequestParam(name = "endTime") String endTime,
+                         @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
                          @RequestParam(name = "description") String description,
-                         Model viewModel) {
+                         @RequestParam(name = "address") String address,
+                         Model viewModel) throws ParseException {
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
+//        Date startDate = dateFormat.parse(startTime);
+//        Date endDate = dateFormat.parse(endTime);
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-        eventToBeUpdated.setStart_time(start_time);
-        eventToBeUpdated.setEnd_time(end_time);
+//        eventToBeUpdated.setStartTime(startDate);
+//        eventToBeUpdated.setEndTime(endDate);
         eventToBeUpdated.setDescription(description);
+        eventToBeUpdated.setAddress(address);
+        eventToBeUpdated.setBartendersNeeded(bartendersNeeded);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
     }
@@ -86,28 +107,45 @@ public class EventController {
 
     @PostMapping("/events/create")
     public String createEvent(
-            @ModelAttribute Event eventPassedIn
-    ) {
-        User userDB = userDao.findOne(1L);
-        eventPassedIn.setUser(userDB);
-
-        Event savedEvent = eventDao.save(eventPassedIn);
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "date") String date,
+            @RequestParam(name = "startTime") String startTime,
+            @RequestParam(name = "endTime") String endTime,
+            @RequestParam(name = "address") String address,
+            @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
+            @RequestParam(name = "description") String description,
+            Model viewModel) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat timeFormat = new SimpleDateFormat("h:mm");
+        Date startDate = dateFormat.parse(date);
+        Date newStartTime = timeFormat.parse(startTime);
+        Date newEndTime = timeFormat.parse(endTime);
+        Event eventToBeCreated = new Event();
+        eventToBeCreated.setTitle(title);
+        eventToBeCreated.setDate(startDate);
+        eventToBeCreated.setStartTime(newStartTime);
+        eventToBeCreated.setEndTime(newEndTime);
+        eventToBeCreated.setAddress(address);
+        eventToBeCreated.setBartendersNeeded(bartendersNeeded);
+        eventToBeCreated.setDescription(description);
+        User userDB = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        eventToBeCreated.setOwner(userDB);
+        Event savedEvent = eventDao.save(eventToBeCreated);
 //        emailService.prepareAndSend(
-//                savedEvent,
-//                "Event created",
-//                String.format("Event with the id %d has been created", savedEvent.getId()));
+////                savedEvent,
+////                "Event created",
+////                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
 
-//    @GetMapping("/profile/{id}")
-//    public String getUserProfile(@PathVariable long id, Model model) {
-//        Iterable<Event> events = eventDao.findAll();
-//        User user = userDao.findById(id);
+
+
+//    Add a bartender to an event
+//    @PostMapping("/events/{id}")
+//    public String addBartenderToEvent(@PathVariable long id, Model vModel) {
 //
-//        try {
-//            User userSession = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        } catch (Exception e){
-//            return ("Error.");
-//        }
 //    }
+
+
+
 }

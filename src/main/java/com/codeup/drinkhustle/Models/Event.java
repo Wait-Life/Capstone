@@ -1,6 +1,6 @@
 package com.codeup.drinkhustle.Models;
-
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -9,23 +9,23 @@ import java.util.List;
 @Table(name = "Events")
 public class Event {
 
-
     @Id @GeneratedValue
     private long id;
 
-    @Column
-    private long owner_id;
+//    @Column(name = "owner_id", insertable = false, updatable = false)
+//    private long ownerId;
 
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date start_time;
+    @Column(nullable = false)
+    private Date date;
 
-    @Column(nullable = false, columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date end_time;
+    @Column(nullable = false, name = "start_time")
+    private Date startTime;
+
+    @Column(nullable = false, name = "end_time")
+    private Date endTime;
 
     @Column(nullable = false)
     private String address;
@@ -36,24 +36,24 @@ public class Event {
     @Column(nullable = false)
     private String description;
 
-    @OneToOne
-    private User clients;
-
     @ManyToOne
-    private User users;
+    private User owner;
 
+    @ManyToMany(mappedBy = "events")
+    private List<User> bartenders;
 
-    public Event(long id, long owner_id, String title, Date start_time, Date end_time, String address, long bartendersNeeded, String description, User clients, User bartenders) {
+    public Event(long id, String title, Date date, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
         this.id = id;
-        this.owner_id = owner_id;
+//        this.ownerId = ownerId;
         this.title = title;
-        this.start_time = start_time;
-        this.end_time = end_time;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.address = address;
         this.bartendersNeeded = bartendersNeeded;
         this.description = description;
-        this.clients = clients;
-        this.users = bartenders;
+        this.owner = owner;
+        this.bartenders = bartenders;
     }
 
 
@@ -63,21 +63,25 @@ public class Event {
 
     public void setId(long id) { this.id = id; }
 
-    public long getOwner_id() { return owner_id; }
-
-    public void setOwner_id(long owner_id) { this.owner_id = owner_id; }
+//    public long getOwnerId() { return ownerId; }
+//
+//    public void setOwnerId(long ownerId) { this.ownerId = ownerId; }
 
     public String getTitle() { return title; }
 
     public void setTitle(String title) { this.title = title; }
 
-    public Date getStart_time() { return start_time; }
+    public Date getDate() { return date; }
 
-    public void setStart_time(Date start_time) { this.start_time = start_time; }
+    public void setDate(Date date) { this.date = date; }
 
-    public Date getEnd_time() { return end_time; }
+    public Date getStartTime() { return startTime; }
 
-    public void setEnd_time(Date end_time) { this.end_time = end_time; }
+    public void setStartTime(Date startTime) { this.startTime = startTime; }
+
+    public Date getEndTime() { return endTime; }
+
+    public void setEndTime(Date endTime) { this.endTime = endTime; }
 
     public String getAddress() { return address; }
 
@@ -91,21 +95,28 @@ public class Event {
 
     public void setDescription(String description) { this.description = description; }
 
-    public User getUsers() {
-        return users;
-    }
+    public User getOwner() { return owner; }
 
-    public void setUsers(User users) {
-        this.users = users;
-    }
+    public void setOwner(User owner) { this.owner = owner; }
 
-    public void setUser(User userDB) { }
+    public List<User> getBartenders() { return bartenders; }
 
-    public User getClients() {
-        return clients;
-    }
+    public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
 
-    public void setClients(User clients) {
-        this.clients = clients;
-    }
+
+
+//    @Override
+//    public String toString() {
+//        return "Event{" +
+//                "id=" + id +
+//                ", title='" + title + '\'' +
+//                ", startTime=" + startTime +
+//                ", endTime=" + endTime +
+//                ", address='" + address + '\'' +
+//                ", bartendersNeeded=" + bartendersNeeded +
+//                ", description='" + description + '\'' +
+//                ", owner=" + owner +
+//                ", bartenders=" + bartenders +
+//                '}';
+//    }
 }

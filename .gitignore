@@ -33,3 +33,7 @@ build/
 ### Application Resources Folder ###
 
 /src/main/resources/application.properties
+
+/src/main/resources/static/js/keys.js
+
+twilio.env

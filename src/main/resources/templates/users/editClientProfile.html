@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Edit My Profile')"/>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
+    <label for="username">Name</label>
+    <input id="username" name="username" type="text" th:field="*{name}"/>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="text" th:field="*{email}" />
+    <label for="phoneNum">Phone Number</label>
+    <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}" />
+    <label for="company">Company</label>
+    <input id="company" name="company" type="text" th:field="*{company}" />
+    <button type="submit" value="submit">Edit</button>
+</form>
+<th:block th:replace="fragments/footer :: myfooter"/>
+</body>
+</html>

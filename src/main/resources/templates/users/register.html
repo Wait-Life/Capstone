@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Welcome')" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<!--<a class="uk-button uk-button-default" href="#modal-overflow" uk-toggle="">Bartender</a>-->
+
+<!--<div id="modal-overflow" uk-modal="">-->
+<!--    <div class="uk-modal-dialog">-->
+
+<!--        <button class="uk-modal-close-default" type="button" uk-close=""></button>-->
+
+<!--        <div class="uk-modal-header">-->
+<!--            <h2 class="uk-modal-title">Register an account to start slingin' drinks!</h2>-->
+<!--        </div>-->
+
+<!--        <div class="uk-modal-body" uk-overflow-auto="">-->
+
+<!--            <form th:action="@{/hustlers/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)">-->
+
+<!--                <label for="username">Name</label>-->
+<!--                <input id="username" th:field="*{name}"/>-->
+<!--                <br/>-->
+<!--                <label for="email">Email</label>-->
+<!--                <input id="email" th:field="*{email}"/>-->
+<!--                <br/>-->
+<!--                <label for="tabc">TABC Certification Number</label>-->
+<!--                <input id="tabc" th:field="*{tabcCert}" />-->
+<!--                <br/>-->
+<!--                <label for="foodhandler">Food Handlers Certification Number</label>-->
+<!--                <input id="foodhandler" th:field="*{foodCert}" />-->
+<!--                <br/>-->
+<!--                <div>-->
+<!--                    <button type="button" id="picker">Upload Profile Photo</button>-->
+<!--                    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--                <label for="password">Password</label>-->
+<!--                <input id="password" type="password" th:field="*{password}"/>-->
+<!--                    <ul class="input-requirements">-->
+<!--                        <li>At least 3 characters long</li>-->
+<!--                    </ul>-->
+<!--                <br/>-->
+<!--                <label for="verifyPassword">Re-enter Password</label>-->
+<!--                <input id="verifyPassword" type="password" name="verifyPassword"/>-->
+<!--                <br/>-->
+<!--                <input type="submit" id="submit" value="Sign me up!"/>-->
+
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<a class="uk-button uk-button-default" href="#modal-overflow2" uk-toggle="">Organizer</a>-->
+
+<!--<div id="modal-overflow2" uk-modal="">-->
+<!--    <div class="uk-modal-dialog">-->
+
+<!--        <button class="uk-modal-close-default" type="button" uk-close=""></button>-->
+
+<!--        <div class="uk-modal-header">-->
+<!--            <h2 class="uk-modal-title">Register an account</h2>-->
+<!--        </div>-->
+
+<!--        <div class="uk-modal-body" uk-overflow-auto="">-->
+
+<!--            <form th:action="@{/clients/register}" th:method="post" th:object="${user}" onsubmit="checkPassword(this)" class="registration">-->
+<!--                <label for="company">Company Name</label>-->
+<!--                <input id="company" th:field="*{company}"/>-->
+<!--                <br/>-->
+<!--                <label for="username">Name</label>-->
+<!--                <input id="clientUsername" th:field="*{name}"/>-->
+<!--                <br/>-->
+<!--                <label for="email">Contact Email</label>-->
+<!--                <input id="clientEmail" th:field="*{email}"/>-->
+<!--                <br/>-->
+<!--                <div>-->
+<!--                    <button type="button" id="picker">Upload Profile Photo</button>-->
+<!--                    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--                <label for="password">Password</label>-->
+<!--                <input id="clientPassword" type="password" th:field="*{password}"/>-->
+<!--                <br/>-->
+<!--                <label for="verifyPassword">Re-enter Password</label>-->
+<!--                <input id="verifyPassword" type="password" name="verifyPassword"/>-->
+<!--                <br/>-->
+<!--                <input type="submit" value="Sign me up!" id="submit"/>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+<th:block th:replace="fragments/footer :: myfooter"/>
+</body>
+</html>

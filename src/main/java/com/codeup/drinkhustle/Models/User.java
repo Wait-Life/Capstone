@@ -24,29 +24,44 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String password;
 
-    @Column(unique = true)
-    private String tabc_cert;
+    @Column(unique = true, name = "tabc_cert")
+    private String tabcCert;
 
-    @Column(unique = true)
-    private String food_cert;
+    @Column(unique = true, name = "food_cert")
+    private String foodCert;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "events_users",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "event_id")}
+            )
     private List<Event> events;
+
+    @Column(name = "photo_url")
+    private String photoUrl;
+
+    @Column(name = "phone_num")
+    private String phoneNum;
 
 
 //    CONSTRUCTOR
-    public User(long id, String name, String company, String email, String password, String tabc_cert, String food_cert, int isClient) {
+
+    public User(long id, String name, String company, String email, String password, String tabcCert, String foodCert, int isClient, String photoUrl, String phoneNum, List <Event> events) {
         this.id = id;
         this.name = name;
         this.company = company;
         this.email = email;
         this.password = password;
-        this.tabc_cert = tabc_cert;
-        this.food_cert = food_cert;
+        this.tabcCert = tabcCert;
+        this.foodCert = foodCert;
         this.isClient = isClient;
+        this.photoUrl = photoUrl;
+        this.events = events;
+        this.phoneNum = phoneNum;
     }
 
 //    COPY CONSTRUCTOR
@@ -56,9 +71,20 @@ public class User {
         company = copy.company;
         email = copy.email;
         password = copy.password;
-        tabc_cert = copy.tabc_cert;
-        food_cert = copy.food_cert;
+        tabcCert = copy.tabcCert;
+        foodCert = copy.foodCert;
         isClient = copy.isClient;
+        photoUrl = copy.photoUrl;
+        events = copy.events;
+        phoneNum = copy.phoneNum;
+    }
+
+    public User(long id, String name, String company, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.email = email;
+        this.password = password;
     }
 
 
@@ -94,17 +120,24 @@ public class User {
 
     public void setPassword(String password) { this.password = password; }
 
-    public String getTabc_cert() { return tabc_cert; }
+    public String getTabcCert() { return tabcCert; }
 
-    public void setTabc_cert(String tabc_cert) { this.tabc_cert = tabc_cert; }
+    public void setTabcCert(String tabcCert) { this.tabcCert = tabcCert; }
 
-    public String getFood_cert() { return food_cert; }
+    public String getFoodCert() { return foodCert; }
 
-    public void setFood_cert(String food_cert) {
-        this.food_cert = food_cert;
+    public void setFoodCert(String foodCert) {
+        this.foodCert = foodCert;
     }
 
+    public String getPhotoUrl() { return photoUrl; }
+
+    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
     public List<Event> getEvents() { return events; }
 
     public void setEvents(List<Event> events) { this.events = events; }
+
+    public String getPhoneNum() { return phoneNum; }
+
+    public void setPhoneNum(String phoneNum) { this.phoneNum = phoneNum; }
 }

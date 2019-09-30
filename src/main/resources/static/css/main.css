@@ -1,0 +1,56 @@
+
+.topcontainer{
+    width: 1440px;
+    height: 768px;
+    background-image: url("../img/capstone.jpg");
+}
+
+.card-panel{
+    height: 350px;
+    width: 350px;
+}
+.main-nav{
+    background-color: rgba(0, 0, 0, .2) !important;
+}
+.main-navhome{
+    background-color: rgba(0, 0, 0, .0) !important;
+}
+.navbutton{
+    margin-top: 27px;
+}
+
+.uk-button-default{
+    border: 0 !important;
+}
+
+
+h5{
+    color: #f25f5c;
+}
+
+.profilePhoto {
+    max-width: 23%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.insidetop{
+    height: 102px;
+}
+.leftside{
+    width: 900px;
+    padding-left: 450px;
+    padding-top: 29px;
+}
+.rightside{
+    padding-left: 120px;
+}
+.uk-navbar-left {
+    background-color: rgba(0, 0, 0, .0) !important;
+}
+
+
+#photo {
+    height: 200px;
+    width: 200px;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('My Profile')" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
+<th:block>
+    <img class="profilePhoto" th:src="${user.photoUrl}"/>
+    <h3>Contact Name: <span th:text="${user.name}"></span></h3>
+    <h3>Contact Email: <span th:text="${user.email}"></span></h3>
+    <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
+    <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
+</th:block>
+
+<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+<th:block th:replace="fragments/footer :: myfooter"/>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Edit Your Edit')"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<!--<form action="" th:action="@{/events/{id}/edit(id=${id})}" method="post" th:object="${event}">-->
+<form th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="post" th:object="${event}">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" th:field="*{title}"/>
+    <!--    <label for="startTime">Start Time</label>-->
+    <!--    <input id="startTime" name="startTime" type="datetime-local" th:field="*{startTime}" />-->
+    <!--    <label for="endTime">End Time</label>-->
+    <!--    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />-->
+    <label for="address">Address</label>
+    <input id="address" name="address" type="text" th:field="*{address}" />
+    <div id='geocoder' class='geocoder'></div>
+    <label for="bartendersNeeded">Number of Bartenders Needed</label>
+    <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}"/>
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" th:field="*{description}" />
+    <!--    <button type="submit" value="submit">Submit</button>-->
+    <!--</form>-->
+<!--    <div>-->
+<!--        <button type="button" id="picker">Update Profile Photo</button>-->
+<!--        <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+<!--    </div>-->
+    <button class=".uk-button-primary">Edit</button>
+</form>
+<form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
+    <button class=".uk-button-danger">Delete</button>
+</form>
+<div id="map"></div>
+<th:block th:replace="fragments/footer :: myfooter"/>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('My Profile')" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+<div class="profiletop">
+<div uk-grid="">
+    <div class="cpleftside uk-width-1-2">
+        <img class="profilePhoto" th:src="${user.photoUrl}"/>
+        <h3><span th:text="${user.name}"></span></h3>
+    </div>
+        <div class="cp2rightside uk-width-1-2">
+        </div>
+</div>
+</div>
+
+
+
+<div uk-grid="" style="border-color:lightblue">
+    <div class="cp2leftside uk-width-1-4">
+        <h3>Company: <span th:text="${user.company}"></span></h3>
+        <h3>Contact Email: <span th:text="${user.email}"></span></h3>
+        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+    </div>
+
+    <div class="cp2center uk-width-1-2" style="background-color: darkblue;">
+        <h3>Created Events</h3>
+        <th:block th:each="event : ${events}">
+            <div class="uk-card uk-card-hover">
+            <p><span th:text="${event.title}"></span></p>
+
+            <p>Start time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+            <p>End time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+            <p>Event location: <span th:text="${event.address}"></span></p>
+            <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
+            <p>Description: <span th:text="${event.description}"></span></p>
+            <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>
+            <form th:action="@{/events/{id}/delete(id=${event.id})}" th:method="POST"><button class="uk-button-danger">Delete</button></form>
+            </div>
+            <br/>
+            <hr/>
+            <br/>
+        </th:block>
+    </div>
+    <div class="cp2rightside uk-width-1-4">
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer :: myfooter"/>
+</body>
+</html>
