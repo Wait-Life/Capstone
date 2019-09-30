@@ -10,6 +10,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+<div class="profiletop">
 <div uk-grid="">
     <div class="cpleftside uk-width-1-2">
         <img class="profilePhoto" th:src="${user.photoUrl}"/>
@@ -17,6 +18,7 @@
     </div>
         <div class="cp2rightside uk-width-1-2">
         </div>
+</div>
 </div>
 
 
