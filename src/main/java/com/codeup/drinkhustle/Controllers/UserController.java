@@ -6,6 +6,7 @@ import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Services.SmsSender;
 import com.twilio.Twilio;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,6 @@ public class UserController {
     private EventRepository eventDao;
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
-    private TwilioTest twilioTest;
     private PhoneNumber originPhoneNumber = new PhoneNumber("+12815576961");
 
     public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
@@ -30,17 +30,13 @@ public class UserController {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
+    //Twilio Ish
+    TwilioTest twilioTest = new TwilioTest();
+    @Value("${twilio-acct-sid}")
+    private String twilioSid;
+    @Value("${twilio-auth-token}")
+    private String twilioToken;
 
-    TwilioTest twilio = new TwilioTest(TwilioTest.ACCOUNT_SID, TwilioTest.AUTH_TOKEN);
-
-
-
-//
-//    @GetMapping("/register")
-//    public String viewClientRegister(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/register";
-//    }
 
     @GetMapping("hustlers/register")
     public String viewBartenderRegistration(Model model) {
@@ -55,8 +51,8 @@ public class UserController {
             user.setIsClient(1);
             userDao.save(user);
             try {
-                Twilio.init(TwilioTest.getAccountSid(), TwilioTest.getAuthToken());
-                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up " + user.getName() + "!").create();
+                Twilio.init(twilioSid, twilioToken);
+                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up !").create();
                 message.getSid();
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
@@ -77,7 +73,7 @@ public class UserController {
         user.setIsClient(0);
         userDao.save(user);
         try {
-            Twilio.init(TwilioTest.getAccountSid(), TwilioTest.getAuthToken());
+            Twilio.init(twilioSid, twilioToken);
             Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up " + user.getName() + "!").create();
             message.getSid();
         } catch (Exception e) {
@@ -156,7 +152,6 @@ public class UserController {
     }
 
 //    VIEW ALL BARTENDERS
-
     @GetMapping("hustlers/bartenders")
     public String viewAllProfiles(Model viewModel){
         Iterable<User> bartenders = userDao.findAll();
