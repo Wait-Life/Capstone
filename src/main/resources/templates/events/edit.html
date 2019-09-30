@@ -31,10 +31,10 @@
     <input type="text" name="description" id="description" th:field="*{description}" />
     <!--    <button type="submit" value="submit">Submit</button>-->
     <!--</form>-->
-    <div>
-        <button type="button" id="picker">Update Profile Photo</button>
-        <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
-    </div>
+<!--    <div>-->
+<!--        <button type="button" id="picker">Update Profile Photo</button>-->
+<!--        <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+<!--    </div>-->
     <button class=".uk-button-primary">Edit</button>
 </form>
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
