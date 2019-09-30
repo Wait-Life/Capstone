@@ -16,5 +16,10 @@ public class HomeController {
         return "about";
     }
 
+    @RequestMapping("/mapbox")
+    public String mapBox() {
+        return "mapboxtest";
+    }
+
 
 }
