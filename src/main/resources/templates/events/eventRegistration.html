@@ -16,11 +16,14 @@
         <label for="title">Event Title</label>
         <input type="text" id="title" th:field="*{title}" />
         <br/>
+        <label for="date">Date</label>
+        <input type="date" id="date" th:field="*{date}" />
+        <br/>
         <label for="start-time">Start Time</label>
-        <input type="datetime-local" id="start-time" th:field="*{startTime}" />
+        <input type="time" id="start-time" th:field="*{startTime}" />
         <br/>
         <label for="endTime">End Time</label>
-        <input type="datetime-local" id="endTime" th:field="*{endTime}" />
+        <input type="time" id="endTime" th:field="*{endTime}" />
         <br/>
         <label for="address">Address</label>
         <input type="text" id="address" th:field="*{address}" />
@@ -33,6 +36,6 @@
         <br/>
         <input type="submit" value="Create Event" />
     </form>
-
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

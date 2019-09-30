@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:replace="fragments/header :: main-header('Register')" />
+    <link type="text/css" rel="stylesheet" href="/css/register.css" />
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
+
+<div class="uk-container" uk-overflow-auto="">
+    <div class="uk-align-center">
+        <h1>Sign Up to View Hustlers!</h1>
+    </div>
+    <form th:action="@{/clients/register}" th:method="post" th:object="${user}">
+        <label for="username">Name</label>
+        <input id="username" th:field="*{name}" minlength="3" type="text" required="required"/>
+        <ul class="input-requirements">
+            <li>Name must be at least 3 characters.</li>
+        </ul>
+        <br/>
+        <label for="email">Email</label>
+        <input id="email" th:field="*{email}" required="required" type="text"/>
+        <ul class="input-requirements">
+            <li>Email must be in email address format.</li>
+        </ul>
+        <br/>
+        <label for="company">Company Name</label>
+        <input type="text" id="company" th:field="*{company}" />
+        <br/>
+        <label for="phoneNum">Phone Number</label>
+        <input id="phoneNum" type="number" th:field="*{phoneNum}" required="required" minlength="10"/>
+        <ul class="input-requirements">
+            <li>Phone Number must not include any special characters.</li>
+            <li>Phone Number must be 10 digits long.</li>
+        </ul>
+        <br/>
+        <label for="password">Password</label>
+        <input id="password" type="password" th:field="*{password}" required="required"/>
+        <ul class="input-requirements">
+            <li>Password must be at least 3 characters long.</li>
+        </ul>
+        <br/>
+        <label for="verifyPassword">Verify Password</label>
+        <input id="verifyPassword" type="password" name="verifyPassword" required="required"/>
+        <ul class="input-requirements">
+            <li>Passwords must match.</li>
+        </ul>
+        <br/>
+        <div>
+            <button type="button" id="picker">Upload Profile Photo</button>
+            <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+        </div>
+        <br/>
+        <input type="submit" id="submit" value="Sign me up!"/>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script th:src="@{/js/keys.js}"></script>
+<script th:src="@{/js/filestack.js}"></script>
+<script th:src="@{/js/passwordVerification.js}"></script>
+</body>
+</html>
