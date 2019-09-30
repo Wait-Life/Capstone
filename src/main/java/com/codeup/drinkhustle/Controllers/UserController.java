@@ -52,12 +52,12 @@ public class UserController {
             userDao.save(user);
             try {
                 Twilio.init(twilioSid, twilioToken);
-                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up !").create();
+                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Welcome to Drink Hustle " + user.getName() + "!").create();
                 message.getSid();
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
             }
-            return "redirect:/";
+            return "redirect:/index";
     }
 
     @GetMapping("clients/register")
@@ -74,7 +74,7 @@ public class UserController {
         userDao.save(user);
         try {
             Twilio.init(twilioSid, twilioToken);
-            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up " + user.getName() + "!").create();
+            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Welcome to Drink Hustle " + user.getCompany() + "!").create();
             message.getSid();
         } catch (Exception e) {
             System.out.println("Something went wrong with Twilio texting");
