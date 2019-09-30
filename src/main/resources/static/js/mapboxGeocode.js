@@ -2,13 +2,13 @@
 $(document).ready(function() {
     mapboxgl.accessToken = mapBoxKey;
 
-    geocode("San Antonio, TX", mapBoxKey).then(function(loc) {
+    geocode("San Antonio, TX", mapBoxKey).then(function(location) {
         let mapOptions = {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             zoom: 15,
             showZoom: true,
-            center: loc
+            center: location
         };
 
         let map = new mapboxgl.Map(mapOptions);
