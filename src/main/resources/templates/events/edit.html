@@ -23,8 +23,8 @@
     <!--    <label for="endTime">End Time</label>-->
     <!--    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />-->
     <label for="address">Address</label>
-<!--    <div id='geocoder' class='geocoder'></div>-->
     <input id="address" name="address" type="text" th:field="*{address}" />
+    <div id='geocoder' class='geocoder'></div>
     <label for="bartendersNeeded">Number of Bartenders Needed</label>
     <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}"/>
     <label for="description">Description</label>
@@ -40,19 +40,8 @@
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
     <button class=".uk-button-danger">Delete</button>
 </form>
+<div id="map"></div>
 <th:block th:replace="fragments/footer :: myfooter"/>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
-<script src="js/keys.js"></script>
-<script src="js/filestack.js"></script>
-<script th:src="@{/js/mapbox.js}"></script>
-<script th:src="@{/js/mapbox-utils.js}"></script>
-<script th:src="@{/js/mapboxGeocode.js}"></script>
 
 </body>
 </html>

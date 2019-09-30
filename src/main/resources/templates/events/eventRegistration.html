@@ -29,8 +29,8 @@
         <input type="time" id="endTime" th:field="*{endTime}" />
         <br/>
         <label for="address">Address</label>
-<!--        <div id='geocoder' class='geocoder'></div>-->
-        <input type="text" id="address" th:field="*{address}" />
+        <div id='geocoder' class='geocoder'></div>
+<!--        <input type="text" id="address" th:field="*{address}" />-->
         <br/>
         <label for="bartendersNeeded">Number of Bartenders Needed</label>
         <input type="number" min="1" max="10" id="bartendersNeeded" th:field="*{bartendersNeeded}" />
@@ -40,14 +40,48 @@
         <br/>
         <input type="submit" value="Create Event" />
     </form>
+<div id="map"></div>
+<!--<form>-->
+<!--    <fieldset class="uk-fieldset">-->
 
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
-<script th:src="@{/js/keys.js}"></script>
-<script th:src="@{/js/mapbox.js}"></script>
-<script th:src="@{/js/mapbox-utils.js}"></script>
-<script th:src="@{/js/mapboxGeocode.js}"></script>
+
+<!--        <legend class="uk-legend">Create an Event</legend>-->
+
+<!--        <div class="uk-margin">-->
+<!--        <label for="title">Event Title</label>-->
+<!--        <input type="text" id="title" th:field="*{title}" />-->
+<!--        </div>-->
+
+<!--        <div class="uk-margin">-->
+<!--        <label for="date">Date</label>-->
+<!--        <input type="date" id="date" th:field="*{date}" />-->
+<!--        </div>-->
+
+<!--        <div class="uk-margin">-->
+<!--        <label for="start-time">Start Time</label>-->
+<!--        <input type="time" id="start-time" th:field="*{startTime}" />-->
+<!--        </div>-->
+
+<!--        <div class="uk-margin">-->
+<!--        <label for="endTime">End Time</label>-->
+<!--        <input type="time" id="endTime" th:field="*{endTime}" />-->
+<!--        </div>-->
+
+<!--        <div class="uk-margin">-->
+<!--            <label for="bartendersNeeded">Number of Bartenders Needed</label>-->
+<!--            <input type="number" min="1" max="10" id="bartendersNeeded" th:field="*{bartendersNeeded}" />-->
+<!--        </div>-->
+
+<!--        <div class="uk-margin">-->
+<!--            <label for="description">Event Description</label>-->
+<!--            <input type="text" id="description" th:field="*{description}" />-->
+<!--        </div>-->
+
+
+<!--    </fieldset>-->
+<!--</form>-->
+
 <th:block th:replace="fragments/footer :: myfooter"/>
+
 </body>
 </html>
