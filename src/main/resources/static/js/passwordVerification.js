@@ -70,6 +70,26 @@ var phoneNumValidityChecks = [
 	}
 ]
 
+var tabcValidityChecks = [
+	{
+		isInvalid: function (input) {
+			return input.value.match(/[a-z]/g);
+		},
+		invalidityMessage: 'TABC must only contain digits.',
+		element: document.querySelector('label[for="tabc"].input-requirements li:nth-child(1)')
+	}
+]
+
+var foodHandlersValidityChecks = [
+	{
+		isInvalid: function (input) {
+			return input.value.match(/[a-z]/g);
+		},
+		invalidityMessage: 'Food Handlers must only contain digits.',
+		element: document.querySelector('label[for="foodhandler"].input-requirements li:nth-child(1)')
+	}
+]
+
 var passwordValidityChecks = [
 	{
 		isInvalid: function (input) {
@@ -104,6 +124,8 @@ function checkInput(input) {
 var nameInput = document.getElementById('username');
 var emailInput = document.getElementById('email');
 var phoneNumInput = document.getElementById('phoneNum');
+var tabcInput = document.getElementById('tabc');
+var foodHandlersInput = document.getElementById('foodhandler');
 var passwordInput = document.getElementById('password');
 var verifyPasswordInput = document.getElementById('verifyPassword');
 
@@ -115,6 +137,12 @@ emailInput.CustomValidation.validityChecks = emailValidityChecks;
 
 phoneNumInput.CustomValidation = new CustomValidation();
 phoneNumInput.CustomValidation.validityChecks = phoneNumValidityChecks;
+
+tabcInput.CustomValidation = new CustomValidation();
+tabcInput.CustomValidation.validityChecks = tabcValidityChecks;
+
+foodHandlersInput.CustomValidation = new CustomValidation();
+foodHandlersInput.CustomValidation.validityChecks = foodHandlersValidityChecks;
 
 passwordInput.CustomValidation = new CustomValidation();
 passwordInput.CustomValidation.validityChecks = passwordValidityChecks;
