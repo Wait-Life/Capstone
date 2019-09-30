@@ -57,7 +57,7 @@ public class UserController {
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
             }
-            return "redirect:/index";
+            return "redirect:/";
     }
 
     @GetMapping("clients/register")
