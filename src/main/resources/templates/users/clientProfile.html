@@ -13,6 +13,7 @@
 
 
 <th:block>
+    <img class="profilePhoto" th:src="${user.photoUrl}"/>
     <h3>Company: <span th:text="${user.company}"></span></h3>
     <h3>Contact Name: <span th:text="${user.name}"></span></h3>
     <h3>Contact Email: <span th:text="${user.email}"></span></h3>

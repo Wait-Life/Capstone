@@ -28,7 +28,7 @@ h5{
     color: #f25f5c;
 }
 
-canvas, img, video {
+.profilePhoto {
     max-width: 23%;
     height: auto;
     box-sizing: border-box;
