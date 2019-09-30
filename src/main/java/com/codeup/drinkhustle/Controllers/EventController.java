@@ -137,4 +137,15 @@ public class EventController {
 ////                String.format("Event with the id %d has been created", savedEvent.getId()));
         return "redirect:/events/" + savedEvent.getId();
     }
+
+
+
+//    Add a bartender to an event
+//    @PostMapping("/events/{id}")
+//    public String addBartenderToEvent(@PathVariable long id, Model vModel) {
+//
+//    }
+
+
+
 }
