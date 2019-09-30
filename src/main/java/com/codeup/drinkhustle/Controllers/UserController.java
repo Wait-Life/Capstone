@@ -4,17 +4,15 @@ import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Repos.EventRepository;
 import com.codeup.drinkhustle.Repos.UserRepository;
-import com.codeup.drinkhustle.Services.SmsSender;
 import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class UserController {
     private EventRepository eventDao;
     private UserRepository userDao;
     private PasswordEncoder passwordEncoder;
-    private PhoneNumber originPhoneNumber = new PhoneNumber("+12815576961");
+//    private PhoneNumber originPhoneNumber = new PhoneNumber("+12815576961");
 
     public UserController(EventRepository eventDao, UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.eventDao = eventDao;
@@ -36,6 +34,8 @@ public class UserController {
     private String twilioSid;
     @Value("${twilio-auth-token}")
     private String twilioToken;
+    @Value("${origin-phone-number}")
+    private PhoneNumber originPhoneNumber;
 
 
     @GetMapping("hustlers/register")
@@ -57,7 +57,7 @@ public class UserController {
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
             }
-            return "redirect:/index";
+            return "redirect:/";
     }
 
     @GetMapping("clients/register")
