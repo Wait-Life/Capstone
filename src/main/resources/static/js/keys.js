@@ -1,7 +1,6 @@
 var fsKey = 'AiliJZQ5oTTaLvOkVthAgz';
 var mapBoxKey = 'pk.eyJ1IjoiYWxpY2lhbW9uc2liYWlzIiwiYSI6ImNqemVqMWZoMjAyeWIzbGxrZWtzdTd1MXYifQ.cayJDxxqrvlLlBNaQYCsVw';
 var fBKey = '413668279352778';
-
 // SID//API:  SK93270ed8dfcc39fb0b0546a3b6469be1;
 // SECRET: Ccby76RTXUrpDO0eKTHJuXYwmjtt1yYN;
 

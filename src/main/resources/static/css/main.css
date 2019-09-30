@@ -1,4 +1,3 @@
-
 .topcontainer{
     width: 1440px;
     height: 768px;
@@ -28,7 +27,7 @@ h5{
     color: #f25f5c;
 }
 
-canvas, img, video {
+.profilePhoto {
     max-width: 23%;
     height: auto;
     box-sizing: border-box;

@@ -1,3 +1,4 @@
+
 package com.codeup.drinkhustle.Controllers;
 
 import com.codeup.drinkhustle.Models.Event;
@@ -31,6 +32,8 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    TwilioTest twilio = new TwilioTest(TwilioTest.ACCOUNT_SID, TwilioTest.AUTH_TOKEN);
+
 
 
 //
@@ -48,17 +51,18 @@ public class UserController {
 
     @PostMapping("hustlers/register")
     public String registerUser(@ModelAttribute User user) {
-            String hash = passwordEncoder.encode(user.getPassword());
-            user.setPassword(hash);
-            user.setIsClient(1);
-            userDao.save(user);
-            try {
-                Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
-                message.getSid();
-            } catch (Exception e) {
-                System.out.println("Something went wrong with Twilio texting");
-            }
-            return "redirect:/";
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        user.setIsClient(1);
+        userDao.save(user);
+        try {
+            Twilio.init(TwilioTest.getAccountSid(), TwilioTest.getAuthToken());
+            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up " + user.getName() + "!").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio texting");
+        }
+        return "redirect:/";
     }
 
     @GetMapping("clients/register")
@@ -74,7 +78,8 @@ public class UserController {
         user.setIsClient(0);
         userDao.save(user);
         try {
-            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up!").create();
+            Twilio.init(TwilioTest.getAccountSid(), TwilioTest.getAuthToken());
+            Message message = Message.creator(new PhoneNumber("+1" + user.getPhoneNum()), originPhoneNumber, "Thanks for signing up " + user.getName() + "!").create();
             message.getSid();
         } catch (Exception e) {
             System.out.println("Something went wrong with Twilio texting");
@@ -141,7 +146,7 @@ public class UserController {
         return "users/bartenderProfile";
     }
 
-//    SHOW CLIENT PROFILE
+    //    SHOW CLIENT PROFILE
     @GetMapping("client/profile")
     public String showClientProfile(Model vModel){
         User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());

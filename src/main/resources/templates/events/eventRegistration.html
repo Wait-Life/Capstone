@@ -2,6 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:replace="fragments/header :: main-header('Create an Event')"/>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
+    <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
 </head>
 <body>
 <div sec:authorize="isAuthenticated()">
@@ -26,6 +29,7 @@
         <input type="time" id="endTime" th:field="*{endTime}" />
         <br/>
         <label for="address">Address</label>
+<!--        <div id='geocoder' class='geocoder'></div>-->
         <input type="text" id="address" th:field="*{address}" />
         <br/>
         <label for="bartendersNeeded">Number of Bartenders Needed</label>
@@ -36,6 +40,17 @@
         <br/>
         <input type="submit" value="Create Event" />
     </form>
+<<<<<<< HEAD
+=======
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.js" integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+<script th:src="@{/js/keys.js}"></script>
+<script th:src="@{/js/mapbox.js}"></script>
+<script th:src="@{/js/mapbox-utils.js}"></script>
+<script th:src="@{/js/mapboxGeocode.js}"></script>
+>>>>>>> 0a62eced67dc3c1dfac11e4038d3000abba8d5a0
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
