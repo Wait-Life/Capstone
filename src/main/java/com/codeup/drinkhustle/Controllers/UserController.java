@@ -31,7 +31,6 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    TwilioTest twilio = new TwilioTest(TwilioTest.ACCOUNT_SID, TwilioTest.AUTH_TOKEN);
 
 
 
