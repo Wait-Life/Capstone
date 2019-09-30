@@ -30,20 +30,13 @@ public class UserController {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
     }
-
+    //Twilio Ish
     TwilioTest twilioTest = new TwilioTest();
     @Value("${twilio-acct-sid}")
     private String twilioSid;
     @Value("${twilio-auth-token}")
     private String twilioToken;
 
-
-//
-//    @GetMapping("/register")
-//    public String viewClientRegister(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/register";
-//    }
 
     @GetMapping("hustlers/register")
     public String viewBartenderRegistration(Model model) {
@@ -159,7 +152,6 @@ public class UserController {
     }
 
 //    VIEW ALL BARTENDERS
-
     @GetMapping("hustlers/bartenders")
     public String viewAllProfiles(Model viewModel){
         Iterable<User> bartenders = userDao.findAll();
