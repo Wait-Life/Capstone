@@ -4,7 +4,7 @@ window.fbAsyncInit = function () {
 	FB.init({
 		appId: fBKey,
 		autoLogAppEvents: true,
-		xfbml: true,
+		// xfbml: true,
 		version: 'v4.0'
 	});
 	FB.login(function (response) {

@@ -7,7 +7,7 @@
 </head>
 <body id="index-body">
 <script th:src="@{/js/fbSignIn.js}"></script>
-<script async="async" defer="defer" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script async="async" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <!--<div id="fb-root"></div>-->
 <!--<script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=413668279352778&autoLogAppEvents=1"></script>-->
 <div sec:authorize="isAuthenticated()">
@@ -41,9 +41,6 @@
         <button class=".uk-button-primary" type="submit" name="action">Submit</button>
     </form>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-<script th:src="@{/js/keys.js}"></script>
+<th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
