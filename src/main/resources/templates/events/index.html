@@ -26,7 +26,6 @@
                 <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
                 <h4>Title: <span th:text="${event.title}"></span></h4>
                 <p>Address: <span th:text="${event.address}"></span></p>
-                <button th:if="${#authentication.principal.isClient} == ${'1'}" th:type="submit" id="gigRequest">Request This Gig</button>
             </div>
         </li>
     </ul>
