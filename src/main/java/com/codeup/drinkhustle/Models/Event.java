@@ -14,9 +14,6 @@ public class Event {
     @Id @GeneratedValue
     private long id;
 
-//    @Column(name = "owner_id", insertable = false, updatable = false)
-//    private long ownerId;
-
     @Column(nullable = false)
     private String title;
 
@@ -51,7 +48,6 @@ public class Event {
 
     public Event(long id, String title, Date date, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
         this.id = id;
-//        this.ownerId = ownerId;
         this.title = title;
         this.date = date;
         this.startTime = startTime;
@@ -69,10 +65,6 @@ public class Event {
     public long getId() { return id; }
 
     public void setId(long id) { this.id = id; }
-
-//    public long getOwnerId() { return ownerId; }
-//
-//    public void setOwnerId(long ownerId) { this.ownerId = ownerId; }
 
     public String getTitle() { return title; }
 
