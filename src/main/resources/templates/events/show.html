@@ -22,6 +22,8 @@
 <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
 <p>Description: <span th:text="${event.description}"></span></p>
 
+<a th:href="@{'/events/request/' + ${event.id}}">Request to Work Event</a>
+
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js'></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.1/mapbox-gl-geocoder.min.js'></script>
 <script th:src="@{/js/keys.js}"></script>

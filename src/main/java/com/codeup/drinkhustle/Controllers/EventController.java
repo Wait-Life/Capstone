@@ -40,7 +40,7 @@ public class EventController {
     }
 
     @GetMapping("/events/{id}")
-    public String show(@PathVariable long id, Model viewModel) {
+    public String showIndividualEvent(@PathVariable long id, Model viewModel) {
         Event event = eventDao.findOne(id);
         viewModel.addAttribute("event", event);
         return "events/show";
@@ -141,11 +141,14 @@ public class EventController {
 
 
 //    Add a bartender to an event
-//    @PostMapping("/events/{id}")
-//    public String addBartenderToEvent(@PathVariable long id, Model vModel) {
-//
-//    }
-
-
-
+    @GetMapping("/events/request/{id}")
+    public String addBartenderToEvent(@PathVariable long id, Model vModel) {
+        User user = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        vModel.addAttribute("user", user);
+        Event event = eventDao.findOne(id);
+        System.out.println("Hey this code ran");
+        event.addBartender(user);
+        eventDao.save(event);
+        return "redirect:/events/" + id;
+    }
 }
