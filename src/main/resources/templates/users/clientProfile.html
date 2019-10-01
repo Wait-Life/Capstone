@@ -10,7 +10,6 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
 <div uk-grid="">
     <div class="cpleftside uk-width-1-2" style="background: lightblue;">
         <img class="profilePhoto" th:src="${user.photoUrl}"/>
@@ -65,10 +64,10 @@
 
 
         <div class="cprightside uk-width-1-2">
-           <div class="cprighttop" style="background: lightblue;">
-           </div>
+            <div class="uk-background-fixed uk-background-center-center uk-height-small" style="background-image: url(/img/drinkbg.jpg); width: 100%">
+                <h2 style="color:white;">Created Events</h2>
+            </div>
             <div class="cprightbottom">
-                <h3>Created Events</h3>
                 <th:block th:each="event : ${events}">
                     <div class="uk-card uk-card-hover">
                         <p><span th:text="${event.title}"></span></p>
