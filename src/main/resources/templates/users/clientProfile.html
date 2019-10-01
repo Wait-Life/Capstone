@@ -26,6 +26,20 @@
 
                 <button class="uk-offcanvas-close" type="button" uk-close=""></button>
 
+    <div class="cp2center uk-width-1-2" style="background-color: darkblue;">
+        <h3>Created Events</h3>
+        <th:block th:each="event : ${events}">
+            <div class="uk-card uk-card-hover">
+            <p><span th:text="${event.title}"></span></p>
+            <p>Start time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+            <p>End time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>
+            <p>Event location: <span th:text="${event.address}"></span></p>
+            <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
+            <p>Description: <span th:text="${event.description}"></span></p>
+            <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>
+            <form th:action="@{/events/{id}/delete(id=${event.id})}" th:method="POST"><button class="uk-button-danger">Delete</button></form>
+            <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">View Applied Bartenders</a>
+
                 <h3>Edit Profile</h3>
 
                 <form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
