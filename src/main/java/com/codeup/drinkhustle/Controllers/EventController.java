@@ -26,7 +26,7 @@ public class EventController {
     private final UserRepository userDao;
     private final EmailService emailService;
 
-    public EventController(EventRepository eventRepository, UserRepository userRepo, EmailService emailService){
+    public EventController(EventRepository eventRepository, UserRepository userRepo, EmailService emailService) {
         this.userDao = userRepo;
         this.eventDao = eventRepository;
         this.emailService = emailService;
@@ -55,7 +55,7 @@ public class EventController {
 
     @GetMapping("/events/search")
     public String show(@RequestParam(name = "term") String term, Model viewModel) {
-        List <Event> events = eventDao.searchByTitleLike(term);
+        List<Event> events = eventDao.searchByTitleLike(term);
         List<Event> eventsD = eventDao.searchByDescriptionLike(term);
         viewModel.addAttribute("events", eventsD);
         viewModel.addAttribute("events", events);
@@ -94,7 +94,7 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/delete")
-    public String delete(@PathVariable long id){
+    public String delete(@PathVariable long id) {
         eventDao.delete(id);
         return "redirect:/events";
     }
@@ -135,13 +135,12 @@ public class EventController {
 ////                savedEvent,
 ////                "Event created",
 ////                String.format("Event with the id %d has been created", savedEvent.getId()));
-          return  "redirect:/client/profile";
+        return "redirect:/client/profile";
 //        return "redirect:/events/" + savedEvent.getId();
     }
 
 
-
-//    Add a bartender to an event
+    //    Add a bartender to an event
     @GetMapping("/events/request/{id}")
     public String addBartenderToEvent(@PathVariable long id, Model vModel) {
         User user = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
@@ -152,4 +151,14 @@ public class EventController {
         eventDao.save(event);
         return "redirect:/events/";
     }
+
+//
+//    @GetMapping("events/{id}/appliedBartenders")
+//    public String showAppliedBartenders(@ PathVariable long id, Model vModel) {
+//        Event event
+//        Iterable<User> bartenders = userDao.findAll();
+//        vModel.addAttribute("bartenders", bartenders);
+//        return "events/appliedBartenders";
+//    }
+
 }
