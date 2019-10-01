@@ -57,7 +57,7 @@ public class UserController {
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
             }
-            return "redirect:/";
+            return "redirect:/login";
     }
 
     @GetMapping("clients/register")
@@ -79,7 +79,7 @@ public class UserController {
         } catch (Exception e) {
             System.out.println("Something went wrong with Twilio texting");
         }
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     //    EDIT CLIENTS
