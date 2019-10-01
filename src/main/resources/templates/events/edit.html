@@ -22,9 +22,10 @@
     <!--    <input id="startTime" name="startTime" type="datetime-local" th:field="*{startTime}" />-->
     <!--    <label for="endTime">End Time</label>-->
     <!--    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />-->
-    <label for="address">Address</label>
-    <input id="address" name="address" type="text" th:field="*{address}" />
+<!--    <label for="address">Address</label>-->
+    <p>Current Address: <span th:text="${event.address}" id="address"></span></p>
     <div id='geocoder' class='geocoder'></div>
+
     <label for="bartendersNeeded">Number of Bartenders Needed</label>
     <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}"/>
     <label for="description">Description</label>
