@@ -16,29 +16,8 @@
         <h3><span th:text="${user.name}"></span></h3>
         <h3>Company: <span th:text="${user.company}"></span></h3>
         <h3>Contact Email: <span th:text="${user.email}"></span></h3>
-        <!--        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
-        ​
-        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-reveal">Edit Profile
-       </button>
-
-        <div id="offcanvas-reveal" uk-offcanvas="mode: reveal; overlay: true">
-            <div class="uk-offcanvas-bar">
-                <button class="uk-offcanvas-close" type="button" uk-close=""></button>
-                ​
-                <form th:action="@{'/client/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
-                    <label for="username">Name</label>
-                    <input id="username" name="username" type="text" th:field="*{name}"/><br/>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="text" th:field="*{email}"/><br/>
-                    <label for="phoneNum">Phone Number</label>
-                    <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}"/><br/>
-                    <label for="company">Company</label>
-                    <input id="company" name="company" type="text" th:field="*{company}"/><br/>
-                    <button type="submit" value="submit">Edit</button>
-                </form>
-            </div>
+                <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
     </div>
-</div>
 
 
 <!--            <div class="cprightside uk-width-1-2">-->
@@ -83,6 +62,7 @@
             </div>
         </div>
     </div>
+
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

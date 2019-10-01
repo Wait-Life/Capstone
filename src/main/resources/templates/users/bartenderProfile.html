@@ -21,31 +21,7 @@
     <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
     <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
-
-    <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-reveal">Edit Profile</button>
-
-    <div id="offcanvas-reveal" uk-offcanvas="mode: reveal; overlay: true">
-        <div class="uk-offcanvas-bar">
-
-            <button class="uk-offcanvas-close" type="button" uk-close=""></button>
-
-            <h3>Edit Profile</h3>
-
-            <form th:action="@{'/hustlers/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
-                <label for="username">Name</label>
-                <input id="username" name="username" type="text" th:field="*{name}"/><br/>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="text" th:field="*{email}" /><br/>
-                <label for="phoneNum">Phone Number</label>
-                <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}"/><br/>
-                <label for="tabcCert">TABC Certification Number</label>
-                <input id="tabcCert" name="tabcCert" type="text" th:field="*{tabcCert}" /><br/>
-                <label for="foodCert">Food Handlers Certification Number</label>
-                <input id="foodCert" name="foodCert" type="text" th:field="*{foodCert}" /><br/>
-                <button type="submit" value="submit">Edit</button>
-            </form>
-
-        </div>
+    <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
     </div>
 
 </div>
@@ -55,7 +31,7 @@
         <div class="cprightbottom">
         </div>
     </div>
-</div>
+
 <!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
