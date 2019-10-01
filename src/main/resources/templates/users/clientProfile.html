@@ -16,29 +16,8 @@
         <h3><span th:text="${user.name}"></span></h3>
         <h3>Company: <span th:text="${user.company}"></span></h3>
         <h3>Contact Email: <span th:text="${user.email}"></span></h3>
-        <!--        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
-        ​
-        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-reveal">Edit Profile
-       </button>
-
-        <div id="offcanvas-reveal" uk-offcanvas="mode: reveal; overlay: true">
-            <div class="uk-offcanvas-bar">
-                <button class="uk-offcanvas-close" type="button" uk-close=""></button>
-                ​
-                <form th:action="@{'/client/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
-                    <label for="username">Name</label>
-                    <input id="username" name="username" type="text" th:field="*{name}"/><br/>
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="text" th:field="*{email}"/><br/>
-                    <label for="phoneNum">Phone Number</label>
-                    <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}"/><br/>
-                    <label for="company">Company</label>
-                    <input id="company" name="company" type="text" th:field="*{company}"/><br/>
-                    <button type="submit" value="submit">Edit</button>
-                </form>
-            </div>
+                <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
     </div>
-</div>
 
 
 <!--            <div class="cprightside uk-width-1-2">-->
@@ -66,7 +45,6 @@
                 <th:block th:each="event : ${events}">
                     <div class="uk-card uk-card-hover">
                         <p><span th:text="${event.title}"></span></p>
-
                         <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
                         <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
                         <p>Event location: <span th:text="${event.address}"></span></p>
@@ -74,12 +52,13 @@
                         <p>Description: <span th:text="${event.description}"></span></p>
                         <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>
                         <form th:action="@{/events/{id}/delete(id=${event.id})}" th:method="POST"><button class="uk-button-danger">Delete</button></form>
-                        <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">View Applied Bartenders</a>
+                        <a th:href="@{'/events/appliedbartenders/' + ${event.id}}" class="uk-button-primary">View Applied Bartenders</a>
                     </div>
                 </th:block>
             </div>
         </div>
     </div>
+
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
