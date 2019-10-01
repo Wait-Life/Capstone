@@ -16,13 +16,15 @@
     <input id="username" name="username" type="text" th:field="*{name}"/>
     <label for="email">Email</label>
     <input id="email" name="email" type="text" th:field="*{email}" />
+    <label for="phoneNum">Phone Number</label>
+    <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}" />
     <label for="tabcCert">TABC Certification Number</label>
     <input id="tabcCert" name="tabcCert" type="text" th:field="*{tabcCert}" />
     <label for="foodCert">Food Handlers Certification Number</label>
     <input id="foodCert" name="foodCert" type="text" th:field="*{foodCert}" />
-    <img class="profilePhoto" th:src="${user.photoUrl}"/>
+<!--    <img class="profilePhoto" th:src="${user.photoUrl}"/>-->
     <button type="button" id="picker">Change Profile Photo</button>
-    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+    <input type="hidden" id="file" name="file" th:field="*{photoUrl}" />
     <button type="submit" value="submit">Edit</button>
 </form>
 <th:block th:replace="fragments/footer :: myfooter"/>
