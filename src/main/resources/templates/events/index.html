@@ -23,7 +23,7 @@
         <th:block th:each="event : ${events}">
         <li data-th-attr="data-date=${#calendars.format(event.date, 'MM-dd-yyyy')}">
             <div class="uk-card uk-card-default uk-card-body">
-                <p><span th:text="${#calendars.format(event.date, 'MM / dd')}"></span></p>
+                <p><span th:text="${#calendars.format(event.date, 'MM / dd / yyyy')}"></span></p>
                 <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
                 <h4>Title: <span th:text="${event.title}"></span></h4>
                 <p>Address: <span th:text="${event.address}"></span></p>

@@ -1,4 +1,6 @@
-.mapboxgl-ctrl-geocoder{ min-width:100%; }
+.mapboxgl-ctrl-geocoder {
+    width: 33.33%;
+}
 
 #map {
     width: 33.33%;
