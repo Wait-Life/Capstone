@@ -57,7 +57,7 @@ public class UserController {
             } catch (Exception e) {
                 System.out.println("Something went wrong with Twilio texting");
             }
-            return "redirect:/";
+            return "redirect:/login";
     }
 
     @GetMapping("clients/register")
@@ -79,7 +79,7 @@ public class UserController {
         } catch (Exception e) {
             System.out.println("Something went wrong with Twilio texting");
         }
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     //    EDIT CLIENTS
@@ -96,12 +96,14 @@ public class UserController {
                                     @RequestParam(name="email") String email,
                                     @RequestParam(name="name") String name,
                                     @RequestParam(name="company") String company,
-                                    @RequestParam(name = "phoneNum") String phoneNum){
+                                    @RequestParam(name = "phoneNum") String phoneNum,
+                                    @RequestParam(name = "photoUrl") String photoUrl){
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
         updateUser.setName(name);
         updateUser.setCompany(company);
         updateUser.setPhoneNum(phoneNum);
+        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
         return ("redirect:/client/profile/");
     }
@@ -122,6 +124,7 @@ public class UserController {
                                        @RequestParam(name = "tabcCert") String tabcCert,
                                        @RequestParam(name = "foodCert") String foodCert,
                                        @RequestParam(name = "phoneNum") String phoneNum,
+                                       @RequestParam(name = "photoUrl") String photoUrl,
                                        Model viewModel) {
         User updateUser = userDao.findOne(id);
         updateUser.setEmail(email);
@@ -129,6 +132,7 @@ public class UserController {
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         updateUser.setPhoneNum(phoneNum);
+        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
         return "redirect:/hustlers/profile/";
     }

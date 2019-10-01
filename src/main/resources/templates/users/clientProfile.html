@@ -16,17 +16,16 @@
         <h3><span th:text="${user.name}"></span></h3>
         <h3>Company: <span th:text="${user.company}"></span></h3>
         <h3>Contact Email: <span th:text="${user.email}"></span></h3>
-<!--        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
-
+        <!--        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
+        ​
         <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-reveal">Edit Profile</button>
-
+        ​
         <div id="offcanvas-reveal" uk-offcanvas="mode: reveal; overlay: true">
-            <div class="uk-offcanvas-bar">
-
+            <div class="uk-offcanvas-bar
                 <button class="uk-offcanvas-close" type="button" uk-close=""></button>
-
+                ​
                 <h3>Edit Profile</h3>
-
+                ​
                 <form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
                     <label for="username">Name</label>
                     <input id="username" name="username" type="text" th:field="*{name}"/><br/>
@@ -82,14 +81,9 @@
                     </div>
                 </th:block>
             </div>
+
     </div>
 </div>
-
-
-
-
-
-
 
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>

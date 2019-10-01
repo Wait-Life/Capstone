@@ -135,7 +135,8 @@ public class EventController {
 ////                savedEvent,
 ////                "Event created",
 ////                String.format("Event with the id %d has been created", savedEvent.getId()));
-        return "redirect:/events/" + savedEvent.getId();
+          return  "redirect:/client/profile";
+//        return "redirect:/events/" + savedEvent.getId();
     }
 
 
@@ -149,6 +150,6 @@ public class EventController {
         System.out.println("Hey this code ran");
         event.addBartender(user);
         eventDao.save(event);
-        return "redirect:/events/" + id;
+        return "redirect:/events/";
     }
 }
