@@ -20,6 +20,9 @@
     <input id="tabcCert" name="tabcCert" type="text" th:field="*{tabcCert}" />
     <label for="foodCert">Food Handlers Certification Number</label>
     <input id="foodCert" name="foodCert" type="text" th:field="*{foodCert}" />
+    <img class="profilePhoto" th:src="${user.photoUrl}"/>
+    <button type="button" id="picker">Change Profile Photo</button>
+    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
     <button type="submit" value="submit">Edit</button>
 </form>
 <th:block th:replace="fragments/footer :: myfooter"/>
