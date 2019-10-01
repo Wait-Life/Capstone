@@ -18,15 +18,14 @@
         <h3>Contact Email: <span th:text="${user.email}"></span></h3>
         <!--        <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
         ​
-        <button class="uk-button uk-button-default uk-margin-small-right" type="button"
-                uk-toggle="target: #offcanvas-reveal">Edit Profile
-        </button>
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-reveal">Edit Profile
+       </button>
 
         <div id="offcanvas-reveal" uk-offcanvas="mode: reveal; overlay: true">
             <div class="uk-offcanvas-bar">
                 <button class="uk-offcanvas-close" type="button" uk-close=""></button>
                 ​
-                <form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
+                <form th:action="@{'/client/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
                     <label for="username">Name</label>
                     <input id="username" name="username" type="text" th:field="*{name}"/><br/>
                     <label for="email">Email</label>
@@ -38,7 +37,6 @@
                     <button type="submit" value="submit">Edit</button>
                 </form>
             </div>
-        </div>
     </div>
 </div>
 
@@ -82,6 +80,7 @@
                     </div>
                 </th:block>
             </div>
+        </div>
     </div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
