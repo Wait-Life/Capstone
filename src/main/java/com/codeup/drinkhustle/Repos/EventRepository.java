@@ -29,7 +29,4 @@ public interface EventRepository extends CrudRepository <Event, Long> {
 
     Iterable<Event> findByOwner(User owner);
 
-
-
-
 }

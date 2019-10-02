@@ -168,19 +168,16 @@ public class EventController {
         return "redirect:/events/";
     }
 
-    @PostMapping("/events/appliedbartenders/{id}")
-    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
-        Event event = eventDao.findOne(id);
-        User user = userDao.
-
-    }
+//    @PostMapping("/events/appliedbartenders/{id}")
+//    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
+//        eventDao.delete();
+//    }
 
 
     @GetMapping("events/appliedbartenders/{id}")
     public String showAppliedBartenders(@PathVariable long id, Model vModel) {
         Event event = eventDao.findOne(id);
         Iterable<User> bartenders = userDao.findAll();
-//        vModel.addAttribute("bartenders", bartenders);
         vModel.addAttribute("event", event);
         System.out.println(bartenders);
         return "events/appliedBartenders";
