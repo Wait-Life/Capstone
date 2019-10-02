@@ -1,4 +1,6 @@
 package com.codeup.drinkhustle.Models;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -6,14 +8,11 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Events")
+@Table(name = "events")
 public class Event {
 
     @Id @GeneratedValue
     private long id;
-
-//    @Column(name = "owner_id", insertable = false, updatable = false)
-//    private long ownerId;
 
     @Column(nullable = false)
     private String title;
@@ -39,12 +38,16 @@ public class Event {
     @ManyToOne
     private User owner;
 
-    @ManyToMany(mappedBy = "events")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "events_bartenders",
+            joinColumns = {@JoinColumn(name = "event_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
     private List<User> bartenders;
 
     public Event(long id, String title, Date date, Date startTime, Date endTime, String address, long bartendersNeeded, String description, User owner, List<User> bartenders) {
         this.id = id;
-//        this.ownerId = ownerId;
         this.title = title;
         this.date = date;
         this.startTime = startTime;
@@ -62,10 +65,6 @@ public class Event {
     public long getId() { return id; }
 
     public void setId(long id) { this.id = id; }
-
-//    public long getOwnerId() { return ownerId; }
-//
-//    public void setOwnerId(long ownerId) { this.ownerId = ownerId; }
 
     public String getTitle() { return title; }
 
@@ -102,6 +101,8 @@ public class Event {
     public List<User> getBartenders() { return bartenders; }
 
     public void setBartenders(List<User> bartenders) { this.bartenders = bartenders; }
+
+    public void addBartender(User bartender) { this.bartenders.add(bartender); }
 
 
 

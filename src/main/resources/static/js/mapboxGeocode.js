@@ -1,6 +1,10 @@
 "use strict";
 $(document).ready(function() {
+    // let mapBoxKey = $('#mapBoxKey').val();
+
     mapboxgl.accessToken = mapBoxKey;
+    // let eventLocation = $('#address').text();
+
 
     geocode("San Antonio, TX", mapBoxKey).then(function(location) {
         let mapOptions = {
@@ -11,7 +15,12 @@ $(document).ready(function() {
             center: location
         };
 
+
         let map = new mapboxgl.Map(mapOptions);
+
+        // let marker = new mapboxgl.Marker()
+        //     .setLngLat(location)
+        //     .addTo(map);
 
         map.addControl(new mapboxgl.NavigationControl());
 

@@ -49,6 +49,24 @@ h5{
     background-color: rgba(0, 0, 0, .0) !important;
 }
 
+.cardone{
+    background-image: url("../img/d.jpg") !important;
+}
+.cardtwo{
+    background-image: url("../img/d2.jpg") !important;
+}
+.cardthree{
+    background-image: url("../img/d3.jpg") !important;
+}
+
+.profiletop{
+    height: 350px;
+}
+
+.cprighttop{
+    height: 150px;
+    background: url("../img/drinkbg.jpg");
+}
 
 #photo {
     height: 200px;

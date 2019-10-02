@@ -11,6 +11,8 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
+<div uk-grid="">
+<div class="bpleftside uk-width-1-2" style="background: lightblue;">
 <h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
 <th:block>
     <img class="profilePhoto" th:src="${user.photoUrl}"/>
@@ -19,8 +21,18 @@
     <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
     <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
+    <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+    </div>
 
-<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+</div>
+    <div class="bprightside uk-width-1-2">
+        <div class="bprighttop" style="background: lightblue;">
+        </div>
+        <div class="cprightbottom">
+        </div>
+    </div>
+
+<!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
