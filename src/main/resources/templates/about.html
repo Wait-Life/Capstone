@@ -6,6 +6,12 @@
 </head>
 <body>
 <div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbarsm :: top-navsm" />
+</div>
+<div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbar2 :: top-nav2" />
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
