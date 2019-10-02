@@ -16,7 +16,6 @@
 function geocode(search, token) {
     let baseUrl = 'https://api.mapbox.com';
     let endPoint = '/geocoding/v5/mapbox.places/';
-    //fetch is asynchronus JS
     return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
         .then(function(res) {
             return res.json();
@@ -25,7 +24,6 @@ function geocode(search, token) {
             return data.features[0].center;
         });
 }
-
 
 
 /***

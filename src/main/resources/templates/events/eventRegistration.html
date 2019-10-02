@@ -30,6 +30,7 @@
         <br/>
         <label for="address">Address</label>
         <div id='geocoder' class='geocoder'></div>
+<!--        <input type="" id="address" class="address" th:field="*{address}" />-->
         <br/>
         <label for="bartendersNeeded">Number of Bartenders Needed</label>
         <input type="number" min="1" max="10" id="bartendersNeeded" th:field="*{bartendersNeeded}" />
@@ -78,7 +79,9 @@
 <!--    </fieldset>-->
 <!--</form>-->
 
+<!--<script th:src="@{/js/keys.js}"></script>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
+<script th:src="@{/js/mapboxGeocode.js}"></script>
 
 </body>
 </html>
