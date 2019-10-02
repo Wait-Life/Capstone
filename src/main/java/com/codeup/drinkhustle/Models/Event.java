@@ -32,7 +32,7 @@ public class Event {
     @Column(nullable = false)
     private long bartendersNeeded;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @ManyToOne

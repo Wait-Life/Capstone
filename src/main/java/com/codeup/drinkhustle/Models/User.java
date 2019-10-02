@@ -2,6 +2,8 @@ package com.codeup.drinkhustle.Models;
 
 import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 
@@ -39,7 +41,7 @@ public class User {
     @Column(name = "phone_num")
     private String phoneNum;
 
-    @Column(name = "about_me")
+    @Column(name = "about_me", columnDefinition = "TEXT")
     private String aboutMe;
 
     @OneToMany(cascade = CascadeType.ALL)
