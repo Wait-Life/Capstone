@@ -18,6 +18,8 @@
 <th:block th:object="${event}">
     <div th:each="bartender : ${event.bartenders}">
         <div><h3 th:text="${bartender.name}"></h3></div>
+        <button>Accept Employment</button>
+        <button>Deny Employment</button>
     </div>
 </th:block>
 

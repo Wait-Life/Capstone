@@ -152,6 +152,13 @@ public class EventController {
         return "redirect:/events/";
     }
 
+    @PostMapping("/events/appliedbartenders/{id}")
+    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
+        Event event = eventDao.findOne(id);
+        User user = userDao.
+
+    }
+
 
     @GetMapping("events/appliedbartenders/{id}")
     public String showAppliedBartenders(@PathVariable long id, Model vModel) {
@@ -163,12 +170,6 @@ public class EventController {
         return "events/appliedBartenders";
     }
 
-//
-//    @PostMapping("events/appliedbartenders/{id}")
-//    public String addBartenderToEvent(@PathVariable long id,
-//            @RequestParam(name = "photoUrl") String photoUrl;
-//            @RequestParam(name = "name") String name;
-//            @RequestParam(name = "email") String email;
-//    )
+
 
 }
