@@ -8,7 +8,7 @@ const options = {
     maxSize: 10 * 1024 * 1024,
     accept: 'image/*',
     uploadInBackground: false,
-    }:
+    };
 const picker = client.picker(options);
 
 
