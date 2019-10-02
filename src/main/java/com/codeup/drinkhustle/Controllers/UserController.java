@@ -130,6 +130,7 @@ public class UserController {
         updateUser.setTabcCert(tabcCert);
         updateUser.setFoodCert(foodCert);
         updateUser.setPhoneNum(phoneNum);
+        updateUser.setAboutMe(aboutMe);
 //        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
         return "redirect:/hustlers/profile/";
