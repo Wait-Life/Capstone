@@ -5,6 +5,10 @@ import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Services.EmailService;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -31,6 +35,16 @@ public class EventController {
         this.eventDao = eventRepository;
         this.emailService = emailService;
     }
+
+    TwilioTest twilioTest = new TwilioTest();
+    @Value("${twilio-acct-sid}")
+    private String twilioSid;
+    @Value("${twilio-auth-token}")
+    private String twilioToken;
+    @Value("${origin-phone-number}")
+    private PhoneNumber originPhoneNumber;
+
+
 
     @GetMapping("/events")
     public String index(Model vModel) {
@@ -149,6 +163,8 @@ public class EventController {
         System.out.println("Hey this code ran");
         event.addBartender(user);
         eventDao.save(event);
+        Twilio.init(twilioSid, twilioToken);
+        Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
         return "redirect:/events/";
     }
 
