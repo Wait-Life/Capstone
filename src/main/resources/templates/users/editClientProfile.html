@@ -26,6 +26,9 @@
     <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}" />
     <label for="company">Company</label>
     <input id="company" name="company" type="text" th:field="*{company}" />
+    <label for="photo">Photo</label>
+<!--    <button type="button" id="picker">Update Profile Photo</button>-->
+<!--    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
     <button type="submit" value="submit">Edit</button>
 </form>
 <th:block th:replace="fragments/footer :: myfooter"/>

@@ -67,6 +67,9 @@
                 <li>Passwords must match.</li>
             </ul>
         <br/>
+        <label for="aboutMe">About Me</label>
+        <input id="aboutMe" type="text" name="aboutMe" th:field="*{aboutMe}" placeholder="Tell us your specialties" />
+        <br/>
         <div>
             <button type="button" id="picker">Upload Profile Photo</button>
             <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />

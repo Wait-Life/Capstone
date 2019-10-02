@@ -152,13 +152,23 @@ public class EventController {
         return "redirect:/events/";
     }
 
-//
-//    @GetMapping("events/{id}/appliedBartenders")
-//    public String showAppliedBartenders(@ PathVariable long id, Model vModel) {
-//        Event event
-//        Iterable<User> bartenders = userDao.findAll();
+
+    @GetMapping("events/appliedbartenders/{id}")
+    public String showAppliedBartenders(@PathVariable long id, Model vModel) {
+        Event event = eventDao.findOne(id);
+        Iterable<User> bartenders = userDao.findAll();
 //        vModel.addAttribute("bartenders", bartenders);
-//        return "events/appliedBartenders";
-//    }
+        vModel.addAttribute("event", event);
+        System.out.println(bartenders);
+        return "events/appliedBartenders";
+    }
+
+//
+//    @PostMapping("events/appliedbartenders/{id}")
+//    public String addBartenderToEvent(@PathVariable long id,
+//            @RequestParam(name = "photoUrl") String photoUrl;
+//            @RequestParam(name = "name") String name;
+//            @RequestParam(name = "email") String email;
+//    )
 
 }
