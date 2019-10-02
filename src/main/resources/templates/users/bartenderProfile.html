@@ -18,6 +18,8 @@
     <img class="profilePhoto" th:src="${user.photoUrl}"/>
     <h3>Contact Name: <span th:text="${user.name}"></span></h3>
     <h3>Contact Email: <span th:text="${user.email}"></span></h3>
+    <h4>About Me:</h4>
+    <p th:text="${user.aboutMe}"></p>
     <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
     <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
