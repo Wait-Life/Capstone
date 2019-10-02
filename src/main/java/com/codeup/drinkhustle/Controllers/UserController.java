@@ -177,4 +177,24 @@ public class UserController {
         return "users/index";
     }
 
+//    DELETE PROFILE FOR BARTENDERS
+    @PostMapping("/hustlers/profile/{id}/delete")
+    public String deleteBartenderProfile(@PathVariable long id) {
+        User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
+        eventDao.delete(userEvents);
+        userDao.delete(id);
+        return "redirect:/";
+    }
+
+//    DELETE PROFILE FOR CLIENTS
+    @PostMapping("/client/profile/{id}/delete")
+    public String deleteClientProfile(@PathVariable long id) {
+        User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        Iterable<Event> userEvents = eventDao.findByOwner(userSession);
+        eventDao.delete(userEvents);
+        userDao.delete(id);
+        return "redirect:/";
+    }
+
 }
