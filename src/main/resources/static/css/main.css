@@ -1,8 +1,18 @@
 
 .topcontainer{
-    width: 1440px;
+    width: 100%;
     height: 768px;
-    background-image: url("../img/capstone.jpg");
+    background-image: url("../img/capstone2.jpg");
+}
+
+.topcontainersm{
+    width: 100%;
+}
+
+.containersm{
+    background: url("../img/capstoneSM.jpg");
+    height: 800px;
+    width: 100%;
 }
 
 .card-panel{
@@ -43,7 +53,7 @@ h5{
     padding-top: 29px;
 }
 .rightside{
-    padding-left: 120px;
+    padding-left: 80px;
 }
 .uk-navbar-left {
     background-color: rgba(0, 0, 0, .0) !important;

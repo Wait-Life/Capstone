@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav class="uk-navbar-container uk-hidden@m" th:fragment="top-navsm2" uk-navbar="">
+    <div class="uk-navbar-left">
+
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="#">  <img  style="width: 25%; height: 25%;" src="img/burger.png"/></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li><a href="/about">About</a></li>
+                        <!--            <li><a href="/events">Events</a></li>-->
+                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/events">Events</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/hustlers/bartenders">Bartenders</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/hustlers/profile">Account</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
+                        <li class="navbutton">
+
+                            <form th:action="@{/logout}" th:method="post">
+                                <button class="uk-button uk-button-default uk-button-small">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <div class="uk-navbar-item">
+                    </div>
+
+                </div>
+            </li>
+            <li>Drink Hustle</li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>
