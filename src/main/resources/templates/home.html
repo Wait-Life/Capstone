@@ -14,6 +14,12 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbarsm :: top-navsm" />
 </div>
+<div sec:authorize="isAuthenticated()">
+    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+</div>
+<div th:unless="${#authorization.expression('isAuthenticated()')}">
+    <th:block th:replace="fragments/navbar :: top-nav" />
+</div>
 
 <div class="uk-hidden@m containersm">
     <div>
@@ -72,12 +78,12 @@
         </div>
     </div>
     <div class="uk-width-1-4 rightside">
-    <div sec:authorize="isAuthenticated()">
-        <th:block th:replace="fragments/navbar2home :: top-nav2home" />
-    </div>
-    <div th:unless="${#authorization.expression('isAuthenticated()')}">
-        <th:block th:replace="fragments/navbarhome :: top-navhome" />
-    </div>
+<!--    <div sec:authorize="isAuthenticated()">-->
+<!--        <th:block th:replace="fragments/navbar2home :: top-nav2home" />-->
+<!--    </div>-->
+<!--    <div th:unless="${#authorization.expression('isAuthenticated()')}">-->
+<!--        <th:block th:replace="fragments/navbarhome :: top-navhome" />-->
+<!--    </div>-->
     </div>
     </div>
 </div>
