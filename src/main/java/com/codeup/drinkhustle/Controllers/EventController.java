@@ -5,6 +5,8 @@ import com.codeup.drinkhustle.Repos.UserRepository;
 import com.codeup.drinkhustle.Models.Event;
 import com.codeup.drinkhustle.Models.User;
 import com.codeup.drinkhustle.Services.EmailService;
+import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,16 @@ public class EventController {
         this.eventDao = eventRepository;
         this.emailService = emailService;
     }
+
+    TwilioTest twilioTest = new TwilioTest();
+    @Value("${twilio-acct-sid}")
+    private String twilioSid;
+    @Value("${twilio-auth-token}")
+    private String twilioToken;
+    @Value("${origin-phone-number}")
+    private PhoneNumber originPhoneNumber;
+
+
 
     @GetMapping("/events")
     public String index(Model vModel) {
