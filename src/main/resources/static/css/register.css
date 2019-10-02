@@ -1,20 +1,22 @@
 /* General layout */
 
 html {
-    font-size: 62.5%;
+    /*font-size: 62.5%;*/
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: 78.5%;
+    /*font-size: 1.6rem;*/
     line-height: 1.6;
     font-family: 'Source Sans Pro';
     background-color: rgb(245, 245, 245);
 }
 
 h1 {
-    font-size: 2.5rem;
+    color: white;
+    font-size: 2rem;
     padding: 15px 20px;
-    background-color: rgba(255, 219, 58, 0.3);
+    background-color: rgba(133, 151, 255, 0.3);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -36,12 +38,12 @@ a {
     margin: 0 auto;
     padding-bottom: 20px;
     box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
-    border-bottom: 5px solid #ffdb3a;
+    border-bottom: 5px solid #7f86ff;
 }
 
 
 .input-requirements {
-    font-size: 1.3rem;
+    font-size: .75rem;
     font-style: italic;
     text-align: left;
     list-style: disc;
@@ -62,7 +64,7 @@ a {
 .input-requirements li.valid:after {
     display: inline-block;
     padding-left: 10px;
-    content: "\2713";
+    /*content: "\2713";*/
 }
 
 /* FormHack v1.2.0 (formhack.io) */
@@ -99,8 +101,8 @@ a {
     --fh-button-width: 100%;
     --fh-button-max-width: 200px;
     --fh-button-font-color: var(--fh-font-color);
-    --fh-button-bg-color: rgba(255, 219, 58,0.3);
-    --fh-button-hover-bg-color: rgb(255, 219, 58);
+    --fh-button-bg-color: rgba(53, 58, 255, 0.3);
+    --fh-button-hover-bg-color: rgb(117, 145, 255);
     --fh-button-hover-font-color: var(--fh-font-color);
 
     /* Layout */

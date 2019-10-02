@@ -104,6 +104,9 @@ public class UserController {
         updateUser.setPhoneNum(phoneNum);
 //        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
+        Twilio.init(twilioSid,twilioToken);
+        Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
+        message.getSid();
         return ("redirect:/client/profile/");
     }
 
@@ -133,6 +136,9 @@ public class UserController {
         updateUser.setAboutMe(aboutMe);
 //        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
+        Twilio.init(twilioSid,twilioToken);
+        Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
+        message.getSid();
         return "redirect:/hustlers/profile/";
     }
 
