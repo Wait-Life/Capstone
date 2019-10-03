@@ -9,12 +9,6 @@
 <body>
 <div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
-</div>
-<div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbarsm :: top-navsm" />
-</div>
-<div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbar2 :: top-nav2" />
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
@@ -29,9 +23,14 @@
     <!--    <input id="startTime" name="startTime" type="datetime-local" th:field="*{startTime}" />-->
     <!--    <label for="endTime">End Time</label>-->
     <!--    <input id="endTime" name="endTime" type="datetime-local" th:field="*{endTime}" />-->
+    <!--    <label for="address">Address</label>-->
+    <br/>
 <!--    <label for="address">Address</label>-->
-    <p>Current Address: <span th:text="${event.address}" id="address"></span></p>
-    <div id='geocoder' class='geocoder'></div>
+<!--    <input id="geocoder" name="address" class="geocoder" type="" th:field="*{address}" />-->
+<!--    <p>Current Address: <span th:text="${event.address}" id="address"></span></p>-->
+    <div id="address" th:field="*{address}">
+        <div id='geocoder' class='geocoder'></div>
+    </div>
 
     <label for="bartendersNeeded">Number of Bartenders Needed</label>
     <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}"/>
@@ -39,6 +38,10 @@
     <input type="text" name="description" id="description" th:field="*{description}" />
     <!--    <button type="submit" value="submit">Submit</button>-->
     <!--</form>-->
+    <!--    <div>-->
+    <!--        <button type="button" id="picker">Update Profile Photo</button>-->
+    <!--        <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+    <!--    </div>-->
     <button class=".uk-button-primary">Edit</button>
 </form>
 <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
