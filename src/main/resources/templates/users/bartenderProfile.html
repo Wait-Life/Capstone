@@ -18,9 +18,9 @@
 </div>
 
 <div uk-grid="">
-<div class="bpleftside uk-width-1-2" style="background: lightblue;">
+<div class="bpleftside uk-width-1-2">
 <h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
-<th:block>
+<th:block class="bpleftside">
     <img class="profilePhoto" th:src="${user.photoUrl}"/>
     <h3>Contact Name: <span th:text="${user.name}"></span></h3>
     <h3>Contact Email: <span th:text="${user.email}"></span></h3>
@@ -29,18 +29,21 @@
     <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
     <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
 </th:block>
-    <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+<!--    <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
     </div>
 
 </div>
     <div class="bprightside uk-width-1-2">
-        <div class="bprighttop" style="background: lightblue;">
+        <div class="uk-background-fixed uk-background-center-center uk-height-small" style="background-image: url(/img/drinkbg.jpg); width: 100%">
         </div>
         <div class="cprightbottom">
+<!--            Populate Interested events here-->
+
         </div>
     </div>
-
-<form th:action="@{/hustlers/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small">Delete My Profile</button></form>
+<button id="editButton" class="uk-button-primary uk-button"><a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a></button>
+<br/>
+<form th:action="@{/hustlers/profile/{id}/delete(id=${user.id})}" th:method="POST"><button id="deleteButton" class="uk-button uk-button-danger uk-button-small">Delete My Profile</button></form>
 
 <!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
 <th:block th:replace="fragments/footer :: myfooter"/>

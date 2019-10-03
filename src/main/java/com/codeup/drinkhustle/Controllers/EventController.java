@@ -92,7 +92,7 @@ public class EventController {
 //                         @RequestParam(name = "endTime") String endTime,
                          @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
                          @RequestParam(name = "description") String description,
-//                         @RequestParam(name = "address") String address,
+                         @RequestParam(name = "address") String address,
                          Model viewModel) throws ParseException {
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
 //        Date startDate = dateFormat.parse(startTime);
@@ -102,7 +102,7 @@ public class EventController {
 //        eventToBeUpdated.setStartTime(startTime);
 //        eventToBeUpdated.setEndTime(endTime);
         eventToBeUpdated.setDescription(description);
-//        eventToBeUpdated.setAddress(address);
+        eventToBeUpdated.setAddress(address);
         eventToBeUpdated.setBartendersNeeded(bartendersNeeded);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();

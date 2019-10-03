@@ -25,30 +25,13 @@
                 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
     </div>
 
-
-<!--            <div class="cprightside uk-width-1-2">-->
-<!--                <div class="cprightsidetop" style="height: 150px"></div>-->
-<!--        <h3>Created Events</h3>-->
-<!--        <th:block th:each="event : ${events}">-->
-<!--            <div class="uk-card uk-card-hover">-->
-<!--            <p><span th:text="${event.title}"></span></p>-->
-<!--            <p>Start time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>-->
-<!--            <p>End time: <span th:text="${#calendars.format(event.startTime, 'MMMM dd, yyyy - hh:mm a')}"></span></p>-->
-<!--            <p>Event location: <span th:text="${event.address}"></span></p>-->
-<!--            <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>-->
-<!--            <p>Description: <span th:text="${event.description}"></span></p>-->
-<!--            <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>-->
-<!--            <form th:action="@{/events/{id}/delete(id=${event.id})}" th:method="POST"><button class="uk-button-danger">Delete</button></form>-->
-<!--                <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">View Applied Bartenders</a>-->
-<!--            -->
-<!--            </div>-->
-
         <div class="cprightside uk-width-1-2">
             <div class="uk-background-fixed uk-background-center-center uk-height-small" style="background-image: url(/img/drinkbg.jpg); width: 100%">
                 <h2 style="color:white;">Created Events</h2>
             </div>
             <div class="cprightbottom">
                 <th:block th:each="event : ${events}">
+                    <div style="width: 100%; height: 25px; background: darkblue;"></div>
                     <div class="uk-card uk-card-hover">
                         <p><span th:text="${event.title}"></span></p>
                         <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
