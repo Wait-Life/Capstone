@@ -27,6 +27,13 @@ a {
     color: inherit;
 }
 
+/*.uk-search-input {*/
+/*    position: relative;*/
+/*    margin-right: 80px;*/
+/*    z-index: 5000;*/
+/*}
+*/
+
 .container {
     margin: 80px auto;
     width: 90%;
@@ -60,6 +67,8 @@ a {
 
 .uk-card {
     padding: 20px auto;
+    border: 1px dotted lightslategrey;
+    border-radius: 5px;
 }
 
 .uk-card:hover {
@@ -80,6 +89,12 @@ a {
 
 #aboutMe:focus {
     border: 1px solid black;
+}
+
+.input-login {
+    font-size: .75rem;
+    text-align: center;
+    padding: 2px auto;
 }
 
 .input-requirements {
@@ -107,9 +122,12 @@ a {
     /*content: "\2713";*/
 }
 
-textarea {
-    word-break: break-all;
-    -ms-word-break: break-all;
+#aboutMe {
+    text-align: left;
+    word-wrap: break-word;
+    overflow: auto;
+    overflow-wrap: break-spaces;
+    text-align-all: left;
 }
 
 /* FormHack v1.2.0 (formhack.io) */
@@ -229,6 +247,7 @@ textarea {
     border-width: var(--fh-border-width);
     border-style: var(--fh-border-style);
     border-color: var(--fh-border-color);
+
 }
 
 /* Fields with standard height */
@@ -397,7 +416,7 @@ input[type="reset"]:focus {
 /* Custom ------------------ */
 
 
-input:not([type="submit"]):not([type="textarea"]):valid {
+input:not([type="submit"]):not([type="textarea"]):not([name="username"]):not([name="password"])valid {
     border-color: #2ecc71;
 }
 
