@@ -92,17 +92,17 @@ public class EventController {
 //                         @RequestParam(name = "endTime") String endTime,
                          @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
                          @RequestParam(name = "description") String description,
-                         @RequestParam(name = "address") String address,
+//                         @RequestParam(name = "address") String address,
                          Model viewModel) throws ParseException {
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
 //        Date startDate = dateFormat.parse(startTime);
 //        Date endDate = dateFormat.parse(endTime);
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-//        eventToBeUpdated.setStartTime(startDate);
-//        eventToBeUpdated.setEndTime(endDate);
+//        eventToBeUpdated.setStartTime(startTime);
+//        eventToBeUpdated.setEndTime(endTime);
         eventToBeUpdated.setDescription(description);
-        eventToBeUpdated.setAddress(address);
+//        eventToBeUpdated.setAddress(address);
         eventToBeUpdated.setBartendersNeeded(bartendersNeeded);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
@@ -164,8 +164,9 @@ public class EventController {
         System.out.println("Hey this code ran");
         event.addBartender(user);
         eventDao.save(event);
-//        Twilio.init(twilioSid, twilioToken);
-//        Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
+        Twilio.init(twilioSid, twilioToken);
+        Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
+        message.getSid();
         return "redirect:/events/";
     }
 
