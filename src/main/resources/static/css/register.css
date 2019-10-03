@@ -82,6 +82,12 @@ a {
     border: 1px solid black;
 }
 
+.input-login {
+    font-size: .75rem;
+    text-align: center;
+    padding: 2px auto;
+}
+
 .input-requirements {
     font-size: .75rem;
     font-style: italic;
@@ -107,9 +113,13 @@ a {
     /*content: "\2713";*/
 }
 
-textarea {
-    word-break: break-all;
-    -ms-word-break: break-all;
+#aboutMe {
+    text-align: left;
+    word-wrap: break-word;
+    /*text-wrap: normal;*/
+    overflow: auto;
+    overflow-wrap: break-spaces;
+    text-align-all: left;
 }
 
 /* FormHack v1.2.0 (formhack.io) */
@@ -229,6 +239,7 @@ textarea {
     border-width: var(--fh-border-width);
     border-style: var(--fh-border-style);
     border-color: var(--fh-border-color);
+
 }
 
 /* Fields with standard height */
@@ -397,7 +408,7 @@ input[type="reset"]:focus {
 /* Custom ------------------ */
 
 
-input:not([type="submit"]):not([type="textarea"]):valid {
+input:not([type="submit"]):not([type="textarea"]):not([name="login"])valid {
     border-color: #2ecc71;
 }
 
