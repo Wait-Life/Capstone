@@ -16,7 +16,7 @@
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/hustlers/profile">Account</a></li>
             <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
-            <li class="navbutton">
+            <li>
 
                 <form th:action="@{/logout}" th:method="post">
                     <button class="uk-button uk-button-default uk-button-small" id="logout">Logout</button>
