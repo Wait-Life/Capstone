@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -169,10 +170,17 @@ public class EventController {
         return "redirect:/events/";
     }
 
-//    @PostMapping("/events/appliedbartenders/{id}")
-//    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
-//        eventDao.delete();
-//    }
+    @PostMapping("/events/appliedbartenders/{id}")
+    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
+        Event event = eventDao.findOne(id);
+        List <User> acceptedBartenders = new ArrayList<>();
+        List <User> appliedBartenders = event.getBartenders();
+        for (User bartender : appliedBartenders) {
+            System.out.println(bartender.getId());
+        }
+        return "events/appliedbatenders/{id}";
+    }
+
 
 
     @GetMapping("events/appliedbartenders/{id}")
