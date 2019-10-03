@@ -181,6 +181,7 @@ public class EventController {
     }
 
 
+
     @GetMapping("events/appliedbartenders/{id}")
     public String showAppliedBartenders(@PathVariable long id, Model vModel) {
         Event event = eventDao.findOne(id);
