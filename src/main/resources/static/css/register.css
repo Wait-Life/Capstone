@@ -51,6 +51,7 @@ a {
     margin: 10px auto;
     text-decoration: underline;
     border-radius: 5px;
+    margin-left: 10%;
 }
 
 .bpleftside {
@@ -58,6 +59,7 @@ a {
     color: #ece4e4;
     font-family: "Source Sans Pro";
     padding: 10px auto;
+    margin-left: 10%;
 }
 
 .input-requirements {
