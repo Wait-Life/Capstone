@@ -1,7 +1,8 @@
 /* General layout */
 
 html {
-    /*font-size: 62.5%;*/
+    font-family: "Source Sans Pro";
+    background-color: rgb(236, 228, 228);
 }
 
 body {
@@ -9,14 +10,14 @@ body {
     /*font-size: 1.6rem;*/
     line-height: 1.6;
     font-family: 'Source Sans Pro';
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(236, 228, 228);
 }
 
 h1 {
-    color: white;
+    color: #ece4e4;
     font-size: 2rem;
     padding: 15px 20px;
-    background-color: rgba(133, 151, 255, 0.3);
+    background-color: rgba(96, 102, 140, 0.3);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -33,14 +34,33 @@ a {
 }
 
 .registration {
-    background-color: #fff;
+    background-color: #ece4e4;
     max-width: 600px;
     margin: 0 auto;
     padding-bottom: 20px;
-    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.3);
-    border-bottom: 5px solid #7f86ff;
+    box-shadow: 1px 1px 5px 0px rgba(24, 19, 26, 0.3);
+    border-bottom: 5px solid #60668c;
 }
 
+#password-element, #username-element {
+    margin: 40px auto;
+    /*margin-left: 150px;*/
+}
+
+#deleteButton, #editButton {
+    margin: 10px auto;
+    text-decoration: underline;
+    border-radius: 5px;
+    margin-left: 10%;
+}
+
+.bpleftside {
+    background-color: #66a6cd;
+    color: #ece4e4;
+    font-family: "Source Sans Pro";
+    padding: 10px auto;
+    margin-left: 10%;
+}
 
 .input-requirements {
     font-size: .75rem;
@@ -75,21 +95,21 @@ a {
     /* Font */
     --fh-font-family: 'Source Sans Pro', sans-serif;
     --fh-font-size: 15px;
-    --fh-font-color: rgb(40, 40, 40);
+    --fh-font-color: rgb(24, 19, 26);
 
     /* Borders */
     --fh-border-radius: 3px;
     --fh-border-width: 1px;
     --fh-border-style: solid;
-    --fh-border-color: rgb(200, 200, 200);
+    --fh-border-color: rgb(236, 228, 228);
 
     /* Inputs, Textareas, Select, Option */
     --fh-input-height: 40px;
     --fh-input-width: 100%;
     --fh-input-max-width: 400px;
-    --fh-input-bg-color: rgb(250,250,250);
+    --fh-input-bg-color: rgb(236, 228, 228);
     --fh-focus-bg-color: var(--fh-input-bg-color);
-    --fh-focus-border-color: #000;
+    --fh-focus-border-color: #18131a;
     --fh-focus-font-color: var(--fh-font-color);
 
     /* Select Vendor Styling */
@@ -101,8 +121,8 @@ a {
     --fh-button-width: 100%;
     --fh-button-max-width: 200px;
     --fh-button-font-color: var(--fh-font-color);
-    --fh-button-bg-color: rgba(53, 58, 255, 0.3);
-    --fh-button-hover-bg-color: rgb(117, 145, 255);
+    --fh-button-bg-color: rgba(40, 49, 109, 0.3);
+    --fh-button-hover-bg-color: rgb(102, 166, 205);
     --fh-button-hover-font-color: var(--fh-font-color);
 
     /* Layout */
@@ -288,7 +308,7 @@ input[type="image"] {
     width: var(--fh-button-width);
     max-width: var(--fh-button-max-width);
     background-color: var(--fh-button-bg-color);
-    padding: calc( var(--fh-input-height) / 5 );
+    padding: calc(var(--fh-input-height) / 5);
     cursor: pointer;
 
     color: var(--fh-button-font-color);
@@ -300,12 +320,10 @@ input[type="image"] {
     border-radius: var(--fh-border-radius);
     border-width: var(--fh-border-width);
     border-style: var(--fh-border-style);
-    border-color: var(--fh-border-color);
-
-
-
-    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);
+    /*border-color: var(--fh-border-color);*/
 }
+
+    /*box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.2);*/
 
 input[type="image"] {
     text-align: center;
