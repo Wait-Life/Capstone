@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('My Profile')" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -45,5 +46,6 @@
 
 <!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
+</div>
 </body>
 </html>

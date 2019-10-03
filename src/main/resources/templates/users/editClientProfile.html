@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('Edit My Profile')"/>
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -32,5 +33,6 @@
     <button type="submit" value="submit">Edit</button>
 </form>
 <th:block th:replace="fragments/footer :: myfooter"/>
+</div>
 </body>
 </html>

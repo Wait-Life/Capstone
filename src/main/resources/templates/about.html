@@ -5,6 +5,7 @@
     <th:block th:replace="fragments/header :: main-header('Welcome')" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -60,6 +61,7 @@
         <a href="https://alumni.codeup.com/students/696"><img src="img/codeup.jpg" alt="codeup"/></a>
         <a href="https://github.com/lamnguyen124"><img src="img/github.jpg" alt="github"/></a>
     </div>
+</div>
 </div>
 </div>
 <th:block th:replace="fragments/footer :: myfooter"/>

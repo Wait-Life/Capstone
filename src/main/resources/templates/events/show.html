@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -30,7 +31,7 @@
 <a th:href="@{'/events/request/' + ${event.id}}">Request to Work This Event </a>
 
 <div id="map"></div>
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 <script th:src="@{/js/mapbox.js}"></script>
 </body>

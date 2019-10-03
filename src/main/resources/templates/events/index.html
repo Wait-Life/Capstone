@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('Events')"/>
 </head>
 <body>
+<div class="uk-container-large">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -39,7 +40,7 @@
         </th:block>
     </ul>
 </div>
-
+</div>
 
 
 <th:block th:replace="fragments/footer :: myfooter"/>

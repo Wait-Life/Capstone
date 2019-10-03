@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('My Profile')" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -67,6 +68,7 @@
             </div>
         </div>
     </div>
+</div>
 
 <form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small">Delete My Profile</button></form>
 

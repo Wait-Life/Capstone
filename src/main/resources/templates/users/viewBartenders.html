@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('Bartender Directory')" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--<div th:each="user : ${user}" th:if="${user.isClient} == ${'1'}">-->
 <!--    <p>Name: <span th:text="${user.name}"></span></p>-->

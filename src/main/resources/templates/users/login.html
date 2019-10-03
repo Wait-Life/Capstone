@@ -6,6 +6,7 @@
     <th:block th:replace="fragments/header :: main-header('Login')" />
 </head>
 <body id="index-body">
+<div class="uk-container-expand">
 <script th:src="@{/js/fbSignIn.js}"></script>
 <!--<script async="async" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
 <!--<div id="fb-root"></div>-->
@@ -74,7 +75,7 @@
 
 <!--        <button class=".uk-button-primary" type="submit" name="action">Submit</button>-->
 <!--    </form>-->
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

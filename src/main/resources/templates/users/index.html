@@ -4,6 +4,7 @@
     <th:block th:replace="fragments/header :: main-header('Events')"/>
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -22,5 +23,6 @@
     <span th:text="${user.name}"></span>
 </div>
 <th:block th:replace="fragments/footer :: myfooter"/>
+</div>
 </body>
 </html>

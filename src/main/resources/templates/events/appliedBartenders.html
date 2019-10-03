@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -28,7 +29,7 @@
         <button>Deny Employment</button>
     </div>
 </th:block>
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>
