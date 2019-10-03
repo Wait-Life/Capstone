@@ -24,8 +24,12 @@
 <th:block th:object="${event}">
     <div th:each="bartender : ${event.bartenders}">
         <div><h3 th:text="${bartender.name}"></h3></div>
-        <button>Accept Employment </button>
-        <button>Deny Employment</button>
+<!--        <form th:type="submit" th:action="@{}"><button>Accept Employment</button></form>-->
+
+        <form th:action="@{'/events/appliedbartenders/' + ${event.id}}" th:method="POST">
+            <input type="hidden" th:value="${bartender.id}" name="deniedBartender"/>
+            <button th:type="submit">Deny Employment</button>
+        </form>
     </div>
 </th:block>
 </div>
