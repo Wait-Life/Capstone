@@ -17,6 +17,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+<div class="uk-container uk-container-expand">
 <div uk-grid="">
     <div class="uk-card uk-width-1-4">
     <div class="uk-card-header">
@@ -64,6 +65,7 @@
         <a href="https://github.com/lamnguyen124"><img src="img/github.jpg" alt="github"/></a>
         <a href="https://www.linkedin.com/in/lnguyen04/"><img src="img/linked.jpg" alt="linkedin"/></a>
     </div>
+</div>
 </div>
 </div>
 <th:block th:replace="fragments/footer :: myfooter"/>

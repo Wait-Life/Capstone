@@ -6,6 +6,7 @@
     <link type="text/css" rel="stylesheet" href="/css/register.css" />
 </head>
 <body>
+<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -19,8 +20,8 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
-<div class="uk-container" uk-overflow-auto="">
-    <div class="uk-align-center">
+    <div class="uk-container uk-container-expand">
+        <div class="uk-align-center">
         <h1>Sign Up to View Hustlers!</h1>
     </div>
     <form th:action="@{/clients/register}" th:method="post" th:object="${user}">
@@ -65,6 +66,7 @@
         <br/>
         <input type="submit" id="submit" value="Sign me up!"/>
     </form>
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>

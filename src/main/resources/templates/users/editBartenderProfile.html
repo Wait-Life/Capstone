@@ -16,7 +16,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <form th:action="@{'/hustlers/profile/' + ${#authentication.principal.id} + '/edit'}" method="post" th:object="${user}">
     <label for="username">Name</label>
     <input id="username" name="username" type="text" th:field="*{name}"/>
@@ -36,5 +36,6 @@
     <button type="submit" value="submit">Edit</button>
 </form>
 <th:block th:replace="fragments/footer :: myfooter"/>
+</div>
 </body>
 </html>

@@ -18,19 +18,23 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
+    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+        <div class="uk-card-header">
 <h4>Title: <span th:text="${event.title}"></span></h4>
+        </div>
 <p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>
 <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
 <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
 <p>Address: <span th:text="${event.address}" id="address"></span></p>
 <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
 <p>Description: <span th:text="${event.description}"></span></p>
-
-<a th:href="@{'/events/request/' + ${event.id}}">Request to Work This Event </a>
+    </div>
+    <br/>
+    <button class="uk-button uk-button-primary uk-button-small"><a th:href="@{'/events/request/' + ${event.id}}">Request to Work</a></button>
 
 <div id="map"></div>
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 <script th:src="@{/js/mapbox.js}"></script>
 </body>

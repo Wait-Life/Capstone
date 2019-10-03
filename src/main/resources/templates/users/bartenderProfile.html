@@ -16,7 +16,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <div uk-grid="">
 <div class="bpleftside uk-width-1-2">
 <h3>Welcome back, <span th:text="${user.name}"></span>!</h3>
@@ -34,7 +34,7 @@
 
 </div>
     <div class="bprightside uk-width-1-2">
-        <div class="uk-background-fixed uk-background-center-center uk-height-small" style="background-image: url(/img/drinkbg.jpg); width: 100%">
+        <div class="uk-background-fixed uk-background-center-center uk-height-small" style="background-image: url(/img/drinkbg.jpg); width: 100%; margin-left: 16%">
         </div>
         <div class="cprightbottom">
 <!--            Populate Interested events here-->
@@ -47,5 +47,6 @@
 
 <!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
+</div>
 </body>
 </html>

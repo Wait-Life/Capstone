@@ -13,7 +13,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <!--<form action="" th:action="@{/events/{id}/edit(id=${id})}" method="post" th:object="${event}">-->
 <form th:action="@{'/events/' + ${event.id} + '/edit'}" th:method="post" th:object="${event}">
     <label for="title">Title</label>
@@ -44,7 +44,7 @@
     <button class=".uk-button-danger">Delete</button>
 </form>
 <div id="map"></div>
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 <script th:src="@{/js/mapbox.js}"></script>
 

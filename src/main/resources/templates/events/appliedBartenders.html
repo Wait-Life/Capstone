@@ -19,7 +19,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <div>Bartenders applied for: <h3 th:text="${event.title}"></h3></div>
 <th:block th:object="${event}">
     <div th:each="bartender : ${event.bartenders}">
@@ -32,7 +32,7 @@
         </form>
     </div>
 </th:block>
-
+</div>
 <th:block th:replace="fragments/footer :: myfooter"/>
 </body>
 </html>

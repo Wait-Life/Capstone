@@ -19,7 +19,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
     <h1>Create a new event!</h1>
     <form th:action="@{/events/create}" th:method="post" th:object="${event}">
         <label for="title">Event Title</label>
@@ -85,7 +85,7 @@
 
 <!--    </fieldset>-->
 <!--</form>-->
-
+</div>
 <!--<script th:src="@{/js/keys.js}"></script>-->
 <th:block th:replace="fragments/footer :: myfooter"/>
 <script th:src="@{/js/mapboxGeocode.js}"></script>
