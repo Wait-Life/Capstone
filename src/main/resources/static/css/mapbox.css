@@ -1,8 +1,11 @@
 .mapboxgl-ctrl-geocoder {
+    margin: 0 auto;
     width: 33.33%;
 }
 
+
 #map {
+    margin: 0 auto;
     width: 33.33%;
     height: 240px;
 }
