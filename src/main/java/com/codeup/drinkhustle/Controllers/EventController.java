@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -91,17 +92,17 @@ public class EventController {
 //                         @RequestParam(name = "endTime") String endTime,
                          @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
                          @RequestParam(name = "description") String description,
-                         @RequestParam(name = "address") String address,
+//                         @RequestParam(name = "address") String address,
                          Model viewModel) throws ParseException {
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd'T'hh:mm");
 //        Date startDate = dateFormat.parse(startTime);
 //        Date endDate = dateFormat.parse(endTime);
         Event eventToBeUpdated = eventDao.findOne(id);
         eventToBeUpdated.setTitle(title);
-//        eventToBeUpdated.setStartTime(startDate);
-//        eventToBeUpdated.setEndTime(endDate);
+//        eventToBeUpdated.setStartTime(startTime);
+//        eventToBeUpdated.setEndTime(endTime);
         eventToBeUpdated.setDescription(description);
-        eventToBeUpdated.setAddress(address);
+//        eventToBeUpdated.setAddress(address);
         eventToBeUpdated.setBartendersNeeded(bartendersNeeded);
         eventDao.save(eventToBeUpdated);
         return "redirect:/events/" + eventToBeUpdated.getId();
@@ -165,13 +166,21 @@ public class EventController {
         eventDao.save(event);
         Twilio.init(twilioSid, twilioToken);
         Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
+        message.getSid();
         return "redirect:/events/";
     }
 
-//    @PostMapping("/events/appliedbartenders/{id}")
-//    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
-//        eventDao.delete();
-//    }
+    @PostMapping("/events/appliedbartenders/{id}")
+    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
+        Event event = eventDao.findOne(id);
+        List <User> acceptedBartenders = new ArrayList<>();
+        List <User> appliedBartenders = event.getBartenders();
+        for (User bartender : appliedBartenders) {
+            System.out.println(bartender.getId());
+        }
+        return "events/appliedbatenders/{id}";
+    }
+
 
 
     @GetMapping("events/appliedbartenders/{id}")
