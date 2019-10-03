@@ -109,7 +109,10 @@ public class EventController {
     }
 
     @PostMapping("/events/{id}/delete")
-    public String delete(@PathVariable long id) {
+    public String deleteEvent(@PathVariable long id) {
+        Event event = eventDao.findOne(id);
+        List<User> bartenders = new ArrayList<>();
+        event.setBartenders(bartenders);
         eventDao.delete(id);
         return "redirect:/events";
     }
@@ -170,19 +173,25 @@ public class EventController {
         return "redirect:/events/";
     }
 
+
+//    Deny bartender from event
     @PostMapping("/events/appliedbartenders/{id}")
-    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel) {
+    public String removeAppliedBartenderFromEvent(@PathVariable long id, Model vModel, @RequestParam(name="deniedBartender") long dbId ) {
         Event event = eventDao.findOne(id);
         List <User> acceptedBartenders = new ArrayList<>();
         List <User> appliedBartenders = event.getBartenders();
         for (User bartender : appliedBartenders) {
-            System.out.println(bartender.getId());
+            if (bartender.getId() != dbId){
+                acceptedBartenders.add(bartender);
+            }
         }
-        return "events/appliedbatenders/{id}";
+        event.setBartenders(acceptedBartenders);
+        eventDao.save(event);
+        return "redirect:/events/appliedbartenders/" + id;
     }
 
 
-
+//    Populate bartenders to account
     @GetMapping("events/appliedbartenders/{id}")
     public String showAppliedBartenders(@PathVariable long id, Model vModel) {
         Event event = eventDao.findOne(id);
@@ -191,7 +200,4 @@ public class EventController {
         System.out.println(bartenders);
         return "events/appliedBartenders";
     }
-
-
-
 }
