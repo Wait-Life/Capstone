@@ -25,11 +25,8 @@
     <!--    <label for="address">Address</label>-->
     <br/>
 <!--    <label for="address">Address</label>-->
-<!--    <input id="geocoder" name="address" class="geocoder" type="" th:field="*{address}" />-->
-<!--    <p>Current Address: <span th:text="${event.address}" id="address"></span></p>-->
-    <div id="address" th:field="*{address}">
+    <p>Current Address: <span th:text="${event.address}" id="address"></span></p>
         <div id='geocoder' class='geocoder'></div>
-    </div>
 
     <label for="bartendersNeeded">Number of Bartenders Needed</label>
     <input id="bartendersNeeded" name="bartendersNeeded" min="1" max="10" type="number" th:field="*{bartendersNeeded}"/>
