@@ -104,20 +104,6 @@ public class Event {
 
     public void addBartender(User bartender) { this.bartenders.add(bartender); }
 
+    public void removeBartender(User bartender) { this.bartenders.remove(bartender); }
 
-
-//    @Override
-//    public String toString() {
-//        return "Event{" +
-//                "id=" + id +
-//                ", title='" + title + '\'' +
-//                ", startTime=" + startTime +
-//                ", endTime=" + endTime +
-//                ", address='" + address + '\'' +
-//                ", bartendersNeeded=" + bartendersNeeded +
-//                ", description='" + description + '\'' +
-//                ", owner=" + owner +
-//                ", bartenders=" + bartenders +
-//                '}';
-//    }
 }
