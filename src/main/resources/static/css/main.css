@@ -7,6 +7,7 @@
 
 .topcontainersm{
     width: 100%;
+
 }
 
 .containersm{
@@ -44,28 +45,23 @@ h5{
 }
 
 .insidetop{
-    height: 102px;
-}
-.leftside{
-    width: 900px;
-    padding-left: 450px;
-    padding-top: 29px;
-}
-.rightside{
-    padding-left: 80px;
+    height: 625px;
 }
 .uk-navbar-left {
     background-color: rgba(0, 0, 0, .0) !important;
 }
 
 .cardone{
-    background-image: url("../img/d.jpg") !important;
+    background-image: url("../img/card.jpg") !important;
 }
 .cardtwo{
-    background-image: url("../img/d2.jpg") !important;
+    background-image: url("../img/card2.jpg") !important;
 }
 .cardthree{
-    background-image: url("../img/d3.jpg") !important;
+    background-image: url("../img/card3.jpg") !important;
+}
+.cardfour{
+    background-image: url("../img/card4.jpg") !important;
 }
 
 .profiletop{
