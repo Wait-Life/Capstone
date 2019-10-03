@@ -4,7 +4,6 @@
     <th:block th:replace="fragments/header :: main-header('Events')"/>
 </head>
 <body>
-<div class="uk-container-large">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -17,7 +16,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <h1>All Events!</h1>
 <div uk-filter="target: .js-filter">
 

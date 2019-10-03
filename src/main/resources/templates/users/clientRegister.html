@@ -20,8 +20,8 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
-<div class="uk-container" uk-overflow-auto="">
-    <div class="uk-align-center">
+    <div class="uk-container uk-container-expand">
+        <div class="uk-align-center">
         <h1>Sign Up to View Hustlers!</h1>
     </div>
     <form th:action="@{/clients/register}" th:method="post" th:object="${user}">

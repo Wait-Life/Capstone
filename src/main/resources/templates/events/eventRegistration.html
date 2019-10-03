@@ -7,7 +7,6 @@
     <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
 </head>
 <body>
-<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -20,7 +19,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
     <h1>Create a new event!</h1>
     <form th:action="@{/events/create}" th:method="post" th:object="${event}">
         <label for="title">Event Title</label>

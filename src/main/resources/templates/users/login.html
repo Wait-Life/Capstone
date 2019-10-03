@@ -6,7 +6,6 @@
     <th:block th:replace="fragments/header :: main-header('Login')" />
 </head>
 <body id="index-body">
-<div class="uk-container-expand">
 <script th:src="@{/js/fbSignIn.js}"></script>
 <!--<script async="async" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
 <!--<div id="fb-root"></div>-->
@@ -25,6 +24,7 @@
 </div>
 <!--<div style="height:100px;"></div>-->
 <!--<div class="container" style="height: 300px; width: 450px">-->
+<div class="uk-container uk-container-expand">
 <h1>Log In</h1>
 
 <div uk-grid="" style="width: 100%">

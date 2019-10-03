@@ -7,7 +7,6 @@
     <link rel="stylesheet" th:href="@{/css/mapbox.css}" />
 </head>
 <body>
-<div class="uk-container-expand">
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
 </div>
@@ -20,7 +19,7 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
-
+<div class="uk-container uk-container-expand">
 <div>Bartenders applied for: <h3 th:text="${event.title}"></h3></div>
 <th:block th:object="${event}">
     <div th:each="bartender : ${event.bartenders}">
