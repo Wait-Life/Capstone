@@ -28,9 +28,8 @@
 <h1>Log In</h1>
 
 <div uk-grid="" style="width: 100%">
-    <div class="uk-width-1-3">
-    </div>
-    <div class="uk-align-center">
+    <div class="uk-width-1-3"></div>
+    <div class="uk-align-center uk-width-1-3">
         <form th:action="@{/login}" method="post">
 <!--            <div class="uk-margin">-->
 <!--                <div class="uk-inline">-->
@@ -46,14 +45,14 @@
                 <div class="uk-inline"> -->
 
 
-            <div class="uk-margin uk-align-center" id="username-element">
+            <div class="uk-align-center" id="username-element">
 
                     <label for="username">Email</label>
-                    <input class="uk-input input-login" id="username" name="login" type="text" style="width: 400px" />
+                    <input class="uk-input input-login" id="username" name="username" type="text" style="width: 400px" />
             </div>
-            <div class="uk-margin uk-align-center" id="password-element">
+            <div class="uk-align-center" id="password-element">
                     <label for="password">Password</label>
-                    <input class="uk-input input-login" id="password" name="login" type="password" style="width: 400px"/>
+                    <input class="uk-input input-login" id="password" name="password" type="password" style="width: 400px"/>
                 </div>
 
             <button class="uk-button uk-align-center" type="submit" name="action">Submit</button>
