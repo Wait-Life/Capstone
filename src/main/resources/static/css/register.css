@@ -35,6 +35,10 @@ a {
     border: 2px;
 }
 
+.uk-card-body {
+    padding: 10px auto;
+}
+
 /*.uk-search-input {*/
 /*    position: relative;*/
 /*    margin-right: 80px;*/
