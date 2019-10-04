@@ -16,6 +16,9 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <div uk-grid="">
         <div class="bpleftside uk-width-1-2">
@@ -37,8 +40,9 @@
         <div class="uk-background-fixed uk-background-center-center uk-height-small"
              style="background-image: url(/img/drinkbg.jpg); width: 100%; margin-left: 16%">
         </div>
-        <div class="cprightbottom">
+        <div class="cprightbottom uk-card">
             <!--            Populate Interested events here-->
+
         </div>
     </div>
 
@@ -48,9 +52,11 @@
     <form th:action="@{/hustlers/profile/{id}/delete(id=${user.id})}" th:method="POST">
         <button id="deleteBarProfileButton" class="uk-button uk-button-danger uk-button-small">Delete My Profile</button>
     </form>
-
-
+</div>
     <th:block th:replace="fragments/footer :: footer"/>
+    </div>
+
+
     <th:block th:replace="fragments/script :: my-script"/>
 </div>
 </body>

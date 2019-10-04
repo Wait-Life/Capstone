@@ -18,6 +18,9 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <div class="uk-card uk-card-default uk-card-hover uk-card-body">
         <div class="uk-card-header">
@@ -35,6 +38,10 @@
 
 <div id="map"></div>
 </div>
+    </div>
+<th:block th:replace="fragments/footer :: footer"/>
+</div>
+
 <th:block th:replace="fragments/script :: my-script"/>
 <script th:src="@{/js/mapbox.js}"></script>
 </body>
