@@ -52,6 +52,7 @@
 
 <form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small" id="deleteProfileButton">Delete My Profile</button></form>
 
+<th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>

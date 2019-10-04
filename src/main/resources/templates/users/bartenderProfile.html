@@ -49,8 +49,9 @@
         <button id="deleteBarProfileButton" class="uk-button uk-button-danger uk-button-small">Delete My Profile</button>
     </form>
 
-<!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
-<th:block th:replace="fragments/script :: my-script"/>
+
+    <th:block th:replace="fragments/footer :: footer"/>
+    <th:block th:replace="fragments/script :: my-script"/>
 </div>
 </body>
 </html>
