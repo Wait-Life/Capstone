@@ -1,46 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/header :: main-header('Bartender Directory')" />
+    <th:block th:replace="fragments/header :: main-header('Bartender Directory')"/>
 </head>
 <body>
 <div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
+    <th:block th:replace="fragments/navbarsm2 :: top-navsm2"/>
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbarsm :: top-navsm" />
+    <th:block th:replace="fragments/navbarsm :: top-navsm"/>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+    <th:block th:replace="fragments/navbar2 :: top-nav2"/>
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbar :: top-nav" />
+    <th:block th:replace="fragments/navbar :: top-nav"/>
 </div>
 
 <div id="page-container">
     <div id="content-wrap">
-<div class="uk-container uk-container-expand">
-    <h1>Bartender Directory</h1>
+        <div class="uk-container uk-container-expand">
+            <h1>Bartender Directory</h1>
 
-    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid="">
-        <div>
-            <div class="uk-card uk-card-default uk-card-body" th:each="user : ${user}"
-                 th:if="${user.isClient} == ${'1'}">
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top">
-                        <img class="profilePhoto" th:src="${user.photoUrl}"/>
-                    </div>
-                    <div class="uk-card-body"><p>Name: <span th:text="${user.name}"></span></p>
-                        <p>Email: <span th:text="${user.email}"></span></p>
-                        <a th:href="@{'/hustlers/' + ${user.id} + '/profile'}">View Profile</a>
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid="">
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body" th:each="user : ${user}" th:if="${user.isClient} == ${'1'}">
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img class="profilePhoto" th:src="${user.photoUrl}"/>
+                            </div>
+                            <div class="uk-card-body"><p>Name: <span th:text="${user.name}"></span></p>
+                                <p>Email: <span th:text="${user.email}"></span></p>
+                                <a th:href="@{'/hustlers/' + ${user.id} + '/profile'}">View Profile</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<th:block th:replace="fragments/footer :: footer"/>
+    <th:block th:replace="fragments/footer :: footer"/>
 </div>
-
 
 <th:block th:replace="fragments/script :: my-script"/>
 </body>

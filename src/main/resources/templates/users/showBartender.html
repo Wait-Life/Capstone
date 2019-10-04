@@ -16,6 +16,8 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav"/>
 </div>
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-text-center">
         <div class="uk-card-header">
@@ -32,8 +34,10 @@
         </div>
     </div>
 </div>
-
 <th:block th:replace="fragments/footer :: footer"/>
+    </div>
+</div>
+
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>
