@@ -80,6 +80,18 @@ a {
     background-color: #18131A;
 }
 
+#deleteBarProfileButton {
+    border-radius: 5px;
+    background-color: #5C222D;
+    color: #ECE4E4;
+    font-size: smaller;
+    margin-left: 10%;
+}
+
+#deleteBarProfileButton:hover {
+    background-color: #18131A;
+}
+
 .uk-button {
     margin: 20px auto;
 }
