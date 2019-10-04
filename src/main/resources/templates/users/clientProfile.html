@@ -40,9 +40,9 @@
                         <p>Event location: <span th:text="${event.address}"></span></p>
                         <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
                         <p>Description: <span th:text="${event.description}"></span></p>
-                        <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button-primary">Edit</a>
-                        <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST"><button class="uk-button-danger">Delete</button></form>
-                        <a th:href="@{'/events/appliedbartenders/' + ${event.id}}" class="uk-button-primary">View Applied Bartenders</a>
+                        <a th:href="@{/events/{id}/edit(id=${event.id})}" class="uk-button uk-button-primary" id="editButton">Edit</a>
+                        <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST"><button class="uk-button uk-button-danger" id="deleteButton">Delete</button></form>
+                        <a th:href="@{'/events/appliedbartenders/' + ${event.id}}" class="uk-button uk-button-primary" id="editButton">View Applied Bartenders</a>
                     </div>
                 </th:block>
             </div>
@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small">Delete My Profile</button></form>
+<form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small" id="deleteProfileButton">Delete My Profile</button></form>
 
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
