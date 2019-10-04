@@ -38,7 +38,8 @@
                     </form>
                 </li>
                 <li>
-                    <form th:action="@{#}" th:method="post">
+                    <form th:action="@{'events/' + ${event.id} + '/addBartender/'}" th:method="POST">
+                        <input type="hidden" th:value="${event.bartendersNeeded}" name="bartendersNeeded" />
                         <button class="uk-button-primary" th:type="submit">Accept</button>
                     </form>
                 </li>

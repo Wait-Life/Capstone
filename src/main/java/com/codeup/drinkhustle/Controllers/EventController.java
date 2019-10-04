@@ -108,6 +108,23 @@ public class EventController {
         return "redirect:/events/" + eventToBeUpdated.getId();
     }
 
+//    @GetMapping("/events/{id}/addBartenders")
+//    public String addBartener(@PathVariable long id, Model viewModel) {
+//        Event event = eventDao.findOne(id);
+//        viewModel.addAttribute("event", event);
+//        return "events/";
+//    }
+//
+//    @PostMapping("/events/{id}/addBartender")
+//    public String update(@PathVariable long id,
+//                         @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
+//                         Model viewModel) throws ParseException {
+//        Event eventToBeUpdated = eventDao.findOne(id);
+//        eventToBeUpdated.setBartendersNeeded(bartendersNeeded - 1);
+//        eventDao.save(eventToBeUpdated);
+//        return "redirect:/events/" + eventToBeUpdated.getId();
+//    }
+
     @PostMapping("/events/{id}/delete")
     public String deleteEvent(@PathVariable long id) {
         Event event = eventDao.findOne(id);
