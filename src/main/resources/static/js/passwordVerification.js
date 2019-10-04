@@ -22,11 +22,11 @@ CustomValidation.prototype = {
 			var requireElement = this.validityChecks[i].element;
 			if (requireElement) {
 				if (isInvalid) {
-					requireElement.classList.add('invalid');
-					requireElement.classList.remove('valid');
+					requireElement.classList.add('uk-form-danger');
+					requireElement.classList.remove('uk-form-success');
 				} else {
-					requireElement.classList.remove('invalid');
-					requireElement.classList.add('valid');
+					requireElement.classList.remove('uk-form-danger');
+					requireElement.classList.add('uk-form-success');
 				}
 			}
 		}
