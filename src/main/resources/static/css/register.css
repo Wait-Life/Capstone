@@ -27,6 +27,11 @@ a {
     color: inherit;
 }
 
+.uk-margin-auto-right {
+    position: relative;
+    right: 20px;
+}
+
 /*.uk-search-input {*/
 /*    position: relative;*/
 /*    margin-right: 80px;*/
