@@ -18,6 +18,9 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+
+<div id="page-container">
+    <div id="content-wrap">
     <div class="uk-container uk-container-expand">
         <div class="uk-align-center">
         <h1>Sign Up to Start Hustlin'</h1>
@@ -77,6 +80,10 @@
         <input type="submit" id="submit" value="Sign me up!"/>
     </form>
 </div>
+    </div>
+<th:block th:replace="fragments/footer :: footer"/>
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>

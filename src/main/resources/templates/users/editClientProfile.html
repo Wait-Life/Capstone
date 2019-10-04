@@ -17,20 +17,22 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 <div class="uk-container uk-container-expand">
-<form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
-    <label for="username">Name</label>
-    <input id="username" name="username" type="text" th:field="*{name}"/>
-    <label for="email">Email</label>
-    <input id="email" name="email" type="text" th:field="*{email}" />
-    <label for="phoneNum">Phone Number</label>
-    <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}" />
-    <label for="company">Company</label>
-    <input id="company" name="company" type="text" th:field="*{company}" />
-<!--    <button type="button" id="picker">Update Profile Photo</button>-->
-<!--    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
-    <button class="uk-button uk-button-primary uk-align-center" type="submit" value="submit">Save</button>
-</form>
-<th:block th:replace="fragments/script :: my-script"/>
+    <form th:action="@{'/client/profile/' + ${user.id} + '/edit'}" method="post" th:object="${user}">
+        <label for="username">Name</label>
+        <input id="username" name="username" type="text" th:field="*{name}"/>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="text" th:field="*{email}" />
+        <label for="phoneNum">Phone Number</label>
+        <input type="text" id="phoneNum" name="phoneNum" th:field="*{phoneNum}" />
+        <label for="company">Company</label>
+        <input id="company" name="company" type="text" th:field="*{company}" />
+    <!--    <button type="button" id="picker">Update Profile Photo</button>-->
+    <!--    <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />-->
+        <button class="uk-button uk-button-primary uk-align-center" type="submit" value="submit">Save</button>
+    </form>
 </div>
+
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>
