@@ -77,18 +77,33 @@ a {
     padding: 20px auto;
     border: 1px dotted lightslategrey;
     border-radius: 5px;
+    background-color: #60668c;
+    color: #18131A;!important;
 }
 
 .uk-card:hover {
-    background-color: #ECE4E4;
+    background-color: #444b6e;!important;
+    color: #18131A;!important;
+    box-shadow: #92a4b6 1px 3px 5px 0px;
+    border: none;
+    border-radius: 5px;
 }
 
 .bpleftside {
-    background-color: #66a6cd;
-    color: #ece4e4;
-    font-family: "Source Sans Pro";
-    padding: 10px auto;
+    background-color: #60668C;!important;
     margin-left: 10%;
+}
+
+.profilePhoto {
+    border: 3px solid #ECE4E4;!important;
+    border-radius: 50%;
+}
+
+h1, h2, h3, h4, h5, p {
+    color: #ece4e4;
+    font-family: "Source Sans Pro";!important;
+    padding: 10px auto;!important;
+    /*margin-left: 10%;!important;*/
 }
 
 .registration-input:focus {
