@@ -168,12 +168,12 @@ public class UserController {
         return "users/viewBartenders";
     }
 
-    //    VIEW INDIVIDUAL USER PROFILE
+    //    VIEW INDIVIDUAL BARTENDER PROFILE
     @GetMapping("hustlers/{id}/profile")
     public String show(@PathVariable long id, Model viewModel) {
         User user = userDao.findOne(id);
         viewModel.addAttribute("user", user);
-        return "users/view";
+        return "users/showBartender";
     }
 
     @GetMapping("/hustlers/search")
