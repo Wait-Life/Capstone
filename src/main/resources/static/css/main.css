@@ -3,6 +3,7 @@
     width: 100%;
     height: 768px;
     background-image: url("../img/capstone2.jpg");
+
 }
 
 .topcontainersm{
@@ -79,6 +80,7 @@ h5{
 }
 
 
+
 /*Footer CSS to keep position at bottom of page*/
 #page-container {
     position: relative;
@@ -95,3 +97,4 @@ h5{
     width: 100%;
     height: 2.5rem;            /* Footer height */
 }
+
