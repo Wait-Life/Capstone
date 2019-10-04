@@ -33,11 +33,8 @@
     </div>
 </div>
 </div>
-<!--<div th:each="user : ${user}" th:if="${user.isClient} == ${'1'}">-->
-<!--    <p>Name: <span th:text="${user.name}"></span></p>-->
-<!--    <p>Email: <span th:text="${user.email}"></span></p>-->
 
-<!--</div>-->
+<th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>
