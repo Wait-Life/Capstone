@@ -207,6 +207,22 @@ public class EventController {
         return "redirect:/events/appliedbartenders/" + id;
     }
 
+//    @PostMapping("/events/{id}/addBartender")
+//    public String addAppliedBartenderToEvent(@PathVariable long id, Model model,
+//                        @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
+//                        @RequestParam(name = "bartenderId") long bartenderId) {
+//
+//        Event eventToBeUpdated = eventDao.findOne(id);
+//        eventToBeUpdated.setBartendersNeeded(bartendersNeeded - 1);
+//        System.out.println(bartendersNeeded);
+//        User user = userDao.findOne(bartenderId);
+//        eventDao.save(eventToBeUpdated);
+//        Twilio.init(twilioSid, twilioToken);
+//        Message message = Message.creator(new PhoneNumber(user.getPhoneNum()), originPhoneNumber, "Your request to work a Drink Hustle event has been approved!").create();
+//        message.getSid();
+//        return "redirect:/events/appliedbartenders/" + id;
+//    }
+
 
 //    Populate bartenders to account
     @GetMapping("events/appliedbartenders/{id}")

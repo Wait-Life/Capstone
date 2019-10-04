@@ -191,9 +191,9 @@ h1, h2, h3, h4, h5, p {
 :root {
 
     /* Font */
-    --fh-font-family: 'Source Sans Pro', sans-serif;
+    --fh-font-family: 'Source Sans Pro';
     --fh-font-size: 15px;
-    --fh-font-color: rgb(236, 228, 228);
+    --fh-font-color: rgb(24, 19, 26);
 
     /* Borders */
     --fh-border-radius: 3px;
