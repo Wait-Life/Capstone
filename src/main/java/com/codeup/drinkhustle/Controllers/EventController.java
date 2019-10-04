@@ -108,6 +108,23 @@ public class EventController {
         return "redirect:/events/" + eventToBeUpdated.getId();
     }
 
+//    @GetMapping("/events/{id}/addBartenders")
+//    public String addBartener(@PathVariable long id, Model viewModel) {
+//        Event event = eventDao.findOne(id);
+//        viewModel.addAttribute("event", event);
+//        return "events/";
+//    }
+//
+//    @PostMapping("/events/{id}/addBartender")
+//    public String update(@PathVariable long id,
+//                         @RequestParam(name = "bartendersNeeded") Long bartendersNeeded,
+//                         Model viewModel) throws ParseException {
+//        Event eventToBeUpdated = eventDao.findOne(id);
+//        eventToBeUpdated.setBartendersNeeded(bartendersNeeded - 1);
+//        eventDao.save(eventToBeUpdated);
+//        return "redirect:/events/" + eventToBeUpdated.getId();
+//    }
+
     @PostMapping("/events/{id}/delete")
     public String deleteEvent(@PathVariable long id) {
         Event event = eventDao.findOne(id);
@@ -189,6 +206,22 @@ public class EventController {
         eventDao.save(event);
         return "redirect:/events/appliedbartenders/" + id;
     }
+
+//    @PostMapping("/events/{id}/addBartender")
+//    public String addAppliedBartenderToEvent(@PathVariable long id, Model model,
+//                        @RequestParam(name = "bartendersNeeded") int bartendersNeeded,
+//                        @RequestParam(name = "bartenderId") long bartenderId) {
+//
+//        Event eventToBeUpdated = eventDao.findOne(id);
+//        eventToBeUpdated.setBartendersNeeded(bartendersNeeded - 1);
+//        System.out.println(bartendersNeeded);
+//        User user = userDao.findOne(bartenderId);
+//        eventDao.save(eventToBeUpdated);
+//        Twilio.init(twilioSid, twilioToken);
+//        Message message = Message.creator(new PhoneNumber(user.getPhoneNum()), originPhoneNumber, "Your request to work a Drink Hustle event has been approved!").create();
+//        message.getSid();
+//        return "redirect:/events/appliedbartenders/" + id;
+//    }
 
 
 //    Populate bartenders to account
