@@ -46,7 +46,7 @@
 <form th:action="@{/hustlers/profile/{id}/delete(id=${user.id})}" th:method="POST"><button id="deleteButton" class="uk-button uk-button-danger uk-button-small">Delete My Profile</button></form>
 
 <!--<a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>-->
-<th:block th:replace="fragments/footer :: myfooter"/>
+<th:block th:replace="fragments/script :: my-script"/>
 </div>
 </body>
 </html>
