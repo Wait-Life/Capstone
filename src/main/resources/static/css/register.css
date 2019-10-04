@@ -30,6 +30,9 @@ a {
 .uk-margin-auto-right {
     position: relative;
     right: 20px;
+    border-style: groove;
+    border-color: #ece4e4;
+    border: 2px;
 }
 
 /*.uk-search-input {*/
