@@ -17,6 +17,8 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <div uk-grid="">
         <div class="uk-card uk-width-1-4">
@@ -73,8 +75,10 @@
         </div>
     </div>
 </div>
-
+</div>
 <th:block th:replace="fragments/footer :: footer"/>
+</div>
+
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>

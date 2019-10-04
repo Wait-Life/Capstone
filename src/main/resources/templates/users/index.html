@@ -17,10 +17,14 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <h1>View All Users!</h1>
     <div th:each="user : ${users}">
         <span th:text="${user.name}"></span>
+    </div>
+</div>
     </div>
 </div>
 

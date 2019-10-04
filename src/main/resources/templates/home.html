@@ -21,78 +21,83 @@
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
 
-<div class="uk-hidden@m containersm">
-    <div>
 
-    </div>
-    <div uk-grid="">
-        <div class="uk-width-1-1" style="height: 400px; background: lightblue;">
-            <h1>Drink Hustle</h1>
-            Connecting your events with local bartenders.
-            <ul>
-                <li>
-                    Register as bartender to browse events and apply gigs.
-                </li>
-                <li>
-                    Register as a client to post events and search local bartenders.
-                </li>
-            </ul>
-            <form action="/events/search" method="get" class="uk-search">
-                <input class="form uk-search-input" type="search" placeholder="Search Events..." name="term" />
-            </form>
-        </div>
-    </div>
-    <div class="uk-child-width-1-4@s uk-child-width-1-2@m uk-text-center" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true">
-        <div>
-            <div class="cardone uk-card uk-card-default uk-card-body">Special Occasions</div>
-        </div>
-        <div>
-            <div class="cardtwo uk-card uk-card-default uk-card-body">Parties</div>
-        </div>
-        <div>
-            <div class="cardthree uk-card uk-card-default uk-card-body">Business Events</div>
-        </div>
-        <div>
-            <div class="cardfour uk-card uk-card-default uk-card-body">Social Gatherings</div>
-        </div>
-    </div>
-</div>
-<div class="topcontainersm uk-hidden@m"></div>
-
-<!--end of mobile view-->
-
-<div class="topcontainer uk-visible@m">
-    <div class="insidetop"></div>
-    <div class="midbottom" style="width: 100%; height: 149px">
-        <div class="uk-child-width-1-4@s uk-child-width-3-4@m uk-text-center uk-visible@m" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true"><div>
-            <div class="cardone uk-card uk-card-default uk-card-body">
-                <h4 style="color:white;">Special Occasions</h4>
-            </div>
-        </div>
+<div id="page-container">
+    <div id="content-wrap">
+        <div class="uk-hidden@m containersm">
             <div>
-                <div class="cardtwo uk-card uk-card-default uk-card-body">
-                    <h4 style="color:white;">Parties</h4>
+
+            </div>
+            <div uk-grid="">
+                <div class="uk-width-1-1" style="height: 400px; background: lightblue;">
+                    <h1>Drink Hustle</h1>
+                    Connecting your events with local bartenders.
+                    <ul>
+                        <li>
+                            Register as bartender to browse events and apply gigs.
+                        </li>
+                        <li>
+                            Register as a client to post events and search local bartenders.
+                        </li>
+                    </ul>
+                    <form action="/events/search" method="get" class="uk-search">
+                        <input class="form uk-search-input" type="search" placeholder="Search Events..." name="term" />
+                    </form>
                 </div>
             </div>
-            <div>
-                <div class="cardthree uk-card uk-card-default uk-card-body">
-                    <h4 style="color:white;">Business Events</h4>
+            <div class="uk-child-width-1-4@s uk-child-width-1-2@m uk-text-center" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true">
+                <div>
+                    <div class="cardone uk-card uk-card-default uk-card-body">Special Occasions</div>
+                </div>
+                <div>
+                    <div class="cardtwo uk-card uk-card-default uk-card-body">Parties</div>
+                </div>
+                <div>
+                    <div class="cardthree uk-card uk-card-default uk-card-body">Business Events</div>
+                </div>
+                <div>
+                    <div class="cardfour uk-card uk-card-default uk-card-body">Social Gatherings</div>
                 </div>
             </div>
-            <div>
-                <div class="cardfour uk-card uk-card-default uk-card-body">
-                    <h4 style="color:white;">Social Gatherings</h4>
-                 </div>
-             </div>
+        </div>
+        <div class="topcontainersm uk-hidden@m"></div>
+
+        <!--end of mobile view-->
+
+        <div class="topcontainer uk-visible@m">
+            <div class="insidetop"></div>
+            <div class="midbottom" style="width: 100%; height: 149px">
+                <div class="uk-child-width-1-4@s uk-child-width-3-4@m uk-text-center uk-visible@m" uk-grid="" uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true"><div>
+                    <div class="cardone uk-card uk-card-default uk-card-body">
+                        <h4 style="color:white;">Special Occasions</h4>
+                    </div>
+                </div>
+                    <div>
+                        <div class="cardtwo uk-card uk-card-default uk-card-body">
+                            <h4 style="color:white;">Parties</h4>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cardthree uk-card uk-card-default uk-card-body">
+                            <h4 style="color:white;">Business Events</h4>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cardfour uk-card uk-card-default uk-card-body">
+                            <h4 style="color:white;">Social Gatherings</h4>
+                         </div>
+                     </div>
+                </div>
+            </div>
         </div>
     </div>
+<th:block th:replace="fragments/footer :: footer"/>
 </div>
 
 <!--<div class="uk-background-fixed uk-background-center-center uk-height-medium uk-width-large" style="width: 1440px;background-image: url(img/drinkbg.jpg);">-->
 <!--    <h2 style="color:white;">Drink Hustler was made by 2 Former Bartenders and 2 Current Weirdos.</h2>-->
 <!--    <hr/>-->
 <!--</div>-->
-<th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>

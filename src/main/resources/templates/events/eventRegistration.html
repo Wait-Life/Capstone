@@ -19,6 +19,9 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
     <h1>Create a new event!</h1>
     <form th:action="@{/events/create}" th:method="post" th:object="${event}">
@@ -48,45 +51,12 @@
         <input type="submit" value="Create Event" />
     </form>
 <div id="map"></div>
-<!--<form>-->
-<!--    <fieldset class="uk-fieldset">-->
-<!--        <legend class="uk-legend">Create an Event</legend>-->
-
-<!--        <div class="uk-margin">-->
-<!--        <label for="title">Event Title</label>-->
-<!--        <input type="text" id="title" th:field="*{title}" />-->
-<!--        </div>-->
-
-<!--        <div class="uk-margin">-->
-<!--        <label for="date">Date</label>-->
-<!--        <input type="date" id="date" th:field="*{date}" />-->
-<!--        </div>-->
-
-<!--        <div class="uk-margin">-->
-<!--        <label for="start-time">Start Time</label>-->
-<!--        <input type="time" id="start-time" th:field="*{startTime}" />-->
-<!--        </div>-->
-
-<!--        <div class="uk-margin">-->
-<!--        <label for="endTime">End Time</label>-->
-<!--        <input type="time" id="endTime" th:field="*{endTime}" />-->
-<!--        </div>-->
-
-<!--        <div class="uk-margin">-->
-<!--            <label for="bartendersNeeded">Number of Bartenders Needed</label>-->
-<!--            <input type="number" min="1" max="10" id="bartendersNeeded" th:field="*{bartendersNeeded}" />-->
-<!--        </div>-->
-
-<!--        <div class="uk-margin">-->
-<!--            <label for="description">Event Description</label>-->
-<!--            <input type="text" id="description" th:field="*{description}" />-->
-<!--        </div>-->
-
-
-<!--    </fieldset>-->
-<!--</form>-->
+</div>
+    </div>
+<th:block th:replace="fragments/footer :: footer"/>
 </div>
 <!--<script th:src="@{/js/keys.js}"></script>-->
+
 <th:block th:replace="fragments/script :: my-script"/>
 <script th:src="@{/js/mapboxGeocode.js}"></script>
 

@@ -16,6 +16,9 @@
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
     <th:block th:replace="fragments/navbar :: top-nav" />
 </div>
+
+<div id="page-container">
+    <div id="content-wrap">
 <div class="uk-container uk-container-expand">
 <div uk-grid="">
     <div class="cpleftside uk-width-1-2" style="background: lightblue;">
@@ -24,6 +27,7 @@
         <h3>Company: <span th:text="${user.company}"></span></h3>
         <h3>Contact Email: <span th:text="${user.email}"></span></h3>
                 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
+<form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small" id="deleteProfileButton">Delete My Profile</button></form>
     </div>
 
         <div class="cprightside uk-width-1-2">
@@ -49,10 +53,12 @@
         </div>
     </div>
 </div>
-
-<form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST"><button class="uk-button uk-button-danger uk-button-small" id="deleteProfileButton">Delete My Profile</button></form>
-
+    </div>
 <th:block th:replace="fragments/footer :: footer"/>
+</div>
+
+
+
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
 </html>
