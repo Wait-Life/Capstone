@@ -47,22 +47,34 @@ form#loginForm {
     color: white;
 }
 
+
     /*Show All Events Custom CSS*/
 #eventsLICard {
     height: 320px;
     border-radius: 10px;
+    transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
+}
+#eventsLICard:hover {
+    transform: translateY(-0.5rem);
 }
 #eventsLICard > span {
     text-overflow: ellipsis;
 }
-#eventsLICard > a:hover {
+#eventsLICard > a {
     color: white;
+    transform: translateY(-0.5rem);
 }
 
 
 #aboutUsGrid > .uk-card {
     padding: 15px;
+    transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
 }
+#aboutUsGrid > .uk-card:hover {
+    transform: translateY(-0.5rem);
+}
+
+
 h1 {
     color: #ece4e4;
     font-size: 2rem;
