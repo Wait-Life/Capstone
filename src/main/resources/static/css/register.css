@@ -60,7 +60,9 @@ form#loginForm {
 }
 
 
-
+#aboutUsGrid > .uk-card {
+    padding: 15px;
+}
 h1 {
     color: #ece4e4;
     font-size: 2rem;
