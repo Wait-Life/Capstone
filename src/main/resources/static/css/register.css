@@ -29,6 +29,23 @@ nav {
     padding: 5px;
 }
 
+.uk-grid-small#login {
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.uk-grid-small#login:hover {
+    box-shadow: rgba(11, 11, 11, 0.25) 2px 1px 2px 1px;
+}
+
+form#loginForm {
+    padding-left: 0px;
+}
+
+#loginGrid {
+    margin-left: 0px;
+}
+
 h1 {
     color: #ece4e4;
     font-size: 2rem;
@@ -63,9 +80,8 @@ a {
 */
 
 .container {
-    margin: 80px auto;
-    width: 90%;
-    max-width: 800px;
+    margin: 20px auto;
+    width: 100%;
 }
 
 .registration {
