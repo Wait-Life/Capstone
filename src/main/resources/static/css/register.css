@@ -27,7 +27,6 @@ nav {
 
 
     /*Custom CSS for Login Page*/
-
 .uk-grid-small > .uk-card-default {
     padding: 5px;
 }
@@ -45,8 +44,21 @@ form#loginForm {
     margin-left: 0px;
 }
 .uk-button#submitButton:hover{
-    color: whitesmoke;
+    color: white;
 }
+
+    /*Show All Events Custom CSS*/
+#eventsLICard {
+    height: 320px;
+    border-radius: 10px;
+}
+#eventsLICard > span {
+    text-overflow: ellipsis;
+}
+#eventsLICard > a:hover {
+    color: white;
+}
+
 
 
 h1 {
