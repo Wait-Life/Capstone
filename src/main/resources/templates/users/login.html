@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/header :: main-header('Login')" />
+    <th:block th:replace="fragments/header :: main-header('Login')"/>
 </head>
 <body id="index-body">
 <script th:src="@{/js/fbSignIn.js}"></script>
@@ -11,81 +11,39 @@
 <!--<div id="fb-root"></div>-->
 <!--<script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=413668279352778&autoLogAppEvents=1"></script>-->
 <div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbarsm2 :: top-navsm2" />
+    <th:block th:replace="fragments/navbarsm2 :: top-navsm2"/>
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbarsm :: top-navsm" />
+    <th:block th:replace="fragments/navbarsm :: top-navsm"/>
 </div>
 <div sec:authorize="isAuthenticated()">
-    <th:block th:replace="fragments/navbar2 :: top-nav2" />
+    <th:block th:replace="fragments/navbar2 :: top-nav2"/>
 </div>
 <div th:unless="${#authorization.expression('isAuthenticated()')}">
-    <th:block th:replace="fragments/navbar :: top-nav" />
+    <th:block th:replace="fragments/navbar :: top-nav"/>
 </div>
-<!--<div style="height:100px;"></div>-->
-<!--<div class="container" style="height: 300px; width: 450px">-->
+
 <div class="uk-container uk-container-expand">
-<h1>Log In</h1>
-
-<div uk-grid="" style="width: 100%">
-    <div class="uk-width-1-3"></div>
-    <div class="uk-align-center uk-width-1-3">
-        <form th:action="@{/login}" method="post">
-<!--            <div class="uk-margin">-->
-<!--                <div class="uk-inline">-->
-<!--                    <div class="fb-login-button" data-width="271" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-
-<!--            <div class="uk-margin">-->
-<!--                <div class="uk-inline">-->
-
-<!--             <div class="uk-margin">
-                <div class="uk-inline"> -->
-
-
-            <div class="uk-align-center" id="username-element">
-
+    <h1>Log In</h1>
+    <div uk-grid="">
+        <div class="uk-grid-small"></div>
+        <div class="uk-align-center uk-grid-small uk-card-default">
+            <form th:action="@{/login}" method="post">
+                <div class="uk-align-center" id="username-element">
                     <label for="username">Email</label>
-                    <input class="uk-input input-login" id="username" name="username" type="text" style="width: 400px" />
-            </div>
-            <div class="uk-align-center" id="password-element">
-                    <label for="password">Password</label>
-                    <input class="uk-input input-login" id="password" name="password" type="password" style="width: 400px"/>
+                    <input class="uk-input input-login" id="username" name="username" type="text" style="width: 400px"/>
                 </div>
-
-            <button class="uk-button uk-align-center" type="submit" name="action">Submit</button>
-        </form>
+                <div class="uk-align-center" id="password-element">
+                    <label for="password">Password</label>
+                    <input class="uk-input input-login" id="password" name="password" type="password"
+                           style="width: 400px"/>
+                </div>
+                <button class="uk-button uk-align-center" type="submit" name="action">Submit</button>
+            </form>
         </div>
-    <div class="uk-width-1-3">
+        <div class="uk-grid-small"></div>
     </div>
-    </div>
-
-<!--    <h1>Log In</h1>-->
-<!--    <form th:action="@{/login}" method="post">-->
-<!--        <div class="uk-margin">-->
-<!--            <div class="uk-inline">-->
-<!--                <div class="fb-login-button" data-width="271" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="uk-margin">-->
-<!--            <div class="uk-inline">-->
-<!--                <label for="username">Email</label>-->
-<!--                <input class="uk-input" id="username" name="username" type="text" />-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="uk-margin">-->
-<!--            <div class="uk-inline">-->
-<!--                <label for="password">Password</label>-->
-<!--                <input class="uk-input" id="password" name="password" type="password" />-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <button class=".uk-button-primary" type="submit" name="action">Submit</button>-->
-<!--    </form>-->
 </div>
-
 <th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/script :: my-script"/>
 </body>
