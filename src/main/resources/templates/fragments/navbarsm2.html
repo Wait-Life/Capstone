@@ -2,7 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<nav class="uk-navbar-container uk-hidden@m" th:fragment="top-navsm2" uk-navbar="">
+<nav style="font-family: 'Source Sans Pro',sans-serif; color: white; /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2b88d9+0,207cca+33,207cca+33,3b679e+47,3b679e+94,3b679e+95,3b679e+95 */
+background: #2b88d9; /* Old browsers */
+background: -moz-linear-gradient(top,  #2b88d9 0%, #207cca 13%, #207cca 23%, #3b679e 47%, #3b679e 74%, #3b679e 95%, #3b679e 95%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #2b88d9 0%,#207cca 13%,#207cca 23%,#3b679e 47%,#3b679e 74%,#3b679e 95%,#3b679e 95%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #2b88d9 0%,#207cca 13%,#207cca 23%,#3b679e 47%,#3b679e 74%,#3b679e 95%,#3b679e 95%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b88d9', endColorstr='#3b679e',GradientType=0 ); /* IE6-9 */" class="uk-navbar-container uk-hidden@m" th:fragment="top-navsm2" uk-navbar="">
     <div class="uk-navbar-left">
 
         <ul class="uk-navbar-nav">
@@ -10,13 +15,13 @@
                 <a href="#">  <img  style="width: 25%; height: 25%;" src="img/burger.png"/></a>
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li><a href="/about">About</a></li>
+                        <li><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/about">About</a></li>
                         <!--            <li><a href="/events">Events</a></li>-->
-                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/events">Events</a></li>
-                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/hustlers/bartenders">Bartenders</a></li>
-                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/events/create">Create Events</a></li>
-                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a href="/hustlers/profile">Account</a></li>
-                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a href="/client/profile">Account</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/events">Events</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/hustlers/bartenders">Bartenders</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/events/create">Create Events</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'1'}"><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/hustlers/profile">Account</a></li>
+                        <li th:if="${#authentication.principal.isClient} == ${'0'}"><a style="font-family: 'Source Sans Pro'; color: #e3f2fd" href="/client/profile">Account</a></li>
                         <li class="navbutton">
 
                             <form th:action="@{/logout}" th:method="post">
