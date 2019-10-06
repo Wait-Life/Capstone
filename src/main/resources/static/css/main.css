@@ -1,9 +1,10 @@
 
 .topcontainer{
     width: 100%;
-    height: 768px;
-    background-image: url("../img/capstone2.jpg");
-    background-size: cover;
+    height: 1216px;
+    background-image: url("../img/capstone4.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
 
 }
 
@@ -91,7 +92,7 @@ h5{
 /*Footer CSS to keep position at bottom of page*/
 #page-container {
     position: relative;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 #content-wrap {
