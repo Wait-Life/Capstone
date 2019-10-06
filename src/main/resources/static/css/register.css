@@ -25,6 +25,15 @@ nav {
     font-family: "Source Sans Pro";
 }
 
+.uk-navbar-nav>li>a {
+    color: #ECE4E4;
+    font-family: "Source Sans Pro" !important;
+}
+
+#logout{
+    color: #ECE4E4;
+}
+
 
     /*Custom CSS for Login Page*/
 .uk-grid-small > .uk-card-default {
