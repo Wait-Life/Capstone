@@ -99,6 +99,14 @@ form#loginForm {
 }
 
 
+    /*View All Bartenders Page*/
+#bartenderGrid > .uk-card {
+    padding: 15px;
+    transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
+}
+#bartenderGrid > .uk-card:hover {
+    transform: translateY(-0.5rem);
+}
 
     /*Custom CSS for Page Header*/
 h1 {
@@ -127,11 +135,30 @@ h1 {
 }
 
 
+    /*Bartender Profile Custom CSS*/
+#profilePhoto {
+    border-radius: 50%;
+    max-width: 33%;
+}
 
+
+
+    /*Client Profile Custom CSS*/
+#clientProfilePhoto {
+    margin-top: 5%;
+    max-width: 33%;
+}
+#clientProfileCard {
+    margin-left: 5%;
+    margin-right:5%;
+    margin-bottom: 20%;
+}
 
 a {
-    text-decoration: underline;
     color: #ece4e4;
+}
+a:hover {
+    color: white;
 }
 
 .uk-margin-auto-right {
@@ -230,6 +257,7 @@ a {
 
 .cpleftside {
     background-color: #60668C !important;
+    padding-left: 0px;
 }
 
 .profilePhoto {
