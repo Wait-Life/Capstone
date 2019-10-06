@@ -93,6 +93,19 @@ h1 {
 }
 
 
+    /*Custom CSS for Individual Event Page*/
+#eventCard {
+    border: 1px solid #8c92c1;
+    background-color: #6d739f;
+    margin-left: 5px;
+    margin-right: -5px;
+}
+#eventCard > h4 {
+    color: #ECE4E4;
+}
+
+
+
 
 a {
     text-decoration: underline;
