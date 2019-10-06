@@ -86,6 +86,14 @@ form#loginForm {
 }
 
 
+    /*View All Bartenders Page*/
+#bartenderGrid > .uk-card {
+    padding: 15px;
+    transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
+}
+#bartenderGrid > .uk-card:hover {
+    transform: translateY(-0.5rem);
+}
 
     /*Custom CSS for Page Header*/
 h1 {
