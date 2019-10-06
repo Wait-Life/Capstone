@@ -36,7 +36,7 @@
                 <p><span th:text="${#calendars.format(event.date, 'MM / dd / yyyy')}"></span></p>
                 <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
                 <h4>Title: <span th:text="${event.title}"></span></h4>
-                <p>Address: <span th:text="${event.address}"></span></p>
+                <p>Address: <span th:text="${event.address.replace(', United States of America', '')}"></span></p>
                 <a th:href="@{'/events/' + ${event.id}}">View Event Details</a>
             </div>
         </li>
