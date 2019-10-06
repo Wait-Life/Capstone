@@ -105,11 +105,30 @@ h1 {
 }
 
 
+    /*Bartender Profile Custom CSS*/
+#profilePhoto {
+    border-radius: 50%;
+    max-width: 33%;
+}
 
+
+
+    /*Client Profile Custom CSS*/
+#clientProfilePhoto {
+    margin-top: 5%;
+    max-width: 33%;
+}
+#clientProfileCard {
+    margin-left: 5%;
+    margin-right:5%;
+    margin-bottom: 20%;
+}
 
 a {
-    text-decoration: underline;
     color: #ece4e4;
+}
+a:hover {
+    color: white;
 }
 
 .uk-margin-auto-right {
@@ -208,6 +227,7 @@ a {
 
 .cpleftside {
     background-color: #60668C !important;
+    padding-left: 0px;
 }
 
 .profilePhoto {
