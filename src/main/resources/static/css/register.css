@@ -6,13 +6,63 @@ html {
 }
 
 body {
-    font-size: 78.5%;
+    font-size: 95%;
     /*font-size: 1.6rem;*/
     line-height: 1.6;
     font-family: 'Source Sans Pro';
     background-color: rgb(236, 228, 228);
 }
 
+nav {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2b88d9+0,207cca+33,207cca+33,3b679e+47,3b679e+94,3b679e+95,3b679e+95 */
+    background: #2b88d9; /* Old browsers */
+    background: -moz-linear-gradient(top,  #2b88d9 0%, #207cca 33%, #207cca 33%, #3b679e 47%, #3b679e 94%, #3b679e 95%, #3b679e 95%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #2b88d9 0%,#207cca 33%,#207cca 33%,#3b679e 47%,#3b679e 94%,#3b679e 95%,#3b679e 95%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #2b88d9 0%,#207cca 33%,#207cca 33%,#3b679e 47%,#3b679e 94%,#3b679e 95%,#3b679e 95%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b88d9', endColorstr='#3b679e',GradientType=0 ); /* IE6-9 */
+
+    color: #ECE4E4;
+    font-family: "Source Sans Pro";
+}
+
+
+    /*Custom CSS for Login Page*/
+.uk-grid-small > .uk-card-default {
+    padding: 5px;
+}
+.uk-grid-small#login {
+    padding: 50px;
+    border-radius: 10px;
+}
+.uk-grid-small#login:hover {
+    box-shadow: rgba(11, 11, 11, 0.25) 1px 2px 9px 1px;
+}
+form#loginForm {
+    padding-left: 0px;
+}
+#loginGrid {
+    margin-left: 0px;
+}
+.uk-button#submitButton:hover{
+    color: white;
+}
+
+    /*Show All Events Custom CSS*/
+#eventsLICard {
+    height: 320px;
+    border-radius: 10px;
+}
+#eventsLICard > span {
+    text-overflow: ellipsis;
+}
+#eventsLICard > a:hover {
+    color: white;
+}
+
+
+#aboutUsGrid > .uk-card {
+    padding: 15px;
+}
 h1 {
     color: #ece4e4;
     font-size: 2rem;
@@ -24,7 +74,7 @@ h1 {
 
 a {
     text-decoration: underline;
-    color: #ECE4E4;
+    color: #ece4e4;
 }
 
 .uk-margin-auto-right {
@@ -47,9 +97,8 @@ a {
 */
 
 .container {
-    margin: 80px auto;
-    width: 90%;
-    max-width: 800px;
+    margin: 20px auto;
+    width: 100%;
 }
 
 .registration {
@@ -75,7 +124,7 @@ a {
 
 #deleteProfileButton{
     border-radius: 5px;
-    background-color: #5C222D;
+    background-color: #90303d;
     color: #ECE4E4;
     font-size: smaller;
 }
@@ -86,7 +135,7 @@ a {
 
 #deleteBarProfileButton {
     border-radius: 5px;
-    background-color: #5C222D;
+    background-color: #90303d;
     color: #ECE4E4;
     font-size: smaller;
     margin-left: 10%;
@@ -471,9 +520,9 @@ input[type="reset"]:focus {
 /* Custom ------------------ */
 
 
-input:not([type="submit"]):not([type="search"]):valid {
-    border-color: #2ecc71;
-}
+/*input:not([type="submit"]):not([type="search"]):valid {*/
+/*    border-color: #2ecc71;*/
+/*}*/
 
 
 /* Hide and show related .input-requirements when interacting with input */

@@ -18,15 +18,19 @@
     width: 100%;
 }
 
-.card-panel{
-    height: 350px;
-    width: 350px;
-}
+/*.card-panel{*/
+/*    height: 350px;*/
+/*    width: 350px;*/
+/*}*/
 .main-nav{
-    background-color: rgba(0, 0, 0, .2) !important;
+    background-color: rgba(11, 11, 11, 0.66);
+    color: #ECE4E4;
+    font-family: "Source Sans Pro";
 }
 .main-navhome{
-    background-color: rgba(0, 0, 0, .0) !important;
+    background-color: #0B0B0B;
+    color: #ECE4E4;
+    font-family: "Source Sans Pro";
 }
 .navbutton{
     margin-top: 27px;
@@ -83,8 +87,6 @@ h5{
     height: 200px;
     width: 200px;
 }
-
-
 
 /*Footer CSS to keep position at bottom of page*/
 #page-container {
