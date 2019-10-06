@@ -8,4 +8,5 @@
     margin: 0 auto;
     width: 33.33%;
     height: 240px;
+    z-index: 5000;
 }
