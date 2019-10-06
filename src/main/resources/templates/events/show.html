@@ -21,25 +21,41 @@
 
 <div id="page-container">
     <div id="content-wrap">
-<div class="uk-container uk-container-expand">
-    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
-        <div class="uk-card-header">
-<h4>Title: <span th:text="${event.title}"></span></h4>
-        </div>
-<p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>
-<p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
-<p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
-<p>Address: <span th:text="${event.address}" id="address"></span></p>
-<p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
-<p>Description: <span th:text="${event.description}"></span></p>
-    </div>
-    <br/>
-    <button class="uk-button uk-button-primary uk-button-small"><a th:href="@{'/events/request/' + ${event.id}}">Request to Work</a></button>
+        <div class="uk-container uk-container-expand">
+<!--            <div class="uk-card uk-card-default uk-card-hover uk-card-body">-->
+<!--                <div class="uk-card-header">-->
+<!--                    <h4>Title: <span th:text="${event.title}"></span></h4>-->
+<!--                </div>-->
+<!--                <p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>-->
+<!--                <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>-->
+<!--                <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>-->
+<!--                <p>Address: <span th:text="${event.address}" id="address"></span></p>-->
+<!--                <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>-->
+<!--                <p>Description: <span th:text="${event.description}"></span></p>-->
+<!--            </div>-->
 
-<div id="map"></div>
-</div>
+         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid="">
+             <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                <h4 class="uk-card-title">Title: <span th:text="${event.title}"></span></h4>
+                 <p>Date: <span th:text="${#calendars.format(event.date, 'MM dd, yyyy')}"></span></p>
+                 <p>Start Time: <span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
+                 <p>End Time: <span th:text="${#calendars.format(event.endTime, 'h:mm a')}"></span></p>
+                 <p>Address: <span th:text="${event.address}" id="address"></span></p>
+                 <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
+                 <p>Description: <span th:text="${event.description}"></span></p>
+            </div>
+             <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+                 <div id="map" style="margin: auto; margin-top:20px; margin-bottom: 30px; padding: 10px; height: 400px; width: 400px; position: center"></div>
+             </div>
+        </div>
+            <br/>
+            <button class="uk-button uk-button-primary uk-button-small"><a
+                    th:href="@{'/events/request/' + ${event.id}}">Request to Work</a></button>
+
+<!--            <div id="map"></div>-->
+        </div>
     </div>
-<th:block th:replace="fragments/footer :: footer"/>
+    <th:block th:replace="fragments/footer :: footer"/>
 </div>
 
 <th:block th:replace="fragments/script :: my-script"/>
