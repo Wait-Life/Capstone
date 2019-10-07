@@ -95,12 +95,20 @@ form#loginForm {
 
 
     /*Custom CSS for About Us Page*/
+#aboutUsGrid {
+    margin-left: 0;
+}
 #aboutUsGrid > .uk-card {
-    padding: 15px;
+    padding: 30px;
     transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
 }
 #aboutUsGrid > .uk-card:hover {
     transform: translateY(-0.5rem);
+}
+.uk-child-width-1-2 > * {
+    max-width: 40%;
+    width: 100%;
+
 }
 
 
