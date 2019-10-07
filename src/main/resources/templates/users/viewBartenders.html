@@ -33,7 +33,9 @@
                             <div class="uk-card-body">
                                 <p>Name: <span th:text="${user.name}"></span></p>
                                 <p>Email: <span th:text="${user.email}"></span></p>
-                                <a th:href="@{'/hustlers/' + ${user.id} + '/profile'}">View Profile</a>
+                                <button class="uk-button uk-button-small uk-button-primary">
+                                    <a th:href="@{'/hustlers/' + ${user.id} + '/profile'}">View Profile</a>
+                                </button>
                             </div>
                         </div>
                     </li>
