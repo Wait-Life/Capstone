@@ -3,9 +3,9 @@
     width: 100%;
     height: 100vh;
     background-image: url("../img/capstone5.png");
-    background-size: cover;
+    background-position: center;
+    background-size: 100%;
     background-repeat: no-repeat;
-
 }
 
 .topcontainersm{
