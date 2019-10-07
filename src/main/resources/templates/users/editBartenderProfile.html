@@ -33,11 +33,20 @@
                 <label for="foodCert">Food Handlers Certification Number</label>
                 <input id="foodCert" name="foodCert" type="text" th:field="*{foodCert}"/>
                 <label for="aboutMe">About Me</label>
-                <textarea id="aboutMe" type="textarea" style="height: 300px" cols="20" wrap="hard" name="aboutMe" th:field="*{aboutMe}"></textarea>
+                <textarea id="aboutMe" type="textarea" style="height: 300px" cols="20" wrap="hard" name="aboutMe"
+                          th:field="*{aboutMe}"></textarea>
                 <!--    <img class="profilePhoto" th:src="${user.photoUrl}"/>-->
                 <!--    <button type="button" id="picker">Change Profile Photo</button>-->
                 <!--    <input type="hidden" id="file" name="file" th:field="*{photoUrl}" />-->
-                <button class="uk-button uk-button-primary uk-align-center" type="submit" value="submit">Save</button>
+                <button class="uk-button uk-button-primary uk-button-small uk-align-center" type="submit"
+                        value="submit">
+                    <a>Save</a>
+                </button>
+                <button class="uk-button uk-button-danger uk-button-small uk-align-center">
+                    <form th:action="@{/hustlers/profile/{id}/delete(id=${user.id})}" th:method="POST">
+                        <a>Delete My Profile</a>
+                    </form>
+                </button>
             </form>
         </div>
     </div>
