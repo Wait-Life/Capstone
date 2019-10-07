@@ -1,6 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <th:block th:replace="fragments/header :: main-header('Events')"/>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css' rel='stylesheet'/>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css' type='text/css' />
@@ -33,8 +33,9 @@
                  <p>Number of Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
                  <p>Description: <span th:text="${event.description}"></span></p>
                  <br/>
-                 <button class="uk-button uk-button-primary uk-button-small"><a
-                         th:href="@{'/events/request/' + ${event.id}}">Request to Work</a></button>
+                 <button class="uk-button uk-button-primary uk-button-small">
+                     <a th:href="@{'/events/request/' + ${event.id}}">Request Event</a>
+                 </button>
             </div>
              <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
                  <div id="map" style="margin: auto; margin-top: 10%; margin-bottom: 10%; height: 440px; width: 440px; position: center; border: 2px rgba(238,232,170,0.27); border-style: outset"></div>
