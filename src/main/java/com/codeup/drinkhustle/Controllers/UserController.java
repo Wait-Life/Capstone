@@ -184,7 +184,7 @@ public class UserController {
     }
 
 //    DELETE PROFILE FOR BARTENDERS
-    @PostMapping("/hustlers/profile/{id}/delete")
+    @PostMapping("/hustlers/profile/{id}/edit/delete")
     public String deleteBartenderProfile(@PathVariable long id) {
         User userSession = userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
         Iterable<Event> userEvents = eventDao.findByOwner(userSession);
