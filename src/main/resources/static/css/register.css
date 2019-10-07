@@ -1,5 +1,9 @@
 /* General layout */
 
+body {
+    max-height: 100vh;
+}
+
 html {
     font-family: "Source Sans Pro";
     font-size: 1.25rem;
@@ -642,7 +646,7 @@ input:not([type="submit"]):active + .input-requirements {
 #footer {
     color: ghostwhite;
     background-color: #3B669D;
-    margin-top: 0px;
+    margin-top: 15px;
 }
 
  #disclaimer {
@@ -651,7 +655,7 @@ input:not([type="submit"]):active + .input-requirements {
 
 ul {
     list-style-type: none;
-    margin-bottom: 0;
+    margin-bottom: 0px;
 }
 
 #footer-about {

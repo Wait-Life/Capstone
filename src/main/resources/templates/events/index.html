@@ -20,33 +20,36 @@
 
 <div id="page-container">
     <div id="content-wrap">
-<div class="uk-container uk-container-expand">
-<h1>Upcoming Events</h1>
-<div uk-filter="target: .js-filter">
+        <div class="uk-container uk-container-expand">
+            <h1>Upcoming Events</h1>
+            <div uk-filter="target: .js-filter">
 
-    <ul class="uk-subnav uk-subnav-pill">
-        <li class="uk-active" uk-filter-control="sort: data-date" style="border-radius: 5px"><a href="#">Sooner</a></li>
-        <li uk-filter-control="sort: data-date; order: desc" style="border-radius: 5px"><a href="#">Later</a></li>
-    </ul>
+                <ul class="uk-subnav uk-subnav-pill">
+                    <li class="uk-active" uk-filter-control="sort: data-date" style="border-radius: 5px"><a href="#">Sooner</a>
+                    </li>
+                    <li uk-filter-control="sort: data-date; order: desc" style="border-radius: 5px"><a
+                            href="#">Later</a></li>
+                </ul>
 
-    <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center uk-grid-match" uk-grid="">
-        <th:block th:each="event : ${events}">
-        <li data-th-attr="data-date=${#calendars.format(event.date, 'MM-dd-yyyy')}" id="eventsLI">
-            <div class="uk-card uk-card-hover-default uk-card-body" id="eventsLICard">
-                <p><span th:text="${#calendars.format(event.date, 'MM / dd / yyyy')}"></span></p>
-                <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
-                <h4>Title: <span th:text="${event.title}"></span></h4>
-                <p>Address: <span th:text="${event.address.replace(', United States of America', '')}"></span></p>
-                <hr class="uk-divider-icon"/>
-                <button class="uk-button uk-button-primary uk-button-small">
-                    <a th:href="@{'/events/' + ${event.id}}">View Event</a>
-                </button>
+                <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center uk-grid-match" uk-grid="">
+                    <th:block th:each="event : ${events}">
+                        <li data-th-attr="data-date=${#calendars.format(event.date, 'MM-dd-yyyy')}" id="eventsLI">
+                            <div class="uk-card uk-card-hover-default uk-card-body" id="eventsLICard">
+                                <p><span th:text="${#calendars.format(event.date, 'MM / dd / yyyy')}"></span></p>
+                                <p><span th:text="${#calendars.format(event.startTime, 'h:mm a')}"></span></p>
+                                <h4>Title: <span th:text="${event.title}"></span></h4>
+                                <p>Address: <span
+                                        th:text="${event.address.replace(', United States of America', '')}"></span></p>
+                                <hr class="uk-divider-icon"/>
+                                <button class="uk-button uk-button-primary uk-button-small">
+                                    <a th:href="@{'/events/' + ${event.id}}">View Event</a>
+                                </button>
+                            </div>
+                        </li>
+                    </th:block>
+                </ul>
             </div>
-        </li>
-        </th:block>
-    </ul>
-</div>
-</div>
+        </div>
     </div>
 <th:block th:replace="fragments/footer :: footer"/>
 </div>
