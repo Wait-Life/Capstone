@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      style="background-color: black">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <th:block th:replace="fragments/header :: main-header('Drink Hustle')"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
-<body>
+<body style="background-color: black">
 <!--mobile view-->
 <div sec:authorize="isAuthenticated()">
     <th:block th:replace="fragments/navbarsm2 :: top-navsm2"/>
