@@ -109,7 +109,7 @@ form#loginForm {
 #aboutUsGrid > .uk-card:hover {
     transform: translateY(-0.5rem);
 }
-.uk-child-width-1-2 > * {
+.uk-container-large > .uk-child-width-1-2 > * {
     max-width: 40%;
     width: 100%;
 
