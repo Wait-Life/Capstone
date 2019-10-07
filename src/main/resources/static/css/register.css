@@ -81,7 +81,7 @@ form#loginForm {
     /*Show All Events Custom CSS*/
 #eventsLICard {
     height: 100%;
-    max-height: 450px;
+    max-height: 500px;
     border-radius: 10px;
     transition: transform 300ms ease-in-out, box-shadow 400ms ease, background 100ms ease;
 }
@@ -94,6 +94,12 @@ form#loginForm {
 #eventsLICard > a {
     color: white;
     transform: translateY(-0.5rem);
+}
+#eventsLICard > .uk-button {
+    position: absolute;
+    bottom: 15px;
+    margin-right: 17%;
+    margin-left: 17%;
 }
 
 
@@ -112,7 +118,6 @@ form#loginForm {
 .uk-container-large > .uk-child-width-1-2 > * {
     max-width: 40%;
     width: 100%;
-
 }
 
 
