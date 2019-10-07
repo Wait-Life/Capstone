@@ -27,15 +27,28 @@ nav {
     margin-bottom: 0;
 }
 
+nav:hover{
+    color: #28316D;
+}
+
 .uk-navbar-nav>li>a {
     color: #ECE4E4;
-    font-family: "Source Sans Pro" !important;
+    font-family: "Source Sans Pro";
 }
+
+.uk-navbar-nav>li>a:hover {
+    color: #28316D;
+}
+
 
 #logout{
     color: #ECE4E4;
+    font-family: "Source Sans Pro";
 }
 
+#logout:hover{
+    color: #28316D;
+}
 
     /*Custom CSS for Login Page*/
 .uk-grid-small > .uk-card-default {
