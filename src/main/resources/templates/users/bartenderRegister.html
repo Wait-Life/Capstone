@@ -73,11 +73,14 @@
         <textarea id="aboutMe" type="textarea" style="height: 300px" cols="20" wrap="hard" name="aboutMe" th:field="*{aboutMe}" placeholder="Tell us about yourself" />
         <br/>
         <div>
-            <button type="button" id="picker">Upload Profile Photo</button>
-            <input type="hidden" id="photo" name="file" value="" th:field="*{photoUrl}" />
+            <button class="uk-button uk-button-primary uk-button-small uk-align-center" id="picker">
+                <a name="file" th:field="*{photoUrl}">Upload Photo</a>
+            </button>
+            <br/>
+            <button class="uk-button uk-button-primary uk-button-small uk-align-center">
+                <a type="submit" id="submit" value="Sign me up!">Sign Me Up!</a>
+            </button>
         </div>
-        <br/>
-        <input type="submit" id="submit" value="Sign me up!"/>
     </form>
 </div>
     </div>
