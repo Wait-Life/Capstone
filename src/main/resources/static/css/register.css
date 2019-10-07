@@ -27,9 +27,6 @@ nav {
     margin-bottom: 0;
 }
 
-nav:hover{
-    color: #28316D;
-}
 
 .landingpage {
     background-color: black;
@@ -41,7 +38,7 @@ nav:hover{
 }
 
 .uk-navbar-nav>li>a:hover {
-    color: #28316D;
+    text-decoration: underline;
 }
 
 
