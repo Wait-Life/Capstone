@@ -38,6 +38,7 @@ nav {
 }
 
 .uk-navbar-nav>li>a:hover {
+    color: #ECE4E4;
     text-decoration: underline;
 }
 
@@ -48,7 +49,7 @@ nav {
 }
 
 #logout:hover{
-    color: #28316D;
+    text-decoration: underline;
 }
 
     /*Custom CSS for Login Page*/
