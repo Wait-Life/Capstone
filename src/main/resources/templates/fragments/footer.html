@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<footer class="footer" th:fragment="footer">
+<footer class="footer" id="footer" th:fragment="footer">
     <ul>
         <li>Contact Us</li>
-        <li><a th:href="@{#}">Disclaimer</a></li>
-        <li>About</li>
+        <li><a th:href="@{#}" id="disclaimer">Disclaimer</a></li>
+        <li><a href="/about" id="footer-about">About</a></li>
         <li>Copyright © 2019 All rights reserved</li>
     </ul>
 </footer>

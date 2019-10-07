@@ -641,3 +641,28 @@ input:not([type="submit"]):active + .input-requirements {
     max-height: 1000px; /* any large number (bigger then the .input-requirements list) */
     transition: max-height 1s ease-in;
 }
+
+#footer {
+    color: ghostwhite;
+    /*display: inline-block;*/
+    background-color: #3B669D;
+}
+
+ #disclaimer {
+     color: ghostwhite;
+ }
+
+ul {
+    list-style-type: none;
+}
+
+#footer-about {
+    color: ghostwhite;
+}
+ footer li {
+     display: inline-block;
+     margin-left: 20px;
+     text-align: center;
+     font-size: 85%;
+
+ }
