@@ -29,14 +29,14 @@
             <h3><span th:text="${user.name}"></span></h3>
             <h3>Company: <span th:text="${user.company}"></span></h3>
             <h3>Contact Email: <span th:text="${user.email}"></span></h3>
-
-
+            <hr class="uk-divider-icon"/>
             <button class="uk-button-primary uk-button-small uk-button">
                 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
             </button>
             <br/>
             <button class="uk-button uk-button-small uk-button-danger">
-                <form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST">Delete My Profile</form>
+                <form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST">Delete My Profile
+                </form>
             </button>
         </div>
     </div>
@@ -56,17 +56,13 @@
                             th:text="${event.address.replace(', United States of America', '')}"></span></p>
                     <p>Bartenders Needed: <span th:text="${event.bartendersNeeded}"></span></p>
                     <p>Description: <span th:text="${event.description}"></span></p>
-                    <br/>
-                    <button class="uk-button uk-button-primary uk-button-small">
+                    <hr class="uk-divider-icon"/>
+                    <button class="uk-button uk-button-small uk-button-primary">
                         <a th:href="@{/events/{id}/edit(id=${event.id})}">Edit</a>
                     </button>
                     <br/>
-                    <button class="uk-button uk-button-small uk-button-danger">
-                        <form th:action="@{'/events/' + ${event.id} + '/delete'}" th:method="POST">Delete</form>
-                    </button>
-                    <br/>
-                    <button class="uk-button-small uk-button-primary uk-button">
-                        <a th:href="@{'/events/appliedbartenders/' + ${event.id}}">View Applicants</a>
+                    <button class="uk-button uk-button-small uk-button-primary">
+                        <a th:href="@{'/events/appliedbartenders/' + ${event.id}}">Applicants</a>
                     </button>
                     <br/>
                 </div>
