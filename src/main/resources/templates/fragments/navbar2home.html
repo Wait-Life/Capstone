@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 
-<nav style="font-family: 'Source Sans Pro'" class="uk-navbar-container uk-margin main-navhome" th:fragment="top-nav2home">
+<nav style="font-family: 'Source Sans Pro'; margin-bottom: 0;" class="uk-navbar-container uk-margin main-navhome" th:fragment="top-nav2home">
     <div class="uk-navbar-left">
 
 
@@ -18,7 +18,7 @@
             <li class="navbutton">
 
                 <form th:action="@{/logout}" th:method="post">
-                    <button class="uk-button uk-button-default uk-button-small" id="logout">Logout</button>
+                    <button style="font-family: 'Source Sans Pro'" class="uk-button uk-button-default uk-button-small" id="logout">Logout</button>
                 </form>
             </li>
         </ul>

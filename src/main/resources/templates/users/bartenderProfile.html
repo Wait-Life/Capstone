@@ -36,7 +36,8 @@
                 <h4>TABC Certification: <span th:text="${user.tabcCert}"></span></h4>
                 <h4>Food Certification: <span th:text="${user.foodCert}"></span></h4>
                 <hr class="uk-divider-icon" style="margin-right: 40px"/>
-                <button id="editButton" class="uk-button-primary uk-button uk-button-small" style="margin-left: 0; margin-bottom: 5%">
+                <button id="editButton" class="uk-button-primary uk-button uk-button-small"
+                        style="margin-left: 0; margin-bottom: 5%">
                     <a th:href="@{'/hustlers/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
                 </button>
             </th:block>
