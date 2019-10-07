@@ -31,6 +31,10 @@ nav:hover{
     color: #28316D;
 }
 
+.landingpage {
+    background-color: black;
+}
+
 .uk-navbar-nav>li>a {
     color: #ECE4E4;
     font-family: "Source Sans Pro";
