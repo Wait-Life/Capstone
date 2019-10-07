@@ -644,8 +644,8 @@ input:not([type="submit"]):active + .input-requirements {
 
 #footer {
     color: ghostwhite;
-    /*display: inline-block;*/
     background-color: #3B669D;
+    margin-top: 0px;
 }
 
  #disclaimer {
@@ -654,6 +654,7 @@ input:not([type="submit"]):active + .input-requirements {
 
 ul {
     list-style-type: none;
+    margin-bottom: 0;
 }
 
 #footer-about {
@@ -664,5 +665,4 @@ ul {
      margin-left: 20px;
      text-align: center;
      font-size: 85%;
-
  }
