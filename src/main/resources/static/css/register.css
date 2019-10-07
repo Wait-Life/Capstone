@@ -1,7 +1,7 @@
 /* General layout */
 
 html {
-    font-family: "Source Sans Pro";
+    font-family: brandon-grotesque, sans-serif;;
     font-size: 1.25rem;
     background-color: rgb(236, 228, 228);
 }
@@ -10,7 +10,7 @@ body {
     font-size: 1.25rem;
     /*font-size: 1.6rem;*/
     line-height: 1.6;
-    font-family: 'Source Sans Pro';
+    font-family: brandon-grotesque, sans-serif;;
     background-color: rgb(236, 228, 228);
 }
 
@@ -23,7 +23,7 @@ nav {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b88d9', endColorstr='#3b679e',GradientType=0 ); /* IE6-9 */
 
     color: #ECE4E4;
-    font-family: "Source Sans Pro";
+    font-family: brandon-grotesque, sans-serif;;
     margin-bottom: 0;
 }
 
@@ -34,21 +34,22 @@ nav {
 
 .uk-navbar-nav>li>a {
     color: #ECE4E4;
-    font-family: "Source Sans Pro";
+    font-family: brandon-grotesque, sans-serif;";
 }
 
 .uk-navbar-nav>li>a:hover {
+    color: #ECE4E4;
     text-decoration: underline;
 }
 
 
 #logout{
     color: #ECE4E4;
-    font-family: "Source Sans Pro";
+    font-family: brandon-grotesque, sans-serif;;
 }
 
 #logout:hover{
-    color: #28316D;
+    text-decoration: underline;
 }
 
     /*Custom CSS for Login Page*/
@@ -281,7 +282,7 @@ a:hover {
 
 h1, h2, h3, h4, h5, p {
     color: #ece4e4;
-    font-family: "Source Sans Pro";!important;
+    font-family: brandon-grotesque, sans-serif;!important;
     padding: 10px auto;!important;
     /*margin-left: 10%;!important;*/
 }
@@ -339,7 +340,7 @@ h1, h2, h3, h4, h5, p {
 :root {
 
     /* Font */
-    --fh-font-family: 'Source Sans Pro';
+    --fh-font-family: brandon-grotesque, sans-serif;
     --fh-font-size: 18px;
     --fh-font-color: rgb(24, 19, 26);
 
@@ -641,8 +642,8 @@ input:not([type="submit"]):active + .input-requirements {
 
 #footer {
     color: ghostwhite;
-    /*display: inline-block;*/
     background-color: #3B669D;
+    margin-top: 0px;
 }
 
  #disclaimer {
@@ -651,6 +652,7 @@ input:not([type="submit"]):active + .input-requirements {
 
 ul {
     list-style-type: none;
+    margin-bottom: 0;
 }
 
 #footer-about {
@@ -661,5 +663,4 @@ ul {
      margin-left: 20px;
      text-align: center;
      font-size: 85%;
-
  }
