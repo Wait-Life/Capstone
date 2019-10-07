@@ -38,7 +38,7 @@
                 <li>
                     <form th:action="@{'/events/appliedbartenders/' + ${event.id}}" th:method="POST">
                         <input type="hidden" th:value="${bartender.id}" name="deniedBartender"/>
-                        <button class="uk-button-warning" th:type="submit">Deny</button>
+                        <button class="uk-button-warning uk-button uk-button-small" th:type="submit">Deny</button>
                     </form>
                 </li>
                 <li>
@@ -46,11 +46,13 @@
 <!--                        <input type="hidden" th:value="${event.bartendersNeeded}" name="bartendersNeeded" />-->
                     <form action="#">
                         <input type="hidden" th:value="${bartender.id}" name="acceptedBartender" />
-                        <button class="uk-button-primary" th:type="submit">Accept</button>
+                        <button class="uk-button-primary uk-button uk-button-small" th:type="submit">Accept</button>
                     </form>
                 </li>
                 <li>
-                    <a th:href="@{'/hustlers/' + ${bartender.id} + '/profile'}">View Profile</a>
+                    <button class="uk-button uk-button-small uk-button-primary">
+                        <a th:href="@{'/hustlers/' + ${bartender.id} + '/profile'}">View Profile</a>
+                    </button>
                 </li>
             </ul>
         </div>
