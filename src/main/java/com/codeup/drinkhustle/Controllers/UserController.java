@@ -30,7 +30,7 @@ public class UserController {
     }
     //Twilio Ish
     TwilioTest twilioTest = new TwilioTest();
-    @Value("${twilio-acct-sid}")
+    @Value("${twilio-acct-sid")
     private String twilioSid;
     @Value("${twilio-auth-token}")
     private String twilioToken;
@@ -105,8 +105,12 @@ public class UserController {
 //        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
         Twilio.init(twilioSid,twilioToken);
-        Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
-        message.getSid();
+        try {
+            Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio!");
+        }
         return ("redirect:/client/profile/");
     }
 
@@ -136,9 +140,13 @@ public class UserController {
         updateUser.setAboutMe(aboutMe);
 //        updateUser.setPhotoUrl(photoUrl);
         userDao.save(updateUser);
-        Twilio.init(twilioSid,twilioToken);
-        Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
-        message.getSid();
+        try {
+            Twilio.init(twilioSid, twilioToken);
+            Message message = Message.creator(new PhoneNumber(updateUser.getPhoneNum()), originPhoneNumber, "Changes were made to your Drink Hustle account!").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio!");
+        }
         return "redirect:/hustlers/profile/";
     }
 

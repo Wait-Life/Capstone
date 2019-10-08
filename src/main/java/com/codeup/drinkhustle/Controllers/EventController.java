@@ -184,9 +184,13 @@ public class EventController {
         System.out.println("Hey this code ran");
         event.addBartender(user);
         eventDao.save(event);
-        Twilio.init(twilioSid, twilioToken);
-        Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
-        message.getSid();
+        try {
+            Twilio.init(twilioSid, twilioToken);
+            Message message = Message.creator(new PhoneNumber("1" + event.getOwner().getPhoneNum()), originPhoneNumber, "Someone has expressed interest in your event! Log in to your DrinkHustle account to see who.").create();
+            message.getSid();
+        } catch (Exception e) {
+            System.out.println("Something went wrong with Twilio!");
+        }
         return "redirect:/events/";
     }
 
