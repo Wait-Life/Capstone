@@ -34,10 +34,11 @@
                 <a th:href="@{'/client/profile/'+ ${#authentication.principal.id} +'/edit'}">Edit Profile</a>
             </button>
             <br/>
-            <button class="uk-button uk-button-small uk-button-danger">
-                <form th:action="@{/client/profile/{id}/delete(id=${user.id})}" th:method="POST">Delete Profile
-                </form>
+
+                <form th:action="@{'/client/profile/'+ ${#authentication.principal.id} +'/delete'}" th:method="POST">
+                    <button class="uk-button uk-button-small uk-button-danger">Delete Profile
             </button>
+                </form>
         </div>
     </div>
 
