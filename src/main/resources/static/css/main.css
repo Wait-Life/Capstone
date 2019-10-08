@@ -2,9 +2,10 @@
 .topcontainer{
     width: 100%;
     height: 100vh;
-    background-image: url("../img/capstone5.png");
-    background-size: cover;
+    background-image: url("../img/capstone666.jpg");
+    background-size: 100%;
     background-repeat: no-repeat;
+    background-position: center;
 
 }
 
@@ -108,7 +109,7 @@ h5{
 #footer {
     color: ghostwhite;
     background-color: #3B669D;
-    /*margin-top: 15px;*/
+    margin-top: 15px;
 }
 
 #disclaimer {
